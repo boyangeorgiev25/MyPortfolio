@@ -188,10 +188,10 @@ const AboutMePage = () => {
             Feel free to reach out if you'd like to collaborate or if you have any questions!
           </p>
           <div className="social-links">
-            <a href="#"><i className='bx bxl-github'></i></a>
-            <a href="#"><i className='bx bxl-linkedin'></i></a>
-            <a href="#"><i className='bx bxl-twitter'></i></a>
-            <a href="#"><i className='bx bx-envelope'></i></a>
+            <a href="https://github.com/boyangeorgiev25" target="_blank" rel="noopener noreferrer"><i className='bx bxl-github'></i></a>
+            <a href="https://www.linkedin.com/in/boyan-georgiev-08853329b/" target="_blank" rel="noopener noreferrer"><i className='bx bxl-linkedin'></i></a>
+            <a href="https://www.instagram.com/boqn_g/" target="_blank" rel="noopener noreferrer"><i className='bx bxl-instagram-alt'></i></a>
+            <a href="mailto:boqng25@gmail.com"><i className='bx bx-envelope'></i></a>
           </div>
         </section>
       </div>

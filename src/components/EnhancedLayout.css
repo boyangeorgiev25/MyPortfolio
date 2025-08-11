@@ -258,8 +258,8 @@ section {
 }
 
 .btn-secondary {
-  background: transparent;
-  color: var(--main-color);
+  background: transparent !important;
+  color: var(--text-color) !important;
   padding: 1.5rem 3rem;
   border: 2px solid var(--main-color);
   border-radius: 5rem;
@@ -270,8 +270,8 @@ section {
 }
 
 .btn-secondary:hover {
-  background: var(--main-color);
-  color: white;
+  background: var(--main-color) !important;
+  color: white !important;
   transform: translateY(-3px);
   box-shadow: 0 1rem 2rem rgba(117, 78, 249, 0.3);
 }

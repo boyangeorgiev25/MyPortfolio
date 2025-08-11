@@ -5,16 +5,6 @@ const About = () => {
   return (
     <section className="about" id="about">
       <div className="section-divider"></div>
-      <div className="about-img">
-        <div className="image-wrapper">
-          <img src="images/AboutMe1.png" alt="Boyan Georgiev" />
-          <div className="image-overlay">
-            <div className="overlay-content">
-              <i className="bx bx-code-alt"></i>
-            </div>
-          </div>
-        </div>
-      </div>
 
       <div className="about-content">
         <div className="content-header">

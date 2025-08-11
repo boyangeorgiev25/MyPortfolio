@@ -95,14 +95,14 @@
 }
 
 .btn-secondary {
-  background: transparent;
-  color: var(--main-color);
+  background: transparent !important;
+  color: var(--text-color) !important;
   border-color: var(--main-color);
 }
 
 .btn-secondary:hover {
-  background: var(--main-color);
-  color: white;
+  background: var(--main-color) !important;
+  color: white !important;
   transform: translateY(-3px);
   box-shadow: 0 1rem 3rem rgba(117, 78, 249, 0.3);
 }

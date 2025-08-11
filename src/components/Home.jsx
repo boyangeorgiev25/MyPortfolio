@@ -57,15 +57,13 @@ const Home = () => {
           </div>
 
           <div className="social-media">
-            <a href="#"><i className='bx bxl-facebook'></i></a>
-            <a href="#"><i className='bx bxl-twitter'></i></a>
-            <a href="#"><i className='bx bxl-instagram-alt'></i></a>
-            <a href="#"><i className='bx bxl-linkedin'></i></a>
+            <a href="https://www.linkedin.com/in/boyan-georgiev-08853329b/" target="_blank" rel="noopener noreferrer"><i className='bx bxl-linkedin'></i></a>
+            <a href="https://github.com/boyangeorgiev25" target="_blank" rel="noopener noreferrer"><i className='bx bxl-github'></i></a>
+            <a href="https://www.instagram.com/boqn_g/" target="_blank" rel="noopener noreferrer"><i className='bx bxl-instagram-alt'></i></a>
           </div>
 
           <div className="cta-buttons">
-            <a href="#" className="btn btn-primary">Download CV</a>
-            <a href="#contact" className="btn btn-secondary">Get In Touch</a>
+            <a href="#contact" className="btn btn-primary">Get In Touch</a>
           </div>
         </div>
       </div>
