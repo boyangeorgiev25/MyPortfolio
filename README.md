@@ -1,22 +1,71 @@
-# Boyan's Front-End Development Portfolio
+# Boyan's Portfolio - React Version
 
-## Welcome!
+A modern, responsive portfolio website built with React and Vite.
 
-Hello and welcome to my personal portfolio repository! I'm Boyan, a dedicated front-end developer, and I'm excited to share my journey and showcase the skills and projects that define my passion for creating captivating and user-friendly web applications.
+## Features
 
-## About Me
+- Dark mode by default with theme toggle
+- Responsive design for all devices
+- Smooth scrolling navigation
+- Animated profession carousel
+- Contact form with validation
+- ScrollReveal animations
+- Modern React architecture with hooks
 
-I'm deeply passionate about the intersection of design and technology, and I thrive on the challenges of bringing innovative ideas to life through elegant and responsive user interfaces. With a keen eye for detail and a commitment to staying on top of industry trends, I strive to create digital experiences that leave a lasting impression.
+## Getting Started
 
-## Skills
+### Installation
 
-- **Languages:** HTML5, CSS3, JavaScript
-- **Frameworks:** .Net
-- **Styling:** css
-- **Version Control:** Git, GitHub, GitLab
-- **Tools:** VS Code, npm
-- **Testing:** Jest, React Testing Library
+```bash
+cd react-portfolio
+npm install
+```
 
-## Preview
+### Development
 
-![Untitled](https://github.com/bobyTopG/Portfolio_Web_Project/assets/106580794/0fbf411d-4b78-438b-badb-b94555245b45)
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+### Build
+
+```bash
+npm run build
+```
+
+### Preview Production Build
+
+```bash
+npm run preview
+```
+
+## Project Structure
+
+```
+src/
+├── components/
+│   ├── Header.js       # Navigation and theme toggle
+│   ├── Home.js         # Hero section with profession carousel
+│   ├── About.js        # About section
+│   ├── Services.js     # Services grid
+│   ├── Contact.js      # Contact form
+│   └── Footer.js       # Footer with back-to-top
+├── App.js              # Main app component
+├── App.css             # Styles (converted from original)
+├── ThemeContext.js     # Theme management
+└── main.js             # React entry point
+```
+
+## Technologies Used
+
+- React 18
+- Vite (build tool)
+- ScrollReveal (animations)
+- Swiper (carousels)
+- Boxicons (icons)
+
+## Original Version
+
+This is a React conversion of the original HTML/CSS/JS portfolio site. The original functionality has been preserved while adding modern React patterns and improved code organization.
