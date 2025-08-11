@@ -421,6 +421,52 @@ section {
   margin-bottom: 4rem;
 }
 
+/* About Gallery Layout */
+.about-gallery {
+  margin-bottom: 4rem;
+}
+
+.about-gallery .gallery-container {
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.about-gallery .gallery-track {
+  display: flex;
+  gap: 3rem;
+  transition: transform 0.3s ease;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 1rem 0;
+}
+
+.about-gallery .gallery-track::-webkit-scrollbar {
+  display: none;
+}
+
+.about-gallery .gallery-track .detail-item {
+  flex: 0 0 500px;
+  scroll-snap-align: center;
+  margin-bottom: 0;
+}
+
+/* Even larger cards for large desktops */
+@media (min-width: 1400px) {
+  .about-gallery .gallery-track .detail-item {
+    flex: 0 0 600px;
+  }
+}
+
+.about-gallery .gallery-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
 .detail-item {
   display: flex;
   gap: 2rem;
@@ -753,6 +799,14 @@ section {
   .detail-item {
     flex-direction: column;
     text-align: center;
+  }
+  
+  .about-gallery .gallery-track .detail-item {
+    flex: 0 0 350px;
+  }
+  
+  .about-gallery .gallery-track {
+    gap: 2.5rem;
   }
   
   .detail-icon {

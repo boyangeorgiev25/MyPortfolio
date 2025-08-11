@@ -266,6 +266,15 @@
     transform: translateY(-5px) !important;
   }
 
+  /* Mobile about gallery styles */
+  .about-gallery .gallery-track .detail-item {
+    flex: 0 0 300px !important;
+  }
+  
+  .about-gallery .gallery-track {
+    gap: 2rem !important;
+  }
+
   .detail-icon {
     align-self: center;
     margin-bottom: 1.5rem;
@@ -299,8 +308,36 @@
     gap: 3rem !important;
   }
 
+  /* Mobile gallery styles */
+  .gallery-track .project-card {
+    flex: 0 0 320px !important;
+  }
+  
+  .gallery-track {
+    gap: 2rem !important;
+  }
+
+  /* Mobile goals gallery styles */
+  .goals-gallery .gallery-track .goal-card {
+    flex: 0 0 320px !important;
+  }
+  
+  .goals-gallery .gallery-track {
+    gap: 2rem !important;
+  }
+
   .project-card {
     padding: 3rem 2.5rem !important;
+  }
+
+  /* Hide descriptions and tech stack on mobile */
+  .project-description,
+  .project-tech {
+    display: none !important;
+  }
+  
+  .card-content {
+    margin-bottom: 1.5rem !important;
   }
 
   .card-header {

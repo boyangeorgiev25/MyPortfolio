@@ -36,64 +36,74 @@ const Projects = () => {
         </p>
       </div>
 
-      <div className="projects-grid">
-        {projects.map((project, index) => (
-          <div key={index} className="project-card">
-            <div className="card-header">
-              <div className="project-icon">
-                <i className={`bx ${project.icon}`}></i>
-              </div>
-            </div>
+      <div className="projects-gallery">
+        <div className="gallery-container">
+          <div className="gallery-track">
+            {projects.map((project, index) => (
+              <div key={index} className="project-card">
+                <div className="card-header">
+                  <div className="project-icon">
+                    <i className={`bx ${project.icon}`}></i>
+                  </div>
+                </div>
 
-            <div className="card-content">
-              <h3 className="project-title">{project.title}</h3>
-              <p className="project-description">{project.description}</p>
+                <div className="card-content">
+                  <h3 className="project-title">{project.title}</h3>
+                  <p className="project-description">{project.description}</p>
+                  
+                  <div className="project-tech">
+                    <span className="tech-label">Tech Stack:</span>
+                    <div className="tech-tags">
+                      {project.technologies.split(", ").map((tech, techIndex) => (
+                        <span key={techIndex} className="tech-tag">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
 
-              <div className="project-tech">
-                <span className="tech-label">Tech Stack:</span>
-                <div className="tech-tags">
-                  {project.technologies.split(", ").map((tech, techIndex) => (
-                    <span key={techIndex} className="tech-tag">
-                      {tech}
-                    </span>
-                  ))}
+                <div className="card-footer">
+                  <div className="project-buttons">
+                    <Link to={project.link} className="project-btn primary-btn">
+                      <span>View Details</span>
+                      <i className="bx bx-right-arrow-alt"></i>
+                    </Link>
+                    <div className="secondary-buttons">
+                      <a
+                        href={project.githubLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="project-btn github-btn"
+                      >
+                        <span>GitHub</span>
+                        <i className="bx bxl-github"></i>
+                      </a>
+                      {project.liveDemo && (
+                        <a
+                          href={project.liveDemo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="project-btn live-demo-btn"
+                        >
+                          <span>Live Demo</span>
+                          <i className="bx bx-globe"></i>
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                  <div className="card-glow"></div>
                 </div>
               </div>
-            </div>
-
-            <div className="card-footer">
-              <div className="project-buttons">
-                <Link to={project.link} className="project-btn primary-btn">
-                  <span>View Details</span>
-                  <i className="bx bx-right-arrow-alt"></i>
-                </Link>
-                <div className="secondary-buttons">
-                  <a
-                    href={project.githubLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="project-btn github-btn"
-                  >
-                    <span>GitHub</span>
-                    <i className="bx bxl-github"></i>
-                  </a>
-                  {project.liveDemo && (
-                    <a
-                      href={project.liveDemo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="project-btn live-demo-btn"
-                    >
-                      <span>Live Demo</span>
-                      <i className="bx bx-globe"></i>
-                    </a>
-                  )}
-                </div>
-              </div>
-              <div className="card-glow"></div>
-            </div>
+            ))}
           </div>
-        ))}
+        </div>
+        
+        <div className="gallery-indicators">
+          {projects.map((_, index) => (
+            <div key={index} className="gallery-dot"></div>
+          ))}
+        </div>
       </div>
     </section>
   );

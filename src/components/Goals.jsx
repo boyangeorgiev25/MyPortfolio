@@ -37,44 +37,31 @@ const Goals = () => {
         </p>
       </div>
 
-      <div className="goals-timeline">
-        {goals.map((goal, index) => (
-          <div key={index} className="goal-item" style={{'--delay': `${index * 0.2}s`}}>
-            <div className="timeline-connector">
-              <div className="timeline-dot"></div>
-              {index < goals.length - 1 && <div className="timeline-line"></div>}
-            </div>
-            
-            <div className="goal-card">
-              <div className="goal-header">
-                <div className="goal-icon">
-                  <i className={`bx ${goal.icon}`}></i>
+      <div className="goals-gallery">
+        <div className="gallery-container">
+          <div className="gallery-track">
+            {goals.map((goal, index) => (
+              <div key={index} className="goal-card">
+                <div className="card-header">
+                  <div className="goal-icon">
+                    <i className={`bx ${goal.icon}`}></i>
+                  </div>
                 </div>
-                <div className="goal-meta">
-                  <span className="goal-number">Goal {index + 1}</span>
+                
+                <div className="card-content">
+                  <h3 className="goal-title">{goal.title}</h3>
                   <span className="goal-timeline">{goal.timeline}</span>
                 </div>
               </div>
-              
-              <div className="goal-content">
-                <h3 className="goal-title">{goal.title}</h3>
-                <p className="goal-description">{goal.description}</p>
-              </div>
-              
-              <div className="goal-progress">
-                <div className="progress-bar">
-                  <div 
-                    className="progress-fill" 
-                    style={{'--progress': index === 0 ? '75%' : index === 1 ? '45%' : index === 2 ? '20%' : '90%'}}
-                  ></div>
-                </div>
-                <span className="progress-text">
-                  {index === 0 ? 'In Progress' : index === 1 ? 'Planning' : index === 2 ? 'Future Goal' : 'Ongoing'}
-                </span>
-              </div>
-            </div>
+            ))}
           </div>
-        ))}
+        </div>
+        
+        <div className="gallery-indicators">
+          {goals.map((_, index) => (
+            <div key={index} className="gallery-dot"></div>
+          ))}
+        </div>
       </div>
       
       <div className="goals-summary">
