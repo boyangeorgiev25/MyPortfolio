@@ -560,7 +560,7 @@
   }
 
   .stat-number {
-    font-size: 2.4rem !important;
+    font-size: 3.5rem !important;
     display: block;
     margin-bottom: 0.8rem !important;
     font-weight: 700 !important;
@@ -1034,7 +1034,7 @@
   }
 
   .stat-number {
-    font-size: 1.8rem !important;
+    font-size: 3rem !important;
   }
 
   .stat-label {

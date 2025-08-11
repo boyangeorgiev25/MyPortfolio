@@ -43,7 +43,6 @@ const Projects = () => {
               <div className="project-icon">
                 <i className={`bx ${project.icon}`}></i>
               </div>
-              <div className="project-number">0{index + 1}</div>
             </div>
 
             <div className="card-content">
