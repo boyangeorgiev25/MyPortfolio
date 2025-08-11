@@ -169,6 +169,11 @@
   color: var(--bg-color);
 }
 
+/* Hide mobile gallery on desktop */
+.mobile-image-gallery {
+  display: none;
+}
+
 /* Responsive Design */
 @media (max-width: 991px) {
   .project-detail {

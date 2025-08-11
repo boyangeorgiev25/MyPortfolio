@@ -1,7 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ProjectDetail.css";
 
 const ECommercePlatform = () => {
+  const images = [
+    { src: "/images/1.png", alt: "E-Commerce Platform - Main View" },
+    { src: "/images/1.png", alt: "E-Commerce Platform - Dashboard" },
+    { src: "/images/1.png", alt: "E-Commerce Platform - Mobile View" },
+    { src: "/images/1.png", alt: "E-Commerce Platform - Checkout" }
+  ];
+
+  const [currentImage, setCurrentImage] = useState(0);
+
+  const nextImage = () => {
+    setCurrentImage((prev) => (prev + 1) % images.length);
+  };
+
+  const prevImage = () => {
+    setCurrentImage((prev) => (prev - 1 + images.length) % images.length);
+  };
+
+  const goToImage = (index) => {
+    setCurrentImage(index);
+  };
+
   return (
     <div className="project-detail">
       <div className="project-header">
@@ -13,6 +34,54 @@ const ECommercePlatform = () => {
 
       <div className="project-content">
         <div className="project-images">
+          {/* Mobile Image Gallery */}
+          <div className="mobile-image-gallery">
+            <div className="gallery-container">
+              <div 
+                className="gallery-track" 
+                style={{ transform: `translateX(-${currentImage * 100}%)` }}
+              >
+                {images.map((image, index) => (
+                  <div key={index} className="gallery-image">
+                    <img src={image.src} alt={image.alt} />
+                  </div>
+                ))}
+              </div>
+            </div>
+            
+            <div className="gallery-nav">
+              <button 
+                className="gallery-btn" 
+                onClick={prevImage}
+                disabled={currentImage === 0}
+              >
+                <i className="bx bx-chevron-left"></i>
+              </button>
+              
+              <div className="gallery-indicators">
+                <span className="gallery-info">{currentImage + 1} / {images.length}</span>
+                <div style={{ display: 'flex', gap: '0.5rem', marginLeft: '1rem' }}>
+                  {images.map((_, index) => (
+                    <div
+                      key={index}
+                      className={`gallery-dot ${index === currentImage ? 'active' : ''}`}
+                      onClick={() => goToImage(index)}
+                    />
+                  ))}
+                </div>
+              </div>
+              
+              <button 
+                className="gallery-btn" 
+                onClick={nextImage}
+                disabled={currentImage === images.length - 1}
+              >
+                <i className="bx bx-chevron-right"></i>
+              </button>
+            </div>
+          </div>
+
+          {/* Desktop Images (hidden on mobile) */}
           <div className="main-image">
             <img src="/images/1.png" alt="E-Commerce Platform" />
           </div>
