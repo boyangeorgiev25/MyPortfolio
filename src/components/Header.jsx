@@ -52,8 +52,8 @@ const Header = () => {
           Home
         </a>
         <a 
-          href="#about"
-          onClick={(e) => handleNavClick(e, 'about')}
+          href="/about-me"
+          onClick={(e) => { e.preventDefault(); navigate('/about-me'); closeMenu(); }}
         >
           About
         </a>

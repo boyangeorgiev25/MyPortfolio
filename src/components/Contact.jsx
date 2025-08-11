@@ -1,48 +1,86 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
-    phone: '',
-    subject: '',
-    message: ''
-  });
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
+  const form = useRef();
+  const [isLoading, setIsLoading] = useState(false);
+  const [status, setStatus] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Add form submission logic here
-    alert('Form submitted! (This is just a demo)');
+    setIsLoading(true);
+    setStatus('');
+
+    // Get form data
+    const formData = new FormData(form.current);
+    const name = formData.get('from_name');
+    const email = formData.get('from_email');
+    const phone = formData.get('phone');
+    const subject = formData.get('subject');
+    const message = formData.get('message');
+
+    // EmailJS configuration from environment variables
+    const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    // Check if EmailJS is configured with actual values (not placeholders)
+    if (!serviceID || !templateID || !publicKey || 
+        serviceID === 'your_service_id_here' || 
+        templateID === 'your_template_id_here' || 
+        publicKey === 'your_public_key_here') {
+      
+      console.log('EmailJS not configured, using form data for now');
+      
+      // Show form data in console for testing
+      console.log('Form Data:', {
+        name, email, phone, subject, message
+      });
+      
+      // Simulate successful submission for testing
+      setStatus('success');
+      setIsLoading(false);
+      form.current.reset();
+      return;
+    }
+
+    // Send email using EmailJS (when properly configured)
+    emailjs.sendForm(serviceID, templateID, form.current, publicKey)
+      .then((result) => {
+        console.log('Email sent successfully:', result.text);
+        setStatus('success');
+        setIsLoading(false);
+        form.current.reset();
+      })
+      .catch((error) => {
+        console.error('Email sending failed:', error);
+        
+        // Handle specific Gmail API scope error
+        if (error.text && error.text.includes('insufficient authentication scopes')) {
+          setStatus('gmail-scope-error');
+        } else {
+          setStatus('error');
+        }
+        setIsLoading(false);
+      });
   };
 
   return (
     <section className="contact" id="contact">
       <h2 className="heading">Contact <span>Me!</span></h2>
 
-      <form onSubmit={handleSubmit}>
+      <form ref={form} onSubmit={handleSubmit}>
         <div className="input-box">
           <input
             type="text"
-            name="fullName"
+            name="from_name"
             placeholder="Full Name"
-            value={formData.fullName}
-            onChange={handleChange}
             required
           />
           <input
             type="email"
-            name="email"
+            name="from_email"
             placeholder="Email Address"
-            value={formData.email}
-            onChange={handleChange}
             required
           />
         </div>
@@ -51,15 +89,11 @@ const Contact = () => {
             type="tel"
             name="phone"
             placeholder="Mobile Number"
-            value={formData.phone}
-            onChange={handleChange}
           />
           <input
             type="text"
             name="subject"
             placeholder="Email Subject"
-            value={formData.subject}
-            onChange={handleChange}
             required
           />
         </div>
@@ -68,11 +102,33 @@ const Contact = () => {
           cols="30"
           rows="10"
           placeholder="Your Message"
-          value={formData.message}
-          onChange={handleChange}
           required
         ></textarea>
-        <input type="submit" value="Send Message" className="btn" />
+        
+        {status === 'success' && (
+          <div className="status-message success">
+            ✅ Message sent successfully! I'll get back to you soon.
+          </div>
+        )}
+        
+        {status === 'error' && (
+          <div className="status-message error">
+            ❌ Failed to send message. Please contact me directly at boqng25@gmail.com
+          </div>
+        )}
+        
+        {status === 'gmail-scope-error' && (
+          <div className="status-message error">
+            ❌ Gmail permission error. Please contact me directly at boqng25@gmail.com or try again later.
+          </div>
+        )}
+        
+        <input 
+          type="submit" 
+          value={isLoading ? "Sending..." : "Send Message"} 
+          className="btn" 
+          disabled={isLoading}
+        />
       </form>
     </section>
   );

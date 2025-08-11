@@ -36,15 +36,8 @@ const Home = () => {
             <span className="name-part">Georgiev</span>
           </h1>
           <div className="role-container">
-            <h3 className="role-text">Web Developer & Student</h3>
+            <h3 className="role-text">Software Developer</h3>
             <div className="role-underline"></div>
-          </div>
-          <div className="description">
-            <p className="main-desc">
-              I'm passionate about creating beautiful and functional websites
-              that make a difference in the world.
-            </p>
-            <p className="sub-desc">Currently studying at Karel de Grote University College (KDG), learning modern web technologies like HTML, CSS, JavaScript, React, and more.</p>
           </div>
 
           <div className="home-stats">

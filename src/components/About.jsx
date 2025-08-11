@@ -24,9 +24,7 @@ const About = () => {
         
         <div className="intro-card">
           <h3>
-            Hi there, welcome to my digital space! I'm Boyan,
-            a passionate web developer who thrives on learning new technologies
-            and crafting solutions through code.
+            Hi! I'm Boyan, a passionate software developer who loves creating modern web applications.
           </h3>
         </div>
 
@@ -38,8 +36,7 @@ const About = () => {
             <div className="detail-content">
               <h4>Web Development</h4>
               <p>
-                Building modern, responsive websites and applications using the latest technologies.
-                My focus is on creating user-friendly experiences that make a difference.
+                Building responsive websites and applications with modern technologies.
               </p>
             </div>
           </div>
@@ -51,8 +48,7 @@ const About = () => {
             <div className="detail-content">
               <h4>Continuous Learning</h4>
               <p>
-                Currently studying at Karel de Grote University College (KDG), constantly expanding
-                my knowledge in web development, design patterns, and emerging technologies.
+                Studying at Karel de Grote University College, expanding knowledge in web development.
               </p>
             </div>
           </div>
@@ -64,8 +60,7 @@ const About = () => {
             <div className="detail-content">
               <h4>Passion for Innovation</h4>
               <p>
-                I believe in the power of technology to solve real-world problems and create
-                meaningful digital experiences that inspire and engage users.
+                Using technology to solve problems and create meaningful digital experiences.
               </p>
             </div>
           </div>
