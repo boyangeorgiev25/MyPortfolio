@@ -4,25 +4,22 @@ import { Link } from 'react-router-dom';
 const Projects = () => {
   const projects = [
     {
-      icon: 'bx-code-alt',
-      title: 'E-Commerce Platform',
-      description: 'Full-stack React application with Node.js backend, featuring user authentication, payment integration, and real-time inventory management. Built with modern technologies and deployed on AWS.',
-      technologies: 'React, Node.js, MongoDB, Stripe',
-      link: '/project/ecommerce-platform'
+      icon: 'bx-world',
+      title: '🌍 WorldWise - Personal Travel Tracker',
+      description: 'A modern React application that helps travelers keep track of cities they\'ve visited around the world. Features user authentication, personal data management, and an interactive map interface with travel planning capabilities.',
+      technologies: 'React 18, React Router DOM, CSS Modules, Context API',
+      githubLink: 'https://github.com/boyangeorgiev25/worldwise',
+      liveDemo: 'https://worldwise-travel-tracker.vercel.app',
+      link: '/project/worldwise'
     },
     {
-      icon: 'bx-mobile-alt',
-      title: 'Task Management App',
-      description: 'Cross-platform mobile application developed with React Native. Features include drag-and-drop kanban boards, team collaboration, and offline synchronization capabilities.',
-      technologies: 'React Native, Firebase, Redux',
-      link: '/project/task-management-app'
-    },
-    {
-      icon: 'bx-data',
-      title: 'Data Visualization Dashboard',
-      description: 'Interactive analytics dashboard that processes large datasets and presents insights through dynamic charts and graphs. Integrated with multiple data sources and real-time updates.',
-      technologies: 'Python, Django, D3.js, PostgreSQL',
-      link: '/project/data-visualization-dashboard'
+      icon: 'bx-package',
+      title: '🧳 Far Away – Packing List App',
+      description: 'A simple, interactive packing list built with React. Add, sort, check off, and remove items as you prepare for your next trip. Perfect for practicing state management, component structure, and props with live statistics.',
+      technologies: 'React, JavaScript, CSS, State Management',
+      githubLink: 'https://github.com/boyangeorgiev25/far-away',
+      liveDemo: 'https://far-away-packing-list.vercel.app',
+      link: '/project/far-away'
     }
   ];
 
@@ -60,10 +57,24 @@ const Projects = () => {
             </div>
             
             <div className="card-footer">
-              <Link to={project.link} className="project-btn">
-                <span>View Project</span>
-                <i className="bx bx-right-arrow-alt"></i>
-              </Link>
+              <div className="project-buttons">
+                <Link to={project.link} className="project-btn primary-btn">
+                  <span>View Details</span>
+                  <i className="bx bx-right-arrow-alt"></i>
+                </Link>
+                <div className="secondary-buttons">
+                  <a href={project.githubLink} target="_blank" rel="noopener noreferrer" className="project-btn github-btn">
+                    <span>GitHub</span>
+                    <i className="bx bxl-github"></i>
+                  </a>
+                  {project.liveDemo && (
+                    <a href={project.liveDemo} target="_blank" rel="noopener noreferrer" className="project-btn live-demo-btn">
+                      <span>Live Demo</span>
+                      <i className="bx bx-globe"></i>
+                    </a>
+                  )}
+                </div>
+              </div>
               <div className="card-glow"></div>
             </div>
           </div>

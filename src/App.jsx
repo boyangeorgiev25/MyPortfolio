@@ -3,9 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './ThemeContext.jsx';
 import Header from './components/Header.jsx';
 import Portfolio from './components/Portfolio.jsx';
-import ECommercePlatform from './components/projects/ECommercePlatform.jsx';
-import TaskManagementApp from './components/projects/TaskManagementApp.jsx';
-import DataVisualizationDashboard from './components/projects/DataVisualizationDashboard.jsx';
+import WorldWise from './components/projects/WorldWise.jsx';
+import FarAway from './components/projects/FarAway.jsx';
 import AboutMePage from './components/AboutMePage.jsx';
 import LoadingScreen from './components/LoadingScreen.jsx';
 import './App.css';
@@ -74,9 +73,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Portfolio />} />
             <Route path="/about-me" element={<AboutMePage />} />
-            <Route path="/project/ecommerce-platform" element={<ECommercePlatform />} />
-            <Route path="/project/task-management-app" element={<TaskManagementApp />} />
-            <Route path="/project/data-visualization-dashboard" element={<DataVisualizationDashboard />} />
+            <Route path="/project/worldwise" element={<WorldWise />} />
+            <Route path="/project/far-away" element={<FarAway />} />
           </Routes>
         </div>
       </Router>
