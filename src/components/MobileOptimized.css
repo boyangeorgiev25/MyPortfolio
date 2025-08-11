@@ -247,8 +247,10 @@
   }
 
   .intro-card {
-    padding: 2.5rem;
+    padding: 2rem 1.5rem;
     text-align: center;
+    margin: 0 1rem;
+    max-width: calc(100vw - 8rem);
   }
 
   .intro-card h3 {
@@ -1000,7 +1002,9 @@
   }
 
   .intro-card {
-    padding: 2rem;
+    padding: 1.5rem 1rem;
+    margin: 0 0.5rem;
+    max-width: calc(100vw - 6rem);
   }
 
   .intro-card h3 {

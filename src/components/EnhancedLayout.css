@@ -868,6 +868,12 @@ section {
     font-size: 4rem;
   }
   
+  .intro-card {
+    padding: 2.5rem 2rem;
+    margin: 0 1.5rem;
+    max-width: calc(100vw - 8rem);
+  }
+
   .role-text {
     font-size: 2rem;
   }
@@ -913,6 +919,12 @@ section {
     font-size: 3.2rem;
   }
   
+  .intro-card {
+    padding: 2rem 1.5rem;
+    margin: 0 1rem;
+    max-width: calc(100vw - 6rem);
+  }
+
   .greeting-text {
     font-size: 2rem;
   }
