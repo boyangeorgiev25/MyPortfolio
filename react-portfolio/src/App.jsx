@@ -1,14 +1,31 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './ThemeContext.jsx';
 import Header from './components/Header.jsx';
-import Home from './components/Home.jsx';
-import About from './components/About.jsx';
-import Services from './components/Services.jsx';
-import Contact from './components/Contact.jsx';
-import Footer from './components/Footer.jsx';
+import Portfolio from './components/Portfolio.jsx';
+import ECommercePlatform from './components/projects/ECommercePlatform.jsx';
+import TaskManagementApp from './components/projects/TaskManagementApp.jsx';
+import DataVisualizationDashboard from './components/projects/DataVisualizationDashboard.jsx';
+import AboutMePage from './components/AboutMePage.jsx';
+import LoadingScreen from './components/LoadingScreen.jsx';
 import './App.css';
+import './components/SectionTransitions.css';
+import './components/EnhancedLayout.css';
+import './components/ProjectsGoalsEnhanced.css';
+import './components/MobileOptimized.css';
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate loading time
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000); // 3 seconds loading time
+
+    return () => clearTimeout(timer);
+  }, []);
+
   useEffect(() => {
     const handleScroll = () => {
       const sections = document.querySelectorAll('section');
@@ -41,16 +58,28 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  if (isLoading) {
+    return (
+      <ThemeProvider>
+        <LoadingScreen />
+      </ThemeProvider>
+    );
+  }
+
   return (
     <ThemeProvider>
-      <div className="App">
-        <Header />
-        <Home />
-        <About />
-        <Services />
-        <Contact />
-        <Footer />
-      </div>
+      <Router>
+        <div className="App">
+          <Header />
+          <Routes>
+            <Route path="/" element={<Portfolio />} />
+            <Route path="/about-me" element={<AboutMePage />} />
+            <Route path="/project/ecommerce-platform" element={<ECommercePlatform />} />
+            <Route path="/project/task-management-app" element={<TaskManagementApp />} />
+            <Route path="/project/data-visualization-dashboard" element={<DataVisualizationDashboard />} />
+          </Routes>
+        </div>
+      </Router>
     </ThemeProvider>
   );
 }

@@ -1,0 +1,56 @@
+/* Remove gaps between sections for seamless flow */
+section {
+  margin-bottom: 0 !important;
+  padding-bottom: 2rem !important;
+}
+
+/* Specific adjustments for main sections */
+.home {
+  padding-bottom: 3rem !important;
+}
+
+.about {
+  padding-top: 5rem !important;
+  padding-bottom: 3rem !important;
+}
+
+.services {
+  padding-top: 5rem !important;
+  padding-bottom: 3rem !important;
+}
+
+.contact {
+  padding-top: 5rem !important;
+}
+
+/* Ensure smooth visual flow */
+.about-img,
+.services-container,
+.contact form {
+  margin-bottom: 2rem !important;
+}
+
+/* Reduce excessive spacing in content */
+.heading {
+  margin-bottom: 3rem !important;
+}
+
+.about-content h3,
+.home-content h3 {
+  margin-bottom: 1.5rem !important;
+}
+
+.about-content p,
+.home-content p {
+  margin-bottom: 1rem !important;
+}
+
+/* Button spacing adjustments */
+.btn {
+  margin-top: 2rem !important;
+}
+
+/* Social media spacing */
+.social-media {
+  margin: 2rem 0 !important;
+}

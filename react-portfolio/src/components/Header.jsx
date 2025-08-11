@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useTheme } from '../ThemeContext.jsx';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { isDarkMode, toggleTheme } = useTheme();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -15,16 +18,30 @@ const Header = () => {
 
   const handleNavClick = (e, targetId) => {
     e.preventDefault();
-    const element = document.getElementById(targetId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    
+    // If we're not on the home page, navigate to home first
+    if (location.pathname !== '/') {
+      navigate('/');
+      // Wait for navigation to complete, then scroll
+      setTimeout(() => {
+        const element = document.getElementById(targetId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      // If we're already on home page, just scroll
+      const element = document.getElementById(targetId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
     closeMenu();
   };
 
   return (
     <header className="header">
-      <a href="#" className="logo">Boyan's Blog.</a>
+      <a href="#" className="logo" onClick={(e) => { e.preventDefault(); navigate('/'); }}>Boyan's Blog.</a>
 
       <nav className={`navbar ${isMenuOpen ? 'active' : ''}`}>
         <a 
@@ -41,16 +58,16 @@ const Header = () => {
           About
         </a>
         <a 
-          href="#services"
-          onClick={(e) => handleNavClick(e, 'services')}
+          href="#projects"
+          onClick={(e) => handleNavClick(e, 'projects')}
         >
-          Services
+          Projects
         </a>
         <a 
-          href="#portfolio"
-          onClick={(e) => handleNavClick(e, 'portfolio')}
+          href="#goals"
+          onClick={(e) => handleNavClick(e, 'goals')}
         >
-          Portfolio
+          Goals
         </a>
         <a 
           href="#contact"

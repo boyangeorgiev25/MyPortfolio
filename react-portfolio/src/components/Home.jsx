@@ -18,23 +18,62 @@ const Home = () => {
 
   return (
     <section className="home" id="home">
-      <div className="home-content">
-        <h3>Hello, I am</h3>
-        <h1>Boyan Georgiev</h1>
-        <p>
-          I'm a web developer who loves to create beautiful and functional websites
-          for people who want to make a difference in the world.
-        </p>
-        <p>I'm currently studying at Karel de Grote University College (KDG), where I'm learning to build modern, user-focused websites using HTML, CSS, JavaScript, and WordPress.</p>
-
-        <div className="social-media">
-          <a href="#"><i className='bx bxl-facebook'></i></a>
-          <a href="#"><i className='bx bxl-twitter'></i></a>
-          <a href="#"><i className='bx bxl-instagram-alt'></i></a>
-          <a href="#"><i className='bx bxl-linkedin'></i></a>
+      <div className="home-background">
+        <div className="background-shapes">
+          <div className="bg-shape bg-shape-1"></div>
+          <div className="bg-shape bg-shape-2"></div>
+          <div className="bg-shape bg-shape-3"></div>
         </div>
+      </div>
+      <div className="home-content">
+        <div className="content-text">
+          <div className="greeting">
+            <span className="greeting-text">Hello, I am</span>
+            <div className="greeting-decoration"></div>
+          </div>
+          <h1>
+            <span className="name-part">Boyan</span>
+            <span className="name-part">Georgiev</span>
+          </h1>
+          <div className="role-container">
+            <h3 className="role-text">Web Developer & Student</h3>
+            <div className="role-underline"></div>
+          </div>
+          <div className="description">
+            <p className="main-desc">
+              I'm passionate about creating beautiful and functional websites
+              that make a difference in the world.
+            </p>
+            <p className="sub-desc">Currently studying at Karel de Grote University College (KDG), learning modern web technologies like HTML, CSS, JavaScript, React, and more.</p>
+          </div>
 
-        <a href="#" className="btn">Download CV</a>
+          <div className="home-stats">
+            <div className="stat-box">
+              <span className="stat-number">2+</span>
+              <span className="stat-label">Years Experience</span>
+            </div>
+            <div className="stat-box">
+              <span className="stat-number">15+</span>
+              <span className="stat-label">Projects Done</span>
+            </div>
+            <div className="stat-box">
+              <span className="stat-number">100%</span>
+              <span className="stat-label">Client Satisfaction</span>
+            </div>
+          </div>
+
+          <div className="social-media">
+            <a href="#"><i className='bx bxl-facebook'></i></a>
+            <a href="#"><i className='bx bxl-twitter'></i></a>
+            <a href="#"><i className='bx bxl-instagram-alt'></i></a>
+            <a href="#"><i className='bx bxl-linkedin'></i></a>
+          </div>
+
+          <div className="cta-buttons">
+            <a href="#" className="btn btn-primary">Download CV</a>
+            <a href="#contact" className="btn btn-secondary">Get In Touch</a>
+          </div>
+        </div>
       </div>
 
       <div className="profession-container">
