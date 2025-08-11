@@ -921,8 +921,8 @@ section {
   
   .intro-card {
     padding: 2rem 1.5rem;
-    margin: 0 1rem;
-    max-width: calc(100vw - 6rem);
+    margin: 0 auto;
+    max-width: calc(100vw - 4rem);
   }
 
   .greeting-text {
