@@ -37,15 +37,6 @@ const PageNotFound = () => {
           </Link>
         </div>
         
-        <div className="error-suggestions">
-          <h3>You might be looking for:</h3>
-          <ul>
-            <li><Link to="/">🏠 Home - My Portfolio</Link></li>
-            <li><Link to="/about-me">👨‍💻 About Me - My Story</Link></li>
-            <li><Link to="/project/worldwise">🌍 WorldWise Project</Link></li>
-            <li><Link to="/project/far-away">🧳 Far Away Project</Link></li>
-          </ul>
-        </div>
       </div>
     </div>
   );
