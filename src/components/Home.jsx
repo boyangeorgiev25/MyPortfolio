@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import AnimatedCounter from './AnimatedCounter.jsx';
 
 const Home = () => {
   useEffect(() => {
@@ -42,15 +43,15 @@ const Home = () => {
 
           <div className="home-stats">
             <div className="stat-box">
-              <span className="stat-number">2+</span>
+              <AnimatedCounter end="2" suffix="+" duration={5000} delay={800} />
               <span className="stat-label">Years Experience</span>
             </div>
             <div className="stat-box">
-              <span className="stat-number">15+</span>
+              <AnimatedCounter end="15" suffix="+" duration={6000} delay={1200} />
               <span className="stat-label">Projects Done</span>
             </div>
             <div className="stat-box">
-              <span className="stat-number">100%</span>
+              <AnimatedCounter end="100" suffix="%" duration={7000} delay={1600} />
               <span className="stat-label">Client Satisfaction</span>
             </div>
           </div>

@@ -7,6 +7,8 @@ import WorldWise from './components/projects/WorldWise.jsx';
 import FarAway from './components/projects/FarAway.jsx';
 import AboutMePage from './components/AboutMePage.jsx';
 import LoadingScreen from './components/LoadingScreen.jsx';
+import ScrollToTop from './components/ScrollToTop.jsx';
+import PageNotFound from './components/PageNotFound.jsx';
 import './App.css';
 import './components/SectionTransitions.css';
 import './components/EnhancedLayout.css';
@@ -69,12 +71,14 @@ function App() {
     <ThemeProvider>
       <Router>
         <div className="App">
+          <ScrollToTop />
           <Header />
           <Routes>
             <Route path="/" element={<Portfolio />} />
             <Route path="/about-me" element={<AboutMePage />} />
             <Route path="/project/worldwise" element={<WorldWise />} />
             <Route path="/project/far-away" element={<FarAway />} />
+            <Route path="*" element={<PageNotFound />} />
           </Routes>
         </div>
       </Router>

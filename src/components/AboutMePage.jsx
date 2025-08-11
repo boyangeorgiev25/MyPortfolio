@@ -1,4 +1,5 @@
 import React from 'react';
+import AnimatedCounter from './AnimatedCounter.jsx';
 import './AboutMePage.css';
 
 const AboutMePage = () => {
@@ -19,15 +20,15 @@ const AboutMePage = () => {
             <p className="hero-subtitle">Web Developer & Student at Karel de Grote University College</p>
             <div className="hero-stats">
               <div className="stat-item">
-                <span className="stat-number">2+</span>
+                <AnimatedCounter end="2" suffix="+" duration={3000} delay={600} />
                 <span className="stat-label">Years Learning</span>
               </div>
               <div className="stat-item">
-                <span className="stat-number">10+</span>
+                <AnimatedCounter end="10" suffix="+" duration={3500} delay={900} />
                 <span className="stat-label">Projects Built</span>
               </div>
               <div className="stat-item">
-                <span className="stat-number">5+</span>
+                <AnimatedCounter end="5" suffix="+" duration={4000} delay={1200} />
                 <span className="stat-label">Technologies</span>
               </div>
             </div>
