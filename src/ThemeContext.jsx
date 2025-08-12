@@ -12,43 +12,80 @@ export const useTheme = () => {
 
 export const ThemeProvider = ({ children }) => {
   const [isDarkMode, setIsDarkMode] = useState(() => {
-    // Always use system preference
-    if (window.matchMedia) {
-      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    // Check if we're in a browser environment
+    if (typeof window === 'undefined') {
+      return true; // Default to dark for SSR
     }
     
-    // Default to dark mode if system preference is not available
-    return true;
+    try {
+      // Always use system preference
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        console.log('System preference: dark mode');
+        return true;
+      } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+        console.log('System preference: light mode');
+        return false;
+      } else {
+        console.log('No system preference detected, defaulting to dark');
+        return true;
+      }
+    } catch (error) {
+      console.error('Error detecting system theme:', error);
+      return true; // Default to dark mode on error
+    }
   });
 
   const toggleTheme = () => {
     // Toggle temporarily, but it will sync back to system on next change
-    setIsDarkMode(prev => !prev);
+    setIsDarkMode(prev => {
+      console.log('Manual toggle from', prev ? 'dark' : 'light', 'to', !prev ? 'dark' : 'light');
+      return !prev;
+    });
   };
 
   useEffect(() => {
     // Apply the theme to the body
     if (isDarkMode) {
       document.body.classList.add('dark-mode');
+      console.log('Applied dark mode to body');
     } else {
       document.body.classList.remove('dark-mode');
+      console.log('Applied light mode to body');
     }
   }, [isDarkMode]);
 
   useEffect(() => {
-    // Listen for system theme changes and always sync
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    
-    const handleSystemThemeChange = (e) => {
-      // Always update to match system preference
-      setIsDarkMode(e.matches);
-    };
+    // Check if we're in a browser environment
+    if (typeof window === 'undefined') {
+      return;
+    }
 
-    mediaQuery.addEventListener('change', handleSystemThemeChange);
-    
-    return () => {
-      mediaQuery.removeEventListener('change', handleSystemThemeChange);
-    };
+    try {
+      // Listen for system theme changes and always sync
+      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+      
+      const handleSystemThemeChange = (e) => {
+        console.log('System theme changed to:', e.matches ? 'dark' : 'light');
+        setIsDarkMode(e.matches);
+      };
+
+      // Use the newer API if available, fallback to the older one
+      if (mediaQuery.addEventListener) {
+        mediaQuery.addEventListener('change', handleSystemThemeChange);
+      } else {
+        mediaQuery.addListener(handleSystemThemeChange);
+      }
+      
+      return () => {
+        if (mediaQuery.removeEventListener) {
+          mediaQuery.removeEventListener('change', handleSystemThemeChange);
+        } else {
+          mediaQuery.removeListener(handleSystemThemeChange);
+        }
+      };
+    } catch (error) {
+      console.error('Error setting up system theme listener:', error);
+    }
   }, []);
 
   return (
