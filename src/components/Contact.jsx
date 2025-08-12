@@ -24,6 +24,12 @@ const Contact = () => {
     const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
     const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
+    console.log('EmailJS Configuration:', {
+      serviceID: serviceID || 'undefined',
+      templateID: templateID || 'undefined', 
+      publicKey: publicKey || 'undefined'
+    });
+
     // Check if EmailJS is configured with actual values (not placeholders)
     if (!serviceID || !templateID || !publicKey || 
         serviceID === 'your_service_id_here' || 
@@ -43,6 +49,8 @@ const Contact = () => {
       form.current.reset();
       return;
     }
+
+    console.log('EmailJS is properly configured, attempting to send email...');
 
     // Send email using EmailJS (when properly configured)
     emailjs.sendForm(serviceID, templateID, form.current, publicKey)
