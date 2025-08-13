@@ -1,4 +1,4 @@
-/* About Component Styles */
+/* About section - keeping it simple and clean */
 
 .about {
     display: flex;
@@ -166,7 +166,7 @@
     margin-bottom: 4rem;
 }
 
-/* About Gallery Layout */
+/* Gallery stuff for the cards */
 .about-gallery {
     margin-bottom: 4rem;
 }
@@ -198,7 +198,7 @@
     margin-bottom: 0;
 }
 
-/* Even larger cards for large desktops */
+/* Make cards bigger on huge screens */
 @media (min-width: 1400px) {
     .about-gallery .gallery-track .detail-item {
         flex: 0 0 600px;
@@ -347,7 +347,7 @@
     transform: scale(1.1);
 }
 
-/* Section Dividers */
+/* Little lines to separate sections */
 .section-divider {
     height: 2px;
     background: linear-gradient(90deg, transparent, var(--main-color), transparent);
@@ -355,7 +355,7 @@
     opacity: 0.3;
 }
 
-/* Responsive Design */
+/* Mobile tweaks */
 @media (max-width: 1200px) {
     .about {
         gap: 4rem;
@@ -444,7 +444,7 @@
         transform: translateY(-5px) !important;
     }
 
-    /* Mobile about gallery styles */
+    /* Gallery adjustments for phones */
     .about-gallery .gallery-track .detail-item {
         flex: 0 0 300px !important;
     }
@@ -515,7 +515,7 @@
     }
 }
 
-/* Touch-friendly improvements */
+/* Better for touchscreens */
 @media (hover: none) and (pointer: coarse) {
     .btn-about {
         min-height: 44px;

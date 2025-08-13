@@ -1,7 +1,8 @@
 import React from 'react';
 import './ProjectPage.css';
 
-const FarAway = () => {
+// Simple packing list app - my first real React project
+function FarAway() {
   return (
     <div className="project-page">
       <div className="project-hero">
@@ -9,7 +10,7 @@ const FarAway = () => {
           <div className="project-header">
             <h1 className="project-title">🧳 Far Away – Packing List App</h1>
             <p className="project-subtitle">
-              A simple, interactive packing list built with React. Perfect for practicing state management and component structure.
+              Super simple packing list I built while learning React. You add stuff, check it off when packed, and it keeps track of everything for you.
             </p>
             <div className="project-links">
               <a href="https://github.com/boyangeorgiev25/far-away" target="_blank" rel="noopener noreferrer" className="btn-primary">
@@ -26,43 +27,43 @@ const FarAway = () => {
       <div className="container">
         <div className="project-content">
           <section className="project-section" id="features">
-            <h2>✨ Features</h2>
+            <h2>✨ What it does</h2>
             <div className="features-grid">
               <div className="feature-card">
                 <div className="feature-icon">✅</div>
-                <h3>Add Items</h3>
-                <p>Add items with quantity and description for your packing list</p>
+                <h3>Add stuff</h3>
+                <p>Type in what you need to pack and how many</p>
               </div>
               <div className="feature-card">
                 <div className="feature-icon">📦</div>
-                <h3>Mark as Packed</h3>
-                <p>Check off items as packed with interactive checkboxes</p>
+                <h3>Check things off</h3>
+                <p>Click the box when you've packed something</p>
               </div>
               <div className="feature-card">
                 <div className="feature-icon">🗑️</div>
-                <h3>Delete Items</h3>
-                <p>Remove individual items or clear the entire list</p>
+                <h3>Delete stuff</h3>
+                <p>Get rid of things you don't need anymore</p>
               </div>
               <div className="feature-card">
                 <div className="feature-icon">🔄</div>
-                <h3>Smart Sorting</h3>
-                <p>Sort by input order, description, or packed status</p>
+                <h3>Sort your list</h3>
+                <p>Organize by when you added it, name, or if it's packed</p>
               </div>
               <div className="feature-card">
                 <div className="feature-icon">📊</div>
-                <h3>Live Statistics</h3>
-                <p>Track total items vs. packed items with real-time updates</p>
+                <h3>Shows your progress</h3>
+                <p>See how much you've packed vs how much is left</p>
               </div>
               <div className="feature-card">
                 <div className="feature-icon">🚮</div>
-                <h3>Clear All</h3>
-                <p>Reset your packing list with a single click</p>
+                <h3>Start over</h3>
+                <p>Clear everything if you want to start fresh</p>
               </div>
             </div>
           </section>
 
           <section className="project-section" id="screenshots">
-            <h2>📸 App Preview</h2>
+            <h2>📸 How it looks</h2>
             <div className="screenshots-grid">
               <div className="screenshot-item">
                 <img src="/images/travel.png" alt="Far Away Packing List App" />
@@ -75,41 +76,41 @@ const FarAway = () => {
           </section>
 
           <section className="project-section" id="learning">
-            <h2>🎯 Learning Objectives</h2>
+            <h2>🎯 What I learned making this</h2>
             <div className="highlights">
               <div className="highlight-item">
-                <h4>State Management</h4>
-                <p>Practice managing component state and lifting state up for shared data</p>
+                <h4>Managing data</h4>
+                <p>Figuring out how to keep track of all the items and their status</p>
               </div>
               <div className="highlight-item">
-                <h4>Component Structure</h4>
-                <p>Learn proper component composition and separation of concerns</p>
+                <h4>Breaking things down</h4>
+                <p>How to split the app into different pieces that work together</p>
               </div>
               <div className="highlight-item">
-                <h4>Props & Events</h4>
-                <p>Master passing data between components and handling user interactions</p>
+                <h4>Talking between components</h4>
+                <p>Getting components to share data and respond to clicks</p>
               </div>
               <div className="highlight-item">
-                <h4>Array Methods</h4>
-                <p>Utilize JavaScript array methods for sorting, filtering, and manipulation</p>
+                <h4>JavaScript arrays</h4>
+                <p>Using map, filter, sort - all that array stuff I was scared of before</p>
               </div>
             </div>
           </section>
 
           <section className="project-section" id="deep-dive">
-            <h2>🚀 Key Features Deep Dive</h2>
+            <h2>🚀 The technical stuff</h2>
             <div className="feature-details">
               <div className="feature-detail">
-                <h4>Dynamic Item Management</h4>
-                <p>Add items with customizable quantities and descriptions. Each item is tracked with a unique ID and maintains its state throughout the application lifecycle.</p>
+                <h4>Adding and tracking items</h4>
+                <p>Each thing you add gets its own ID so the app can keep track of it. Took me a while to understand how that worked.</p>
               </div>
               <div className="feature-detail">
-                <h4>Interactive Sorting System</h4>
-                <p>Multiple sorting options allow users to organize their packing list by input order, alphabetical description, or packed status for better organization.</p>
+                <h4>Different ways to sort</h4>
+                <p>You can sort by when you added stuff, alphabetically, or by what's packed. The sorting logic was tricky to get right.</p>
               </div>
               <div className="feature-detail">
-                <h4>Real-time Progress Tracking</h4>
-                <p>Live statistics display shows the ratio of packed vs. total items, helping users track their packing progress at a glance.</p>
+                <h4>Progress tracking</h4>
+                <p>Shows you how much you've got left to pack. Updates instantly when you check stuff off - felt pretty cool when I got that working.</p>
               </div>
             </div>
           </section>

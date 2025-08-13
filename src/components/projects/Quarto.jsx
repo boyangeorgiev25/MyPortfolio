@@ -1,18 +1,24 @@
-import React from 'react';
-import './ProjectPage.css';
+import React from "react";
+import "./ProjectPage.css";
 
-const Quarto = () => {
+// Board game I built in Java - first time making something with a GUI
+function Quarto() {
   return (
     <div className="project-page">
       <div className="project-hero">
         <div className="container">
           <div className="project-header">
-            <h1 className="project-title">🎮 Quarto Game (Java)</h1>
+            <h1 className="project-title">🎮 Quarto Board Game</h1>
             <p className="project-subtitle">
-              A Java-based implementation of Quarto, the abstract strategy board game with AI opponents using Rule-Based logic.
+              Made this board game in Java for a school project. It's got a proper GUI and an AI that's actually pretty challenging to beat.
             </p>
             <div className="project-links">
-              <a href="https://github.com/boyangeorgiev25/quarto-game" target="_blank" rel="noopener noreferrer" className="btn-primary">
+              <a
+                href="https://github.com/boyangeorgiev25/quarto-game"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary"
+              >
                 <i className="bx bxl-github"></i> View Code
               </a>
             </div>
@@ -23,43 +29,49 @@ const Quarto = () => {
       <div className="container">
         <div className="project-content">
           <section className="project-section" id="features">
-            <h2>🚀 Features</h2>
+            <h2>🚀 What's in it</h2>
             <div className="features-grid">
               <div className="feature-card">
                 <div className="feature-icon">🖥️</div>
-                <h3>JavaFX GUI</h3>
-                <p>Modern graphical interface built with JavaFX for smooth gameplay experience</p>
+                <h3>Actual graphics</h3>
+                <p>
+                  Built with JavaFX - first time I made something that wasn't just text in a terminal
+                </p>
               </div>
               <div className="feature-card">
                 <div className="feature-icon">👥</div>
-                <h3>Local Multiplayer</h3>
-                <p>Support for human vs human gameplay on the same machine</p>
+                <h3>Play with friends</h3>
+                <p>Two people can play on the same computer - old school style</p>
               </div>
               <div className="feature-card">
                 <div className="feature-icon">🤖</div>
-                <h3>Rule-Based AI</h3>
-                <p>Intelligent AI using facts and logical inference for strategic decisions</p>
+                <h3>Smart AI opponent</h3>
+                <p>
+                  The AI actually thinks about its moves using rules I programmed. Took forever to get right but it's pretty good
+                </p>
               </div>
               <div className="feature-card">
                 <div className="feature-icon">🎲</div>
-                <h3>Random AI</h3>
-                <p>Unpredictable AI opponent for casual gameplay and testing</p>
+                <h3>Easy AI too</h3>
+                <p>Also made a dumb AI that just picks randomly - good for testing and beginners</p>
               </div>
               <div className="feature-card">
                 <div className="feature-icon">⚡</div>
-                <h3>Real-time Detection</h3>
-                <p>Instant win condition detection and game state validation</p>
+                <h3>Knows when you win</h3>
+                <p>Instantly detects when someone wins - had to check all the different ways you can win</p>
               </div>
               <div className="feature-card">
                 <div className="feature-icon">🔧</div>
-                <h3>Modular Design</h3>
-                <p>Clean code structure with separation of concerns for easy expansion</p>
+                <h3>Well organized code</h3>
+                <p>
+                  Tried to keep everything organized in different classes - makes it easier to add new features
+                </p>
               </div>
             </div>
           </section>
 
           <section className="project-section" id="screenshots">
-            <h2>📸 Game Preview</h2>
+            <h2>📸 How it looks</h2>
             <div className="screenshots-grid">
               <div className="screenshot-item">
                 <img src="/images/quarto1.png" alt="Quarto Game Main Menu" />
@@ -79,52 +91,68 @@ const Quarto = () => {
                 <img src="/images/quarto3.png" alt="Quarto Piece Selection" />
                 <div className="screenshot-caption">
                   <p>Piece Selection</p>
-                  <span>Available pieces with attributes</span>
+                  <span>Available player difficulties</span>
                 </div>
               </div>
             </div>
           </section>
 
           <section className="project-section" id="learning">
-            <h2>🎯 Development Focus</h2>
+            <h2>🎯 What I learned</h2>
             <div className="highlights">
               <div className="highlight-item">
-                <h4>AI Implementation</h4>
-                <p>Developed rule-based inference engine with logical decision making for strategic gameplay</p>
+                <h4>Making AI that thinks</h4>
+                <p>
+                  Learning to make an AI that doesn't just move randomly was hard but super satisfying when it worked
+                </p>
               </div>
               <div className="highlight-item">
-                <h4>JavaFX Mastery</h4>
-                <p>Built modern desktop application with responsive UI components and smooth interactions</p>
+                <h4>Desktop app development</h4>
+                <p>
+                  First time using JavaFX to make something that looks decent and responds to clicks properly
+                </p>
               </div>
               <div className="highlight-item">
-                <h4>Game Logic</h4>
-                <p>Implemented complex win condition detection and state management for board game mechanics</p>
+                <h4>Game rules and logic</h4>
+                <p>
+                  Figuring out all the ways someone can win and keeping track of the game state was tricky
+                </p>
               </div>
               <div className="highlight-item">
-                <h4>Clean Architecture</h4>
-                <p>Designed modular system following SOLID principles with clear separation of concerns</p>
+                <h4>Writing organized code</h4>
+                <p>
+                  Tried to follow best practices for organizing classes - professor was always talking about this stuff
+                </p>
               </div>
             </div>
           </section>
 
           <section className="project-section" id="deep-dive">
-            <h2>🧠 Technical Deep Dive</h2>
+            <h2>🧠 More details</h2>
             <div className="feature-details">
               <div className="feature-detail">
-                <h4>About Quarto</h4>
-                <p>Quarto is a 2-player strategy game played on a 4×4 board with 16 unique pieces. Each piece has 4 attributes: tall/short, light/dark, round/square, solid/hollow. Players choose pieces for opponents to place, aiming to complete lines with shared attributes.</p>
+                <h4>How Quarto works</h4>
+                <p>
+                  It's like tic-tac-toe but way more complex. You've got 16 different pieces with different shapes and colors. 
+                  The weird part is you pick which piece your opponent has to use!
+                </p>
               </div>
               <div className="feature-detail">
-                <h4>Rule-Based AI Strategy</h4>
-                <p>The AI implements a lightweight inference engine that defines facts about game state and applies logical rules to make strategic decisions. It prioritizes winning moves and blocking opponent victories through structured reasoning.</p>
+                <h4>How the AI thinks</h4>
+                <p>
+                  I programmed it with a bunch of rules like "if you can win, do it" and "if opponent can win, block them." 
+                  It checks all possibilities and picks the best move. Pretty proud of how smart it turned out.
+                </p>
               </div>
               <div className="feature-detail">
-                <h4>Modular Architecture</h4>
-                <p>Project structure separates core game logic, UI components, AI strategies, and utility classes. This design enables easy testing, debugging, and future feature expansion while maintaining clean code organization.</p>
+                <h4>Code organization</h4>
+                <p>
+                  Split everything into different files - one for the game rules, one for the graphics, one for the AI. 
+                  Made it much easier to fix bugs and add new features without breaking everything.
+                </p>
               </div>
             </div>
           </section>
-
         </div>
       </div>
     </div>

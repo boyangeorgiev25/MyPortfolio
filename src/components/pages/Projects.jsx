@@ -1,13 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Projects = () => {
+function Projects() {
+  // projects I've made so far
   const projects = [
     {
       icon: "bx-world",
-      title: "🌍 WorldWise - Personal Travel Tracker",
+      title: "🌍 WorldWise - Travel Tracker",
       description:
-        "A modern React application that helps travelers keep track of cities they've visited around the world. Features user authentication, personal data management, and an interactive map interface with travel planning capabilities.",
+        "Built this because I kept forgetting which cities I'd been to. You can log in, click on a map to mark places you've visited, and add your own notes. Learned a lot about React Context and managing complex state.",
       technologies: "React 18, React Router DOM, CSS Modules, Context API",
       githubLink: "https://github.com/boyangeorgiev25/worldwise",
       liveDemo: "https://world-wise-v8jk.vercel.app",
@@ -15,9 +16,9 @@ const Projects = () => {
     },
     {
       icon: "bx-package",
-      title: "🧳 Far Away – Packing List App",
+      title: "🧳 Far Away – Packing List",
       description:
-        "A simple, interactive packing list built with React. Add, sort, check off, and remove items as you prepare for your next trip. Perfect for practicing state management, component structure, and props with live statistics.",
+        "Super simple packing list app I made while learning React. You can add items, check them off, sort them, and see stats. Nothing fancy but it works great and taught me the basics of state management.",
       technologies: "React, JavaScript, CSS, State Management",
       githubLink: "https://github.com/boyangeorgiev25/far-away",
       liveDemo: "https://far-away-packing-list.vercel.app",
@@ -25,9 +26,9 @@ const Projects = () => {
     },
     {
       icon: "bx-game",
-      title: "🎮 Quarto Game (Java)",
+      title: "🎮 Quarto Game",
       description:
-        "A Java-based implementation of Quarto, the abstract strategy board game. It supports local multiplayer and AI opponents using Rule-Based logic. The project uses JavaFX for the graphical interface and is designed with modular architecture for easy expansion and testing.",
+        "Made this board game in Java with JavaFX. It's got local multiplayer and an AI that's actually pretty challenging. First time I built something with a proper GUI - learned tons about object-oriented design.",
       technologies: "Java 17, JavaFX, AI Logic, Rule-Based Strategy",
       githubLink: "https://github.com/boyangeorgiev25/quarto-game",
       liveDemo: null,
@@ -42,7 +43,7 @@ const Projects = () => {
           My <span>Projects</span>
         </h2>
         <p className="section-description">
-          Explore my latest work and creative solutions
+          Things I've built while learning to code
         </p>
       </div>
 
@@ -62,12 +63,12 @@ const Projects = () => {
                   <p className="project-description">{project.description}</p>
 
                   <div className="project-tech">
-                    <span className="tech-label">Tech Stack:</span>
+                    <span className="tech-label">Built with:</span>
                     <div className="tech-tags">
                       {project.technologies
                         .split(", ")
-                        .map((tech, techIndex) => (
-                          <span key={techIndex} className="tech-tag">
+                        .map((tech, i) => (
+                          <span key={i} className="tech-tag">
                             {tech}
                           </span>
                         ))}
@@ -78,7 +79,7 @@ const Projects = () => {
                 <div className="card-footer">
                   <div className="project-buttons">
                     <Link to={project.link} className="project-btn primary-btn">
-                      <span>View Details</span>
+                      <span>See more</span>
                       <i className="bx bx-right-arrow-alt"></i>
                     </Link>
                     <div className="secondary-buttons">

@@ -2,27 +2,27 @@ import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useTheme } from '../../context/ThemeContext';
 
-const Header = () => {
+function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { isDarkMode, toggleTheme } = useTheme();
-  const navigate = useNavigate();
-  const location = useLocation();
+  let { isDarkMode, toggleTheme } = useTheme();
+  let navigate = useNavigate();
+  let location = useLocation();
 
-  const toggleMenu = () => {
+  function toggleMenu() {
     setIsMenuOpen(!isMenuOpen);
-  };
+  }
 
-  const closeMenu = () => {
+  function closeMenu() {
     setIsMenuOpen(false);
-  };
+  }
 
   const handleNavClick = (e, targetId) => {
     e.preventDefault();
     
-    // If we're not on the home page, navigate to home first
+    // go to home page first if we're somewhere else
     if (location.pathname !== '/') {
       navigate('/');
-      // Wait for navigation to complete, then scroll
+      // wait a sec then scroll to the right section
       setTimeout(() => {
         const element = document.getElementById(targetId);
         if (element) {
@@ -30,8 +30,8 @@ const Header = () => {
         }
       }, 100);
     } else {
-      // If we're already on home page, just scroll
-      const element = document.getElementById(targetId);
+      // already on home, just scroll
+      let element = document.getElementById(targetId);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
       }

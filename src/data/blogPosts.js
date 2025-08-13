@@ -1,8 +1,9 @@
 export const blogPosts = [
   {
     id: 4,
-    title: "From Failure to Growth: How My First Year Taught Me Resilience",
-    excerpt: "As I sit here writing this, just days before my upcoming retake exam, I can't help but reflect on what has been an incredible journey of ups, downs, and unexpected discoveries during my first year at KdG.",
+    title: "My first year was messy (and that's okay)",
+    excerpt:
+      "Failed an exam, made amazing friends, learned React over the summer. Sometimes things don't go as planned but work out anyway.",
     content: `
 # From Failure to Growth: How My First Year Taught Me Resilience
 
@@ -16,18 +17,17 @@ The retake is scheduled for just a few days from now, and instead of dwelling on
 
 ## An Unexpected Friendship
 
-One of the best things that came out of my first year wasn't related to academics at all – it was the friendship I formed with a Bulgarian classmate. What started as casual conversations between classes grew into a genuine connection that would end up shaping my entire summer.
+One of the best things that came out of my first year wasn’t related to academics at all — it was the friendships I formed with several Bulgarian classmates. What started as casual chats between classes quickly grew into a genuine group connection that ended up shaping my entire summer.
 
-There's something special about international friendships in college. You get to see the world through completely different eyes, learn about new cultures, and realize that despite our different backgrounds, we share so many common dreams and experiences as students.
+There’s something special about international friendships in college. You get to see the world through different perspectives, learn about new cultures, and realize that despite our different backgrounds, we share so many common dreams and experiences as students.
 
 ## A Week to Remember
 
-After finishing our first year (well, mostly finishing in my case!), my Bulgarian friend and I decided to go on a week-long vacation together. It was exactly what I needed after the stress of exams and the disappointment of that one failed subject.
+After finishing our first year (well, mostly finishing in my case!), my Bulgarian friends and I decided to go on a week-long vacation together. It was exactly what I needed after the stress of exams and the disappointment of that one failed subject.
 
-That week was pure magic. We explored new places, tried different foods, shared stories about our respective cultures, and just enjoyed being young and free from academic pressure. There's nothing quite like traveling with a good friend to put things in perspective. My academic struggles suddenly felt much smaller when measured against the vastness of new experiences and the strength of friendship.
+That week was pure magic. We explored new places, tried different foods, shared stories about our respective cultures, and just enjoyed being young and free from academic pressure. There’s nothing quite like traveling with good friends to put things in perspective. My academic struggles suddenly felt much smaller when measured against the vastness of new experiences and the strength of these friendships.
 
-Those seven days reminded me that life is about so much more than grades and exams. They're about the connections we make, the memories we create, and the person we become through our experiences.
-
+Those seven days reminded me that life is about so much more than grades and exams. It’s about the connections we make, the memories we create, and the person we become through our experiences.
 ## Turning Summer into an Investment
 
 When we returned from our vacation, I had a choice to make. I could spend the rest of my summer worrying about the retake, or I could use this time productively while still preparing for my exam. I chose the latter.
@@ -40,47 +40,19 @@ The React course opened up a whole new world for me. Suddenly, I wasn't just lea
 
 The best part? I started building projects for my personal website. What began as practice exercises from the course evolved into a portfolio that I'm genuinely proud of. Each project taught me something new, and before I knew it, I had created a website that people are actually visiting and engaging with.
 
-## The Unexpected Success
-
-Here's what I didn't expect: people are actually using my website. Real users are interacting with the projects I built during those summer days of intensive learning. There's something incredibly validating about seeing your code come to life and serve a purpose for others.
-
-Every time I check my website analytics or receive feedback from users, I'm reminded that failure in one area doesn't define your entire journey. While I was struggling with that one subject, I was simultaneously building skills that are already paying dividends.
-
-## Lessons Learned
-
-As I prepare for my retake exam, I've learned several valuable lessons:
-
-**Failure isn't final** – it's often just a detour that leads you to something better. That failed subject forced me to slow down and really understand the material, rather than just cramming for an exam.
-
-**Friendships are everything** – my Bulgarian friend didn't just give me a great vacation; they showed me the importance of having people in your corner who support you regardless of your academic performance.
-
-**Learning never stops** – while I was "behind" academically, I was actually ahead in practical skills thanks to that React course. Education happens in many forms, not just in lecture halls.
-
-**Turn waiting time into growing time** – instead of seeing the months before my retake as lost time, I used them to develop skills that are already benefiting me professionally.
-
-## Looking Forward
-
-In a few days, I'll walk into that exam room for my retake. Am I nervous? Absolutely. But I'm also confident, not just because I've studied harder this time, but because I've grown as a person.
-
-This first year taught me that success isn't always linear. Sometimes you need to take a step back to take two steps forward. Sometimes the detours lead you to destinations you never knew you wanted to reach.
-
-Whether I pass this retake or not (though I'm optimistic!), I know that this year has been a success in ways I never anticipated. I've built lasting friendships, developed valuable skills, created something people actually use, and most importantly, I've learned that resilience is just as important as intelligence.
-
-To anyone reading this who might be facing similar challenges – remember that your worth isn't determined by a single grade or exam. Keep learning, keep growing, keep building connections, and trust that even the setbacks are setting you up for something greater.
-
-Here's to second chances, unexpected friendships, and the courage to turn failures into fuel for future success.
 
 *Wish me luck on my retake – and thank you for following along on this journey!*
     `,
     date: "2025-08-13",
-    readTime: "8 min read",
+    readTime: "5 min read",
     tags: ["Personal", "Growth", "University", "React", "Resilience"],
-    featured: false
+    featured: false,
   },
   {
     id: 2,
-    title: "First Months in ACS KdG",
-    excerpt: "When I first arrived in Antwerp to start my Bachelor's in Computer Science at Karel de Grote University — new country, new language, new system of education.",
+    title: "Getting used to uni life in Belgium",
+    excerpt:
+      "New country, new uni, new everything. Here's what my first months studying computer science in Antwerp were actually like.",
     content: `
 # First Months in ACS KdG
 
@@ -121,18 +93,19 @@ And I'm just getting started.
     date: "2025-03-23",
     readTime: "5 min read",
     tags: ["Personal", "University", "KdG", "Student Life"],
-    featured: true
+    featured: true,
   },
   {
     id: 3,
-    title: "Moving Abroad: The Real Game Changer",
-    excerpt: "Moving from Bulgaria to Belgium for university wasn't just about getting a degree — it was about discovering a completely new version of myself.",
+    title: "Why I left Bulgaria for Belgium (best decision ever)",
+    excerpt:
+      "Packed one suitcase, moved to Antwerp for uni, and somehow ended up with a completely different life than I expected."
     content: `
 # Moving Abroad: The Real Game Changer
 
 If you told me a year ago I'd be coding in the day, filming at sunset, and dancing until 4 a.m. on Thursdays — all in Antwerp — I wouldn't have believed you.
 
-But that's exactly how my life looks now. I moved from Sliven, Bulgaria, to study for my Bachelor's in Computer Science at Karel de Grote University, and somewhere along the way, I built a whole new life I didn't see coming.
+But that's exactly how my life looks now. I moved from Bulgaria, to study for my Bachelor's in Computer Science at Karel de Grote University, and somewhere along the way, I built a whole new life I didn't see coming.
 
 ⸻
 
@@ -168,7 +141,7 @@ From FPV drone dives over the Cathedral to slow-motion shots of cyclists on cobb
 
 ⸻
 
-## Thursday Nights at Red & Blue
+## Thursday Nights
 
 Not everything here is about work and projects. Every Thursday, my friends and I head to Red & Blue, one of the most famous spots in Antwerp's nightlife. It's where assignments don't matter, the music takes over, and you just live in the moment.
 
@@ -185,6 +158,6 @@ Sliven gave me my roots; Antwerp is giving me my future. And I feel like this is
     date: "2024-12-15",
     readTime: "6 min read",
     tags: ["Personal", "Student Life", "Antwerp", "Bulgaria"],
-    featured: false
-  }
+    featured: false,
+  },
 ];

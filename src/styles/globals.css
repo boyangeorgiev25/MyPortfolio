@@ -1,7 +1,7 @@
-/* Global Styles - Only truly global styles */
+/* Base styles that apply everywhere */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
-/* CSS Reset and Base Styles */
+/* Reset browser defaults so everything looks consistent */
 * {
     margin: 0;
     padding: 0;

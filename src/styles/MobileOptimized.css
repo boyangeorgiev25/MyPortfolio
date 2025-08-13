@@ -96,6 +96,10 @@
     z-index: 10;
   }
 
+  .home-blog-container {
+    order: 2;
+  }
+
   .content-text {
     max-width: 100%;
   }

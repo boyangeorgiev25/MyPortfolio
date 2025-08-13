@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const About = () => {
+function About() {
   return (
     <section className="about" id="about">
       <div className="section-divider"></div>
@@ -9,12 +9,12 @@ const About = () => {
       <div className="about-content">
         <div className="content-header">
           <h2 className="heading">About <span>Me</span></h2>
-          <div className="section-subtitle">Get to know me better</div>
+          <div className="section-subtitle">The real story</div>
         </div>
         
         <div className="intro-card">
           <h3>
-            Hi! I'm Boyan, a passionate software developer who loves creating modern web applications.
+            Hey! I'm Boyan. I spend most of my time turning coffee into code and trying to build cool stuff that actually works.
           </h3>
         </div>
 
@@ -26,9 +26,9 @@ const About = () => {
                   <i className="bx bx-code"></i>
                 </div>
                 <div className="detail-content">
-                  <h4>Web Development</h4>
+                  <h4>Building websites</h4>
                   <p>
-                    Building responsive websites and applications with modern technologies.
+                    I make things that work on phones, computers, and everything in between. React is my jam.
                   </p>
                 </div>
               </div>
@@ -38,9 +38,9 @@ const About = () => {
                   <i className="bx bx-book-reader"></i>
                 </div>
                 <div className="detail-content">
-                  <h4>Continuous Learning</h4>
+                  <h4>Always learning</h4>
                   <p>
-                    Studying at Karel de Grote University College, expanding knowledge in web development.
+                    Currently studying at Karel de Grote. Every day I learn something new - tech moves fast!
                   </p>
                 </div>
               </div>
@@ -50,9 +50,9 @@ const About = () => {
                   <i className="bx bx-heart"></i>
                 </div>
                 <div className="detail-content">
-                  <h4>Passion for Innovation</h4>
+                  <h4>Problem solver</h4>
                   <p>
-                    Using technology to solve problems and create meaningful digital experiences.
+                    I like figuring out how to make things work better. Sometimes it's fixing bugs, sometimes building from scratch.
                   </p>
                 </div>
               </div>
@@ -67,7 +67,7 @@ const About = () => {
         </div>
 
         <div className="cta-container">
-          <Link to="/about-me" className="btn btn-about">Discover My Journey</Link>
+          <Link to="/about-me" className="btn btn-about">My full story</Link>
           <div className="quick-facts">
             <span className="fact-item">🎓 KDG Student</span>
             <span className="fact-item">💻 Web Developer</span>

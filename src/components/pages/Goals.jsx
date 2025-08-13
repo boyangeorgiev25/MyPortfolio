@@ -1,29 +1,30 @@
 import React from 'react';
 
-const Goals = () => {
-  const goals = [
+function Goals() {
+  // where I want to be eventually
+  let goals = [
     {
       icon: 'bx-trophy',
-      title: 'Master Full-Stack Development',
-      description: 'Become proficient in both frontend and backend technologies, with expertise in React, Node.js, and cloud platforms. Building scalable applications that solve real-world problems.',
+      title: 'Get really good at full-stack',
+      description: 'Right now I'm decent at React, but I want to master both frontend and backend. Planning to dive deep into Node.js, databases, and maybe some cloud stuff too.',
       timeline: '2024-2025'
     },
     {
       icon: 'bx-group',
-      title: 'Lead Development Teams',
-      description: 'Develop strong leadership skills to guide development teams, mentor junior developers, and drive technical decisions that deliver exceptional user experiences.',
+      title: 'Help other developers grow',
+      description: 'Eventually I'd love to mentor people who are just starting out. I remember how confusing everything was at first - would be cool to help others through that.',
       timeline: '2025-2026'
     },
     {
       icon: 'bx-rocket',
-      title: 'Launch Tech Startup',
-      description: 'Create innovative software solutions that make a positive impact. Focus on building products that solve meaningful problems and contribute to technological advancement.',
+      title: 'Build something that matters',
+      description: 'Maybe start my own thing someday? I've got a few app ideas that could actually help people. Nothing crazy, just simple solutions to real problems.',
       timeline: '2026+'
     },
     {
       icon: 'bx-book-open',
-      title: 'Continuous Learning',
-      description: 'Stay current with emerging technologies, contribute to open-source projects, and share knowledge with the developer community through writing and speaking.',
+      title: 'Keep learning new stuff',
+      description: 'Tech changes so fast! I want to contribute to open source projects and maybe write about what I learn. Sharing knowledge is pretty cool.',
       timeline: 'Ongoing'
     }
   ];
@@ -33,15 +34,15 @@ const Goals = () => {
       <div className="section-header">
         <h2 className="heading">My <span>Goals</span></h2>
         <p className="section-description">
-          Charting my path to success in web development
+          where I'm trying to go with this whole coding thing
         </p>
       </div>
 
       <div className="goals-gallery">
         <div className="gallery-container">
           <div className="gallery-track">
-            {goals.map((goal, index) => (
-              <div key={index} className="goal-card">
+            {goals.map((goal, i) => (
+              <div key={i} className="goal-card">
                 <div className="card-header">
                   <div className="goal-icon">
                     <i className={`bx ${goal.icon}`}></i>
@@ -66,8 +67,8 @@ const Goals = () => {
       
       <div className="goals-summary">
         <div className="summary-card">
-          <h4>Journey Overview</h4>
-          <p>Each goal represents a milestone in my continuous growth as a web developer, focusing on technical excellence, leadership, and making a positive impact.</p>
+          <h4>The plan</h4>
+          <p>These aren't set in stone - just stuff I'm working towards. Some might change as I learn more about what I actually enjoy doing.</p>
         </div>
       </div>
     </section>

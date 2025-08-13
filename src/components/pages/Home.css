@@ -1,4 +1,4 @@
-/* Home Component Styles */
+/* Home page styles - the first thing people see */
 
 .home {
     display: flex;
@@ -302,7 +302,7 @@
     box-shadow: 0 1rem 2rem rgba(117, 78, 249, 0.3);
 }
 
-/* Home Blog Container */
+/* Blog preview section */
 .home-blog-container {
     position: absolute;
     right: 0;
@@ -467,7 +467,7 @@
     transform: translateY(-0.3rem);
 }
 
-/* Profession Container */
+/* The 'Software Developer' title area */
 .home .profession-container {
     position: absolute;
     top: 50%;
@@ -552,7 +552,7 @@
     max-height: 100vh;
 }
 
-/* Keyframe Animations */
+/* Fun animations to make things move */
 @keyframes professionRotate {
     0%, 20% {
         transform: rotate(0deg);
@@ -651,7 +651,7 @@
     }
 }
 
-/* Responsive Styles */
+/* Mobile and tablet adjustments */
 @media (max-width: 1200px) {
     .home-blog-container {
         width: 55%;
@@ -710,8 +710,8 @@
     .home-blog-container {
         position: static;
         width: 100%;
-        margin-top: 4rem;
-        padding: 2rem;
+        margin-top: 6rem;
+        padding: 4rem 2rem 2rem;
     }
 
     .home-blog-grid {
@@ -808,6 +808,10 @@
         z-index: 10;
     }
 
+    .home-blog-container {
+        order: 2;
+    }
+
     .content-text {
         max-width: 100%;
     }
@@ -871,7 +875,7 @@
         text-align: center;
     }
 
-    /* Hide complex elements that don't work well on mobile */
+    /* Hide stuff that looks bad on small screens */
     .profession-container {
         display: none !important;
     }
@@ -888,7 +892,7 @@
         transform: scale(0.5);
     }
 
-    /* Mobile-specific home content improvements */
+    /* Better layout for phones */
     .greeting {
         margin-bottom: 2rem !important;
     }
@@ -909,7 +913,7 @@
         margin-bottom: 2rem !important;
     }
 
-    /* Mobile greeting animation */
+    /* Greeting animation for mobile */
     @keyframes mobileGreeting {
         0% {
             opacity: 0;
@@ -1008,7 +1012,7 @@
         font-size: 1.3rem !important;
     }
 
-    /* Extra small mobile home optimizations */
+    /* Tweaks for really tiny screens */
     .greeting-text {
         font-size: 1.6rem !important;
     }
@@ -1064,7 +1068,7 @@
     }
 }
 
-/* Touch-friendly improvements */
+/* Better for touch devices */
 @media (hover: none) and (pointer: coarse) {
     .social-media a {
         min-width: 44px !important;

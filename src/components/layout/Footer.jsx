@@ -1,6 +1,7 @@
 import React from 'react';
 
-const Footer = () => {
+// simple footer with back to top button
+function Footer() {
   const scrollToTop = (e) => {
     e.preventDefault();
     window.scrollTo({ top: 0, behavior: 'smooth' });

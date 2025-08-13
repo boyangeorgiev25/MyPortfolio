@@ -3,23 +3,24 @@ import { useNavigate } from 'react-router-dom';
 import { blogPosts } from '../../data/blogPosts';
 import AnimatedCounter from '../common/AnimatedCounter';
 
-const BlogPage = () => {
-  const navigate = useNavigate();
+function BlogPage() {
+  let navigate = useNavigate();
   const [selectedTag, setSelectedTag] = useState('All');
   
-  const allTags = ['All', ...new Set(blogPosts.flatMap(post => post.tags))];
+  // get all unique tags from posts
+  let allTags = ['All', ...new Set(blogPosts.flatMap(post => post.tags))];
   
-  const filteredPosts = selectedTag === 'All' 
+  let filteredPosts = selectedTag === 'All' 
     ? blogPosts 
     : blogPosts.filter(post => post.tags.includes(selectedTag));
 
-  const handleReadMore = (postId) => {
+  function handleReadMore(postId) {
     navigate(`/blog/${postId}`);
-  };
+  }
 
-  const handleTagFilter = (tag) => {
+  function handleTagFilter(tag) {
     setSelectedTag(tag);
-  };
+  }
 
   return (
     <div className="blog-page">

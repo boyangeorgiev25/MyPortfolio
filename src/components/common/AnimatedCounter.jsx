@@ -1,14 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-const AnimatedCounter = ({ end, duration = 2000, suffix = "", prefix = "", delay = 0 }) => {
+function AnimatedCounter({ end, duration = 2000, suffix = "", prefix = "", delay = 0 }) {
   const [count, setCount] = useState(0);
   const [hasStarted, setHasStarted] = useState(false);
-  const counterRef = useRef(null);
+  let counterRef = useRef(null);
 
+  // start counting when element comes into view
   useEffect(() => {
-    const observer = new IntersectionObserver(
+    let observer = new IntersectionObserver(
       (entries) => {
-        const entry = entries[0];
+        let entry = entries[0];
         if (entry.isIntersecting && !hasStarted) {
           setHasStarted(true);
           setTimeout(() => {
@@ -31,16 +32,16 @@ const AnimatedCounter = ({ end, duration = 2000, suffix = "", prefix = "", delay
   }, [hasStarted]);
 
   const startCounting = () => {
-    const startTime = Date.now();
-    const startValue = 0;
-    const endValue = parseInt(end);
+    let startTime = Date.now();
+    let startValue = 0;
+    let endValue = parseInt(end);
 
-    const updateCount = () => {
-      const currentTime = Date.now();
-      const elapsed = currentTime - startTime;
-      const progress = Math.min(elapsed / duration, 1);
+    function updateCount() {
+      let currentTime = Date.now();
+      let elapsed = currentTime - startTime;
+      let progress = Math.min(elapsed / duration, 1);
       
-      // Easing function for smooth animation
+      // math to make the counting look smooth
       const easeOutCubic = 1 - Math.pow(1 - progress, 3);
       const currentCount = Math.floor(startValue + (endValue - startValue) * easeOutCubic);
       
