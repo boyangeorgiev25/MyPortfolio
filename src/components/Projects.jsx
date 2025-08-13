@@ -50,15 +50,17 @@ const Projects = () => {
                 <div className="card-content">
                   <h3 className="project-title">{project.title}</h3>
                   <p className="project-description">{project.description}</p>
-                  
+
                   <div className="project-tech">
                     <span className="tech-label">Tech Stack:</span>
                     <div className="tech-tags">
-                      {project.technologies.split(", ").map((tech, techIndex) => (
-                        <span key={techIndex} className="tech-tag">
-                          {tech}
-                        </span>
-                      ))}
+                      {project.technologies
+                        .split(", ")
+                        .map((tech, techIndex) => (
+                          <span key={techIndex} className="tech-tag">
+                            {tech}
+                          </span>
+                        ))}
                     </div>
                   </div>
                 </div>
@@ -98,7 +100,7 @@ const Projects = () => {
             ))}
           </div>
         </div>
-        
+
         <div className="gallery-indicators">
           {projects.map((_, index) => (
             <div key={index} className="gallery-dot"></div>

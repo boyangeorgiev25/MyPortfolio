@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './ThemeContext.jsx';
 import Header from './components/Header.jsx';
 import Portfolio from './components/Portfolio.jsx';
+import BlogPage from './components/BlogPage.jsx';
+import BlogPost from './components/BlogPost.jsx';
 import WorldWise from './components/projects/WorldWise.jsx';
 import FarAway from './components/projects/FarAway.jsx';
 import AboutMePage from './components/AboutMePage.jsx';
@@ -14,6 +16,7 @@ import './components/SectionTransitions.css';
 import './components/EnhancedLayout.css';
 import './components/ProjectsGoalsEnhanced.css';
 import './components/MobileOptimized.css';
+import './components/Blog.css';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -76,6 +79,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Portfolio />} />
             <Route path="/about-me" element={<AboutMePage />} />
+            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/blog/:id" element={<BlogPost />} />
             <Route path="/project/worldwise" element={<WorldWise />} />
             <Route path="/project/far-away" element={<FarAway />} />
             <Route path="*" element={<PageNotFound />} />
