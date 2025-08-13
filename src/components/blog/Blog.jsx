@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { blogPosts } from '../data/blogPosts.js';
+import { blogPosts } from '../../data/blogPosts';
 
 const Blog = () => {
   const navigate = useNavigate();

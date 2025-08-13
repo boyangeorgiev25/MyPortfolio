@@ -1,5 +1,5 @@
 import React from 'react';
-import AnimatedCounter from './AnimatedCounter.jsx';
+import AnimatedCounter from '../common/AnimatedCounter';
 import './AboutMePage.css';
 
 const AboutMePage = () => {

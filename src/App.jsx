@@ -1,22 +1,37 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ThemeProvider } from './ThemeContext.jsx';
-import Header from './components/Header.jsx';
-import Portfolio from './components/Portfolio.jsx';
-import BlogPage from './components/BlogPage.jsx';
-import BlogPost from './components/BlogPost.jsx';
-import WorldWise from './components/projects/WorldWise.jsx';
-import FarAway from './components/projects/FarAway.jsx';
-import AboutMePage from './components/AboutMePage.jsx';
-import LoadingScreen from './components/LoadingScreen.jsx';
-import ScrollToTop from './components/ScrollToTop.jsx';
-import PageNotFound from './components/PageNotFound.jsx';
-import './App.css';
-import './components/SectionTransitions.css';
-import './components/EnhancedLayout.css';
-import './components/ProjectsGoalsEnhanced.css';
-import './components/MobileOptimized.css';
-import './components/Blog.css';
+
+// Context
+import { ThemeProvider } from './context/ThemeContext';
+
+// Layout Components
+import Header from './components/layout/Header';
+
+// Page Components
+import Portfolio from './components/pages/Portfolio';
+import AboutMePage from './components/pages/AboutMePage';
+import PageNotFound from './components/pages/PageNotFound';
+
+// Blog Components
+import BlogPage from './components/blog/BlogPage';
+import BlogPost from './components/blog/BlogPost';
+
+// Project Components
+import WorldWise from './components/projects/WorldWise';
+import FarAway from './components/projects/FarAway';
+import Quarto from './components/projects/Quarto';
+
+// Common Components
+import LoadingScreen from './components/common/LoadingScreen';
+import ScrollToTop from './components/common/ScrollToTop';
+
+// Styles
+import './styles/App.css';
+import './styles/SectionTransitions.css';
+import './styles/EnhancedLayout.css';
+import './styles/ProjectsGoalsEnhanced.css';
+import './styles/MobileOptimized.css';
+import './styles/Blog.css';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -83,6 +98,7 @@ function App() {
             <Route path="/blog/:id" element={<BlogPost />} />
             <Route path="/project/worldwise" element={<WorldWise />} />
             <Route path="/project/far-away" element={<FarAway />} />
+            <Route path="/project/quarto" element={<Quarto />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
         </div>

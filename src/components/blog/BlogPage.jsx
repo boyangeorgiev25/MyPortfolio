@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { blogPosts } from '../data/blogPosts.js';
-import AnimatedCounter from './AnimatedCounter.jsx';
+import { blogPosts } from '../../data/blogPosts';
+import AnimatedCounter from '../common/AnimatedCounter';
 
 const BlogPage = () => {
   const navigate = useNavigate();

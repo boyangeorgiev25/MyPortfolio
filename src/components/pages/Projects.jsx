@@ -23,6 +23,16 @@ const Projects = () => {
       liveDemo: "https://far-away-packing-list.vercel.app",
       link: "/project/far-away",
     },
+    {
+      icon: "bx-game",
+      title: "🎮 Quarto Game (Java)",
+      description:
+        "A Java-based implementation of Quarto, the abstract strategy board game. It supports local multiplayer and AI opponents using Rule-Based logic. The project uses JavaFX for the graphical interface and is designed with modular architecture for easy expansion and testing.",
+      technologies: "Java 17, JavaFX, AI Logic, Rule-Based Strategy",
+      githubLink: "https://github.com/boyangeorgiev25/quarto-game",
+      liveDemo: null,
+      link: "/project/quarto",
+    },
   ];
 
   return (
