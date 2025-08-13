@@ -26,7 +26,7 @@ const Blog = () => {
             <div className="post-card featured">
               <div className="post-content">
                 <div className="post-meta">
-                  <span className="date">{new Date(featuredPost.date).toLocaleDateString()}</span>
+                  <span className="date">{new Date(featuredPost.date).toLocaleDateString('en-GB')}</span>
                   <span className="read-time">{featuredPost.readTime}</span>
                 </div>
                 <h4>{featuredPost.title}</h4>
@@ -54,7 +54,7 @@ const Blog = () => {
               <div key={post.id} className="post-card">
                 <div className="post-content">
                   <div className="post-meta">
-                    <span className="date">{new Date(post.date).toLocaleDateString()}</span>
+                    <span className="date">{new Date(post.date).toLocaleDateString('en-GB')}</span>
                     <span className="read-time">{post.readTime}</span>
                   </div>
                   <h4>{post.title}</h4>

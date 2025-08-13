@@ -29,40 +29,18 @@ const BlogPost = () => {
 
   return (
     <div className="blog-post-page">
-      <div className="blog-post-header">
-        <div className="breadcrumbs">
-          <button onClick={handleBackToHome} className="breadcrumb-link">Home</button>
-          <span className="breadcrumb-separator">/</span>
-          <button onClick={handleBackToBlog} className="breadcrumb-link">Blog</button>
-          <span className="breadcrumb-separator">/</span>
-          <span className="breadcrumb-current">{post.title}</span>
-        </div>
-      </div>
-
       <article className="blog-post-content">
         <header className="post-header">
+          <h1>{post.title}</h1>
+          
           <div className="post-meta">
-            <span className="date">{new Date(post.date).toLocaleDateString('en-US', { 
-              year: 'numeric', 
-              month: 'long', 
-              day: 'numeric' 
+            <span className="date">{new Date(post.date).toLocaleDateString('en-GB', { 
+              day: 'numeric',
+              month: 'numeric',
+              year: 'numeric' 
             })}</span>
             <span className="separator">•</span>
             <span className="read-time">{post.readTime}</span>
-            {post.featured && (
-              <>
-                <span className="separator">•</span>
-                <span className="featured-indicator">Featured</span>
-              </>
-            )}
-          </div>
-          
-          <h1>{post.title}</h1>
-          
-          <div className="post-tags">
-            {post.tags.map((tag, index) => (
-              <span key={index} className="tag">{tag}</span>
-            ))}
           </div>
         </header>
 
@@ -89,10 +67,7 @@ const BlogPost = () => {
         <footer className="post-footer">
           <div className="post-navigation">
             <button className="btn btn-secondary" onClick={handleBackToBlog}>
-              ← Back to All Posts
-            </button>
-            <button className="btn" onClick={handleBackToHome}>
-              Back to Portfolio
+              ← Back to Blog
             </button>
           </div>
         </footer>

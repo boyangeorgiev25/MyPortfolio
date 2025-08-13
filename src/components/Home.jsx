@@ -1,7 +1,11 @@
 import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import AnimatedCounter from './AnimatedCounter.jsx';
+import { blogPosts } from '../data/blogPosts.js';
 
 const Home = () => {
+  const navigate = useNavigate();
+  const featuredBlogs = blogPosts.slice(0, 3);
   useEffect(() => {
     import('scrollreveal').then(({ default: ScrollReveal }) => {
       const sr = ScrollReveal({
@@ -68,29 +72,36 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="profession-container">
-        <div className="profession-box">
-          <div className="profession" style={{ '--i': 0 }}>
-            <i className='bx bx-code-alt'></i>
-            <h3>Web Developer</h3>
-          </div>
-          <div className="profession" style={{ '--i': 1 }}>
-            <i className='bx bx-camera'></i>
-            <h3>Photographer</h3>
-          </div>
-          <div className="profession" style={{ '--i': 2 }}>
-            <i className='bx bx-palette'></i>
-            <h3>Web Designer</h3>
-          </div>
-          <div className="profession" style={{ '--i': 3 }}>
-            <i className='bx bx-video-recording'></i>
-            <h3>Videographer</h3>
-          </div>
-
-          <div className="circle"></div>
+      <div className="home-blog-container">
+        <div className="home-blog-header">
+          <h3>Latest Blog Posts</h3>
+          <p>Check out my recent thoughts and tutorials</p>
         </div>
-
-        <div className="overlay"></div>
+        <div className="home-blog-grid">
+          {featuredBlogs.map((post) => (
+            <div key={post.id} className="home-blog-card" onClick={() => navigate(`/blog/${post.id}`)}>
+              <div className="blog-card-content">
+                <div className="blog-card-meta">
+                  <span className="blog-date">{new Date(post.date).toLocaleDateString('en-GB')}</span>
+                  <span className="blog-read-time">{post.readTime}</span>
+                </div>
+                <h4>{post.title}</h4>
+                <p>{post.excerpt.substring(0, 120)}...</p>
+                <div className="blog-card-tags">
+                  {post.tags.slice(0, 2).map((tag, index) => (
+                    <span key={index} className="blog-mini-tag">{tag}</span>
+                  ))}
+                </div>
+              </div>
+              {post.featured && <div className="featured-indicator">★</div>}
+            </div>
+          ))}
+        </div>
+        <div className="home-blog-cta">
+          <button className="btn-view-all-blogs" onClick={() => navigate('/blog')}>
+            View All Posts
+          </button>
+        </div>
       </div>
 
       <div className="home-img">

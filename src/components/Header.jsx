@@ -64,16 +64,10 @@ const Header = () => {
           Projects
         </a>
         <a 
-          href="#blog"
-          onClick={(e) => handleNavClick(e, 'blog')}
+          href="/blog"
+          onClick={(e) => { e.preventDefault(); navigate('/blog'); closeMenu(); }}
         >
           Blog
-        </a>
-        <a 
-          href="#goals"
-          onClick={(e) => handleNavClick(e, 'goals')}
-        >
-          Goals
         </a>
         <a 
           href="#contact"

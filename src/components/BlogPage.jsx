@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { blogPosts } from '../data/blogPosts.js';
+import AnimatedCounter from './AnimatedCounter.jsx';
 
 const BlogPage = () => {
   const navigate = useNavigate();
@@ -22,15 +23,24 @@ const BlogPage = () => {
 
   return (
     <div className="blog-page">
-      <section className="blog-hero">
-        <div className="blog-hero-content">
-          <h1>My <span>Blog</span></h1>
-          <p>Thoughts, tutorials, and insights about web development and technology</p>
-        </div>
-      </section>
-
       <section className="blog-content">
         <div className="container">
+          <div className="blog-intro">
+            <div className="blog-title-section">
+              <h1>Blogs</h1>
+            </div>
+            <div className="blog-stats">
+              <div className="stat-item">
+                <AnimatedCounter end={blogPosts.length} duration={2000} delay={800} />
+                <span className="stat-label">Articles</span>
+              </div>
+              <div className="stat-item">
+                <AnimatedCounter end={allTags.length - 1} duration={2500} delay={1200} />
+                <span className="stat-label">Topics</span>
+              </div>
+            </div>
+          </div>
+
           <div className="blog-filters">
             <h3>Filter by Topic:</h3>
             <div className="filter-tags">
@@ -51,7 +61,7 @@ const BlogPage = () => {
               <article key={post.id} className="blog-post-card">
                 <div className="post-header">
                   <div className="post-meta">
-                    <span className="date">{new Date(post.date).toLocaleDateString()}</span>
+                    <span className="date">{new Date(post.date).toLocaleDateString('en-GB')}</span>
                     <span className="read-time">{post.readTime}</span>
                   </div>
                   {post.featured && <span className="featured-badge">Featured</span>}
