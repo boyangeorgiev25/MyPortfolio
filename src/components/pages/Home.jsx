@@ -55,16 +55,31 @@ function Home() {
 
             <div className="home-stats">
               <div className="stat-box">
-                <AnimatedCounter end="2" suffix="+" duration={5000} delay={800} />
+                <AnimatedCounter
+                  end="2"
+                  suffix="+"
+                  duration={2000}
+                  delay={800}
+                />
                 <span className="stat-label">years coding</span>
               </div>
               <div className="stat-box">
-                <AnimatedCounter end="15" suffix="+" duration={6000} delay={1200} />
+                <AnimatedCounter
+                  end="15"
+                  suffix="+"
+                  duration={2500}
+                  delay={1200}
+                />
                 <span className="stat-label">projects built</span>
               </div>
               <div className="stat-box">
-                <AnimatedCounter end="100" suffix="%" duration={7000} delay={1600} />
-                <span className="stat-label">coffee consumed</span>
+                <AnimatedCounter
+                  end="100"
+                  suffix="%"
+                  duration={3000}
+                  delay={1600}
+                />
+                <span className="stat-label">client satisfaction</span>
               </div>
             </div>
 
@@ -137,13 +152,13 @@ function Home() {
               className="btn-view-all-blogs"
               onClick={() => navigate("/blog")}
             >
-              Read more stuff
+              Read more blogs
             </button>
           </div>
         </div>
       </section>
     </>
   );
-};
+}
 
 export default Home;

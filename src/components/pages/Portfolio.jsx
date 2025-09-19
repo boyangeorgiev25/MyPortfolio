@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
-import Home from './Home';
-import About from './About';
-import Projects from './Projects';
-import Goals from './Goals';
-import Contact from './Contact';
-import Footer from '../layout/Footer';
+import Home from "./Home";
+import About from "./About";
+import Projects from "./Projects";
+import Goals from "./Goals";
+import Contact from "./Contact";
+import Footer from "../layout/Footer";
 
 function Portfolio() {
   return (
@@ -15,7 +15,7 @@ function Portfolio() {
       <Projects />
       <Goals />
       <Contact />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

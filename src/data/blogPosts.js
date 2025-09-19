@@ -1,47 +1,49 @@
 export const blogPosts = [
   {
     id: 4,
-    title: "My first year was messy (and that's okay)",
+    title: "Learning from Setbacks: My First Year Journey",
     excerpt:
-      "Failed an exam, made amazing friends, learned React over the summer. Sometimes things don't go as planned but work out anyway.",
+      "Navigating academic challenges, building lasting friendships, and discovering React development during my first year at KdG University.",
     content: `
-# From Failure to Growth: How My First Year Taught Me Resilience
+# Learning from Setbacks: My First Year Journey
 
-As I sit here writing this, just days before my upcoming retake exam, I can't help but reflect on what has been an incredible journey of ups, downs, and unexpected discoveries during my first year at KdG.
+As I prepare for an upcoming retake exam, I find myself reflecting on what has been a transformative first year at KdG University. While it didn't unfold exactly as I had envisioned, it taught me valuable lessons about resilience, friendship, and turning challenges into opportunities.
 
-## The Reality Check
+## Academic Reality Check
 
-Let me be honest – my first year didn't go exactly as planned. While I managed to pass most of my subjects, there was one that got the better of me. At first, I felt disappointed and frustrated with myself. Here I was, having to redo an exam while my classmates moved forward. But sometimes life has a funny way of turning what seems like a setback into an opportunity for growth.
+My first year at university brought both successes and challenges. While I successfully passed most of my coursework, one subject proved more difficult than anticipated. Initially, facing a retake felt disappointing – watching classmates move forward while I had to revisit material was humbling.
 
-The retake is scheduled for just a few days from now, and instead of dwelling on the past, I've chosen to see this as a second chance to truly master the material. Sometimes we need that extra time to let concepts sink in properly.
+However, I've learned to reframe this experience. The retake isn't just a second chance; it's an opportunity to truly master the concepts I initially struggled with. Sometimes the extra time allows for deeper understanding and stronger foundations.
 
-## An Unexpected Friendship
+## Building Meaningful Connections
 
-One of the best things that came out of my first year wasn’t related to academics at all — it was the friendships I formed with several Bulgarian classmates. What started as casual chats between classes quickly grew into a genuine group connection that ended up shaping my entire summer.
+One of the most rewarding aspects of my first year had nothing to do with coursework – it was the friendships I developed with fellow Bulgarian students. What began as casual conversations between lectures evolved into genuine connections that would shape my entire university experience.
 
-There’s something special about international friendships in college. You get to see the world through different perspectives, learn about new cultures, and realize that despite our different backgrounds, we share so many common dreams and experiences as students.
+These international friendships offered unique perspectives on student life, cultural exchange, and shared academic goals. Despite our different backgrounds, we discovered common aspirations and experiences that bonded us as a supportive community.
 
-## A Week to Remember
+## A Transformative Week Away
 
-After finishing our first year (well, mostly finishing in my case!), my Bulgarian friends and I decided to go on a week-long vacation together. It was exactly what I needed after the stress of exams and the disappointment of that one failed subject.
+Following the completion of our first year, my Bulgarian friends and I planned a week-long trip together. This break came at the perfect time – after the stress of exams and the initial disappointment of my academic setback.
 
-That week was pure magic. We explored new places, tried different foods, shared stories about our respective cultures, and just enjoyed being young and free from academic pressure. There’s nothing quite like traveling with good friends to put things in perspective. My academic struggles suddenly felt much smaller when measured against the vastness of new experiences and the strength of these friendships.
+The experience was exactly what I needed. We explored new destinations, experienced different cultures, and most importantly, gained perspective on what truly matters in student life. That week reminded me that university is about more than grades – it's about personal growth, meaningful relationships, and creating lasting memories.
 
-Those seven days reminded me that life is about so much more than grades and exams. It’s about the connections we make, the memories we create, and the person we become through our experiences.
-## Turning Summer into an Investment
+## Productive Summer Learning
 
-When we returned from our vacation, I had a choice to make. I could spend the rest of my summer worrying about the retake, or I could use this time productively while still preparing for my exam. I chose the latter.
+Returning from our trip, I faced a decision: spend the summer anxious about my retake, or use the time constructively while preparing for my exam. I chose the latter approach.
 
-I enrolled in a React course on Udemy, and it turned out to be one of the best decisions I've made. While my friends were enjoying their well-deserved break, I was diving deep into the world of React development. But here's the thing – it didn't feel like work. It felt like discovery.
+I enrolled in a comprehensive React development course on Udemy, which proved to be one of my best decisions as a student. While balancing exam preparation, I dove into modern web development, discovering a genuine passion for React and its ecosystem.
 
-## From Learning to Creating
+## From Theory to Practice
 
-The React course opened up a whole new world for me. Suddenly, I wasn't just learning theory from textbooks – I was building actual projects, seeing immediate results, and understanding how code translates into real, functional applications.
+The React course transformed my understanding of web development. Instead of purely theoretical learning, I was building functional applications, seeing immediate results, and understanding how code translates into user experiences.
 
-The best part? I started building projects for my personal website. What began as practice exercises from the course evolved into a portfolio that I'm genuinely proud of. Each project taught me something new, and before I knew it, I had created a website that people are actually visiting and engaging with.
+This practical approach led to creating projects for my personal portfolio website. What started as course exercises evolved into a collection of work I'm genuinely proud to showcase. Each project reinforced my learning and demonstrated the practical applications of my computer science studies.
 
+## Looking Forward
 
-*Wish me luck on my retake – and thank you for following along on this journey!*
+My first year taught me that setbacks can become stepping stones when approached with the right mindset. The combination of academic challenges, meaningful friendships, and self-directed learning has shaped my approach to both university and personal development.
+
+*Here's to continued growth and learning in the years ahead!*
     `,
     date: "2025-08-13",
     readTime: "5 min read",
@@ -50,45 +52,41 @@ The best part? I started building projects for my personal website. What began a
   },
   {
     id: 2,
-    title: "Getting used to uni life in Belgium",
+    title: "Adapting to University Life in Belgium",
     excerpt:
-      "New country, new uni, new everything. Here's what my first months studying computer science in Antwerp were actually like.",
+      "Transitioning to computer science studies at KdG University in Antwerp - from academic culture to building community in a new country.",
     content: `
-# First Months in ACS KdG
+# Adapting to University Life in Belgium
 
-When I first arrived in Antwerp to start my Bachelor's in Computer Science at Karel de Grote University of Applied Sciences (KdG), I wasn't sure what to expect. New country, new language, new system of education — it's a lot to take in. But honestly? It didn't take long before I started enjoying it.
+Starting my Bachelor's in Applied Computer Science at Karel de Grote University (KdG) in Antwerp marked a significant transition in my life. Moving to a new country with different educational approaches, cultural norms, and daily routines presented both exciting opportunities and genuine challenges.
 
-⸻
+## Discovering KdG's Academic Approach
 
-## The Lecturers Made the Difference
+One of the most pleasant surprises during my first months was the teaching methodology at KdG. The lecturers demonstrate a genuine commitment to student success that extends far beyond traditional classroom instruction. They foster an environment where questioning is encouraged, critical thinking is developed, and practical application takes precedence over rote memorization.
 
-One of the first things that surprised me was how much I liked the lecturers at KdG. They're not just there to throw theory at you and leave — they actually care if you understand the material. They encourage questions, push you to think, and make sure you can apply what you've learned in real projects.
+This approach became particularly evident during our Java programming modules. Working collaboratively on group projects, we implemented the Model-View-Presenter (MVP) architectural pattern from the ground up. The emphasis wasn't merely on producing functional code, but on understanding design principles that promote maintainability, scalability, and clean architecture.
 
-That approach really helped me when we started working in Java. Our group built several projects from scratch, and I learned how to use and truly understand the MVP (Model–View–Presenter) pattern. It wasn't just about making the code work — it was about structuring it so it was clean, scalable, and easy to maintain.
+## Managing Student Life and Financial Independence
 
-⸻
+Living abroad as a student requires balancing academic responsibilities with financial realities. To support myself while studying, I began working as an Uber Eats courier, which initially seemed disconnected from my academic pursuits.
 
-## Balancing Uni and Work
+However, this experience proved surprisingly valuable. The flexible scheduling allowed me to maintain focus on my studies while providing practical benefits – I gained intimate knowledge of Antwerp's geography, developed time management skills, and learned to adapt quickly to changing circumstances. The contrast between debugging code in the morning and navigating city streets in the evening taught me versatility and resilience.
 
-Of course, studying abroad isn't just lectures and assignments. Life here is expensive, so I had to find a job. That's when I started working as an Uber Eats courier.
+## Building Academic and Social Communities
 
-It was… different. One moment I was debugging code in class, the next I was cycling through Antwerp delivering food in the rain. But in a weird way, it worked. The job gave me freedom to work on my own schedule, and it also helped me explore the city faster than Google Maps ever could.
+The international environment at KdG has been instrumental in my university experience. While I've connected with students from diverse backgrounds, forming friendships with fellow Bulgarian students created a particularly strong support network.
 
-⸻
+These relationships extend beyond casual social interaction. We collaborate on programming assignments, share study resources, support each other through challenging coursework, and create a sense of community that makes studying abroad more manageable and enjoyable. This blend of international exposure and cultural familiarity has enriched both my academic and personal development.
 
-## Building My Circle
+## Developing Technical and Life Skills
 
-One of the best parts about KdG has been the people. I made friends from all over, but especially from Bulgaria. I didn't expect to find so many Bulgarians here, and we clicked instantly. We've worked together on coding projects, shared meals, helped each other with assignments, and built friendships that go way beyond the classroom.
+My time at KdG has encompassed much more than computer science curriculum. Through Java development projects, understanding architectural patterns like MVP, collaborative programming, and managing real-world responsibilities, I've developed both technical competencies and practical life skills.
 
-That mix of international classmates and a strong Bulgarian crew has made studying here a lot easier — and a lot more fun.
+The combination of rigorous academic work, part-time employment, and building meaningful relationships in a new country has taught me valuable lessons about adaptability, time management, and personal growth that extend well beyond university.
 
-⸻
+## Moving Forward
 
-## Looking Back
-
-Studying at KdG has been more than just learning Computer Science. It's been about building skills, building friendships, and building a life in a new country. Between Java projects, MVP architecture, late-night debugging, and delivering meals on my bike, I've learned more about resilience and connection than I ever expected.
-
-And I'm just getting started.
+These initial months at KdG have established a strong foundation for my continued studies in computer science. The supportive academic environment, diverse student community, and practical learning opportunities have exceeded my expectations and prepared me well for the challenges ahead.
     `,
     date: "2025-03-23",
     readTime: "5 min read",
@@ -97,63 +95,49 @@ And I'm just getting started.
   },
   {
     id: 3,
-    title: "Why I left Bulgaria for Belgium (best decision ever)",
+    title: "From Bulgaria to Belgium: A Student's Journey",
     excerpt:
-      "Packed one suitcase, moved to Antwerp for uni, and somehow ended up with a completely different life than I expected.",
+      "Reflecting on the decision to pursue computer science studies abroad and the unexpected personal growth that followed.",
     content: `
-# Moving Abroad: The Real Game Changer
+# From Bulgaria to Belgium: A Student's Journey
 
-If you told me a year ago I'd be coding in the day, filming at sunset, and dancing until 4 a.m. on Thursdays — all in Antwerp — I wouldn't have believed you.
+A year ago, the idea of spending my days programming, evenings capturing Antwerp through my camera lens, and Thursday nights exploring the city's vibrant student scene would have seemed like an impossible combination. Yet this perfectly describes my current life as a computer science student at Karel de Grote University.
 
-But that's exactly how my life looks now. I moved from Bulgaria, to study for my Bachelor's in Computer Science at Karel de Grote University, and somewhere along the way, I built a whole new life I didn't see coming.
+## Leaving Home for New Opportunities
 
-⸻
+Sliven will always hold a special place in my heart – the familiar mountains, intimate streets, and close-knit community that shaped my early years. However, I found myself seeking something beyond comfort and familiarity. I wanted academic challenges, diverse experiences, and opportunities that would accelerate my personal and professional development.
 
-## Leaving Sliven for Something Bigger
+When I received acceptance to KdG's Computer Science program, I recognized it as the gateway to these aspirations. With one carefully packed suitcase, I embarked on this transformative journey to Belgium.
 
-Sliven will always be home — the mountains, the small streets, the familiar faces. But I wanted more than just comfort. I wanted challenges, new experiences, and opportunities that would push me forward.
+## Discovering Antwerp
 
-When I got accepted into KdG's Computer Science program, I knew it was my chance. One suitcase later, I was on a plane to Belgium.
+My first impressions of Antwerp were immediately striking – the ubiquitous cycling culture and my complete dependence on navigation apps to find my way around the city. However, Antwerp's charm reveals itself gradually and irresistibly.
 
-⸻
+The city offers a captivating blend of historic European architecture and contemporary international culture. Walking from medieval churches to modern cafes where multiple languages flow seamlessly in conversation creates a daily reminder of the rich cultural diversity that surrounds student life here.
 
-## Antwerp: First Impressions
+## Academic Excellence at KdG
 
-The first thing I noticed? Bikes. Everywhere. And the second thing? I had absolutely no idea how to get around without Google Maps.
+KdG's approach to computer science education emphasizes critical thinking and practical problem-solving over rote memorization. We engage with real-world projects, tackle complex challenges, and develop resilience when facing difficult concepts.
 
-But Antwerp grows on you quickly. The mix of old European architecture with a modern, international vibe is addictive. One moment you're passing medieval churches, the next you're grabbing bubble tea next to a group speaking three different languages.
+While academically demanding, this intensity creates an environment conducive to genuine learning. My first group programming project taught me fundamental lessons about collaborative development and the essential role of effective teamwork in successful software creation.
 
-⸻
+## Continuing Creative Pursuits
 
-## Studying at KdG
+Initially, I worried that university commitments might limit my videography interests. Instead, Antwerp has provided an inspiring backdrop for creative exploration.
 
-KdG isn't about memorizing code — it's about learning how to think. We're building real projects, solving real problems, and getting pushed to figure things out even when it's hard.
+From capturing FPV drone footage over the Cathedral to documenting the rhythm of cyclists navigating cobblestone streets, the city offers endless visual storytelling opportunities. I've discovered that videography and programming share common principles – both require patience, attention to detail, and persistence in pursuing perfection.
 
-It's intense, but that's what makes it good. My first group project showed me the two golden rules: teamwork is everything, and coffee is the second most important thing in life.
+## Balancing Academic and Social Life
 
-⸻
+Student life extends beyond academic pursuits. Thursday evenings often find my friends and me at Red & Blue, one of Antwerp's well-known venues, where coursework concerns fade and we simply enjoy the present moment.
 
-## My Camera Never Stayed in the Drawer
+These experiences serve as important reminders that studying abroad encompasses more than academic achievement – it's about creating meaningful experiences and lasting memories that define the university years.
 
-I thought uni life would put my videography on hold, but Antwerp is basically one big film set.
+## Reflecting on Growth
 
-From FPV drone dives over the Cathedral to slow-motion shots of cyclists on cobblestone streets, there's always something worth capturing. Videography and coding might sound worlds apart, but they both need patience, detail, and the stubbornness to make things work perfectly.
+The transition from Sliven to Antwerp represents more than a geographical change. I've discovered a sustainable balance between academic dedication, creative expression, and social engagement that defines my current student experience.
 
-⸻
-
-## Thursday Nights
-
-Not everything here is about work and projects. Every Thursday, my friends and I head to Red & Blue, one of the most famous spots in Antwerp's nightlife. It's where assignments don't matter, the music takes over, and you just live in the moment.
-
-It's a good reminder that studying abroad isn't only about grades — it's about making memories that stick.
-
-⸻
-
-## Why I'm Glad I Moved
-
-Moving from Sliven to Antwerp was more than just changing cities. I've found a balance between studying hard, staying creative, and enjoying student life.
-
-Sliven gave me my roots; Antwerp is giving me my future. And I feel like this is just the beginning.
+Sliven provided my foundation and values; Antwerp is shaping my future possibilities. This journey feels like the beginning of something much larger than I initially imagined.
     `,
     date: "2024-12-15",
     readTime: "6 min read",

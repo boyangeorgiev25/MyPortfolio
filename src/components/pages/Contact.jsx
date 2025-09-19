@@ -75,7 +75,7 @@ function Contact() {
 
   return (
     <section className="contact" id="contact">
-      <h2 className="heading">Get in <span>touch!</span></h2>
+      <h2 className="heading">Let's <span>Connect</span></h2>
 
       <form ref={form} onSubmit={handleSubmit}>
         <div className="input-box">
@@ -101,7 +101,7 @@ function Contact() {
           <input
             type="text"
             name="subject"
-            placeholder="What's this about?"
+            placeholder="Subject"
             required
           />
         </div>
@@ -109,31 +109,31 @@ function Contact() {
           name="message"
           cols="30"
           rows="10"
-          placeholder="Tell me what's on your mind..."
+          placeholder="Your message..."
           required
         ></textarea>
         
         {status === 'success' && (
           <div className="status-message success">
-            ✅ Got it! I'll get back to you soon.
+            ✅ Thank you for your message! I'll get back to you soon.
           </div>
         )}
         
         {status === 'error' && (
           <div className="status-message error">
-            ❌ Something went wrong. Just email me directly at boqng25@gmail.com
+            ❌ Something went wrong. Please email me directly at boqng25@gmail.com
           </div>
         )}
         
         {status === 'gmail-scope-error' && (
           <div className="status-message error">
-            ❌ Email permissions are messed up. Just email me at boqng25@gmail.com instead.
+            ❌ Email system error. Please contact me directly at boqng25@gmail.com
           </div>
         )}
         
         <input 
           type="submit" 
-          value={isLoading ? "Sending..." : "Send it!"} 
+          value={isLoading ? "Sending..." : "Send Message"} 
           className="btn" 
           disabled={isLoading}
         />

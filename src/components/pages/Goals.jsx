@@ -5,26 +5,26 @@ function Goals() {
   let goals = [
     {
       icon: 'bx-trophy',
-      title: 'Get really good at full-stack',
-      description: 'Right now I\'m decent at React, but I want to master both frontend and backend. Planning to dive deep into Node.js, databases, and maybe some cloud stuff too.',
+      title: 'Master Full-Stack Development',
+      description: 'Build upon my current React foundation to become proficient in both frontend and backend development. Currently expanding my skills in Node.js, databases, and exploring cloud technologies.',
       timeline: '2024-2025'
     },
     {
       icon: 'bx-group',
-      title: 'Help other developers grow',
-      description: 'Eventually I\'d love to mentor people who are just starting out. I remember how confusing everything was at first - would be cool to help others through that.',
+      title: 'Help Fellow Students & New Developers',
+      description: 'Share what I\'ve learned with other students and developers just starting out. Having been through the initial learning challenges myself, I want to help others navigate their coding journey.',
       timeline: '2025-2026'
     },
     {
       icon: 'bx-rocket',
-      title: 'Build something that matters',
-      description: 'Maybe start my own thing someday? I\'ve got a few app ideas that could actually help people. Nothing crazy, just simple solutions to real problems.',
+      title: 'Build Meaningful Projects',
+      description: 'Create applications that solve real problems and provide genuine value to users. Focus on developing practical solutions that can make a positive impact, even if small.',
       timeline: '2026+'
     },
     {
       icon: 'bx-book-open',
-      title: 'Keep learning new stuff',
-      description: 'Tech changes so fast! I want to contribute to open source projects and maybe write about what I learn. Sharing knowledge is pretty cool.',
+      title: 'Keep Learning & Contributing',
+      description: 'Stay curious about new technologies and contribute to open source projects when possible. Want to document my learning journey and share insights with the developer community.',
       timeline: 'Ongoing'
     }
   ];
@@ -34,7 +34,7 @@ function Goals() {
       <div className="section-header">
         <h2 className="heading">My <span>Goals</span></h2>
         <p className="section-description">
-          where I\'m trying to go with this whole coding thing
+          Where I\'m heading as a computer science student
         </p>
       </div>
 
@@ -67,8 +67,8 @@ function Goals() {
       
       <div className="goals-summary">
         <div className="summary-card">
-          <h4>The plan</h4>
-          <p>These aren\'t set in stone - just stuff I\'m working towards. Some might change as I learn more about what I actually enjoy doing.</p>
+          <h4>My Learning Path</h4>
+          <p>These goals guide my studies and development as a student, while staying flexible as I discover what aspects of programming I enjoy most.</p>
         </div>
       </div>
     </section>

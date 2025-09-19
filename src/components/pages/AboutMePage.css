@@ -250,6 +250,41 @@
   margin-bottom: 6rem;
 }
 
+.story-section,
+.philosophy-section {
+  background: var(--second-bg-color);
+  padding: 4rem;
+  border-radius: 2rem;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.story-section::before,
+.philosophy-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(117, 78, 249, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.story-section:hover::before,
+.philosophy-section:hover::before {
+  left: 100%;
+}
+
+.story-section:hover,
+.philosophy-section:hover {
+  border-color: var(--main-color);
+  transform: translateY(-10px);
+  box-shadow: 0 2rem 4rem rgba(117, 78, 249, 0.2);
+}
+
 .content-grid section {
   background: var(--second-bg-color);
   padding: 4rem;
@@ -429,18 +464,18 @@
   font-size: 1.6rem;
   color: var(--text-color);
   padding: 0.8rem 0;
-  position: relative;
-  padding-left: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
   transition: all 0.3s ease;
 }
 
 .skill-category li::before {
   content: '▸';
   color: var(--main-color);
-  position: absolute;
-  left: 0;
   font-weight: bold;
   font-size: 1.4rem;
+  flex-shrink: 0;
   transition: transform 0.3s ease;
 }
 
@@ -450,7 +485,6 @@
 
 .skill-category li:hover {
   color: var(--main-color);
-  padding-left: 3rem;
 }
 
 /* Timeline Enhanced */
@@ -578,7 +612,7 @@
 /* Contact CTA Enhanced */
 .contact-cta {
   text-align: center;
-  padding: 1rem 4rem !important;
+  padding: 3rem 4rem 1rem 4rem !important;
   background: linear-gradient(135deg, var(--main-color), rgba(117, 78, 249, 0.8));
   border-radius: 2rem;
   color: white;
@@ -605,11 +639,11 @@
 .contact-cta h3 {
   color: white;
   font-size: 3.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
 }
 
 .contact-cta h3::after {
-  background: white;
+  display: none;
 }
 
 .contact-cta p {
@@ -815,12 +849,28 @@
     font-size: 1.5rem;
   }
   
+  .skill-category li {
+    font-size: 1.4rem;
+    gap: 0.8rem;
+  }
+  
+  .skill-category li::before {
+    font-size: 1.2rem;
+  }
+  
   .contact-cta {
-    padding: 1rem 1rem;
+    padding: 3rem 2rem;
   }
   
   .contact-cta h3 {
-    font-size: 3rem;
+    font-size: 2.8rem;
+  }
+  
+  .contact-cta p {
+    font-size: 1.6rem;
+    margin-bottom: 2.5rem;
+    text-align: center;
+    max-width: 100%;
   }
   
   .social-links a {
@@ -862,12 +912,27 @@
     padding: 2.5rem 2rem;
   }
   
+  .skill-category li {
+    font-size: 1.3rem;
+    gap: 0.6rem;
+  }
+  
+  .skill-category li::before {
+    font-size: 1rem;
+  }
+  
   .skills-section {
     padding: 4rem 2rem;
   }
   
   .contact-cta {
-    padding: 1rem 1.5rem;
+    padding: 2.5rem 1.5rem;
+  }
+  
+  .contact-cta p {
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+    line-height: 1.5;
   }
   
   .interests-grid {

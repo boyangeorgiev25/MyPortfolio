@@ -15,6 +15,7 @@ function BlogPage() {
     : blogPosts.filter(post => post.tags.includes(selectedTag));
 
   function handleReadMore(postId) {
+    console.log('Read more clicked:', postId);
     navigate(`/blog/${postId}`);
   }
 
@@ -59,7 +60,12 @@ function BlogPage() {
 
           <div className="blog-posts-grid">
             {filteredPosts.map((post) => (
-              <article key={post.id} className="blog-post-card">
+              <article 
+                key={post.id} 
+                className="blog-post-card"
+                onClick={() => handleReadMore(post.id)}
+                style={{ cursor: 'pointer' }}
+              >
                 <div className="post-header">
                   <div className="post-meta">
                     <span className="date">{new Date(post.date).toLocaleDateString('en-GB')}</span>
@@ -80,7 +86,10 @@ function BlogPage() {
                   
                   <button 
                     className="btn-read-more"
-                    onClick={() => handleReadMore(post.id)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleReadMore(post.id);
+                    }}
                   >
                     Read Full Article
                   </button>
