@@ -55,7 +55,7 @@ function AboutMePage() {
           <div className="hero-image">
             <div className="image-container">
               <img
-                src="/public/images/AboutMe1.png"
+                src="/images/AboutMe1.png"
                 alt="Boyan Georgiev"
                 className="about-me-photo"
               />
