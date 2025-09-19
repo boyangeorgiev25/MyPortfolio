@@ -9,12 +9,12 @@ function About() {
       <div className="about-content">
         <div className="content-header">
           <h2 className="heading">About <span>Me</span></h2>
-          <div className="section-subtitle">The real story</div>
+          <div className="section-subtitle">Professional Background</div>
         </div>
         
         <div className="intro-card">
           <h3>
-            Hey! I'm Boyan. I spend most of my time turning coffee into code and trying to build cool stuff that actually works.
+            I am Boyan Georgiev, a dedicated software developer focused on creating robust, user-centered applications and innovative digital solutions.
           </h3>
         </div>
 
@@ -26,9 +26,9 @@ function About() {
                   <i className="bx bx-code"></i>
                 </div>
                 <div className="detail-content">
-                  <h4>Building websites</h4>
+                  <h4>Web Development</h4>
                   <p>
-                    I make things that work on phones, computers, and everything in between. React is my jam.
+                    I specialize in creating responsive web applications that deliver seamless experiences across all devices, with particular expertise in React development.
                   </p>
                 </div>
               </div>
@@ -38,9 +38,9 @@ function About() {
                   <i className="bx bx-book-reader"></i>
                 </div>
                 <div className="detail-content">
-                  <h4>Always learning</h4>
+                  <h4>Continuous Learning</h4>
                   <p>
-                    Currently studying at Karel de Grote. Every day I learn something new - tech moves fast!
+                    Currently pursuing my studies at Karel de Grote University, where I continuously expand my technical knowledge to stay current with industry developments.
                   </p>
                 </div>
               </div>
@@ -50,9 +50,9 @@ function About() {
                   <i className="bx bx-heart"></i>
                 </div>
                 <div className="detail-content">
-                  <h4>Problem solver</h4>
+                  <h4>Problem Solving</h4>
                   <p>
-                    I like figuring out how to make things work better. Sometimes it's fixing bugs, sometimes building from scratch.
+                    I excel at analyzing complex challenges and developing efficient solutions, whether optimizing existing systems or architecting new applications from the ground up.
                   </p>
                 </div>
               </div>

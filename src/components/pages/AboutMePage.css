@@ -578,7 +578,7 @@
 /* Contact CTA Enhanced */
 .contact-cta {
   text-align: center;
-  padding: 6rem 4rem;
+  padding: 1rem 4rem !important;
   background: linear-gradient(135deg, var(--main-color), rgba(117, 78, 249, 0.8));
   border-radius: 2rem;
   color: white;
@@ -816,7 +816,7 @@
   }
   
   .contact-cta {
-    padding: 4rem 2rem;
+    padding: 1rem 1rem;
   }
   
   .contact-cta h3 {
@@ -867,7 +867,7 @@
   }
   
   .contact-cta {
-    padding: 3rem 1.5rem;
+    padding: 1rem 1.5rem;
   }
   
   .interests-grid {

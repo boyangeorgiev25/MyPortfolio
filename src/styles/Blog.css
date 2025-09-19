@@ -177,8 +177,8 @@
 
 .featured-indicator {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 0.2rem;
+  right: 0.3rem;
   color: var(--main-color);
   font-size: 1.8rem;
   z-index: 3;

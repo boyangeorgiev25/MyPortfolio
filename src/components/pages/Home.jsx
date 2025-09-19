@@ -103,7 +103,6 @@ function Home() {
         <div className="home-blog-container">
           <div className="home-blog-header">
             <h3>What I've been writing about</h3>
-            <p>Some thoughts and things I've learned recently</p>
           </div>
           <div className="home-blog-grid">
             {featuredBlogs.map((post) => (

@@ -132,19 +132,24 @@ function AboutMePage() {
           <h3>My journey so far</h3>
           <div className="timeline">
             <div className="timeline-item">
-              <div className="timeline-date">2023 - Present</div>
+              <div className="timeline-date">2025</div>
               <div className="timeline-content">
-                <h4>Karel de Grote University College (KDG)</h4>
-                <p>Computer Science degree - learning how to build websites and applications properly. 
-                Lots of Java, some React, and way too much coffee.</p>
+                <h4>React Native Internship at Jointly</h4>
+                <p>Successfully completed first year at KDG and secured an internship position at Jointly, focusing on React Native mobile application development. Applying academic knowledge to real-world projects and gaining industry experience.</p>
+              </div>
+            </div>
+            <div className="timeline-item">
+              <div className="timeline-date">2024 - 2027</div>
+              <div className="timeline-content">
+                <h4>Karel de Grote University College (KDG) - Applied Computer Science</h4>
+                <p>Pursuing Applied Computer Science degree, building on C# foundation with Java, algorithms, and system architecture. Successfully completed first year and exploring modern web technologies, leading to internship opportunities.</p>
               </div>
             </div>
             <div className="timeline-item">
               <div className="timeline-date">2023</div>
               <div className="timeline-content">
-                <h4>YouTube University & Stack Overflow</h4>
-                <p>Where it all began - countless hours watching tutorials, reading docs, and breaking things 
-                until they worked. Best education you can get.</p>
+                <h4>SoftUni C# Programming Course</h4>
+                <p>Completed comprehensive C# programming course covering fundamentals, Object-Oriented Programming (OOP), database management with MySQL, and Entity Framework. This foundation prepared me for university-level computer science studies.</p>
               </div>
             </div>
           </div>
@@ -155,34 +160,31 @@ function AboutMePage() {
           <div className="interests-grid">
             <div className="interest-item">
               <i className="bx bx-camera"></i>
-              <h4>Taking photos</h4>
-              <p>Love capturing cool moments and trying to make ordinary stuff look interesting.</p>
+              <h4>Photography</h4>
+              <p>I love capturing moments and finding interesting angles in everyday scenes. There's something satisfying about framing the perfect shot and seeing the world through a different lens.</p>
             </div>
             <div className="interest-item">
               <i className="bx bx-video"></i>
-              <h4>Making videos</h4>
-              <p>Editing footage, trying new effects, and figuring out how to tell stories with moving pictures.</p>
+              <h4>Video Creation</h4>
+              <p>I enjoy editing videos and experimenting with different effects to tell stories. It's fascinating how you can piece together footage to create something completely new and engaging.</p>
             </div>
             <div className="interest-item">
               <i className="bx bx-book"></i>
-              <h4>Learning random stuff</h4>
-              <p>Always watching coding videos, reading articles about new frameworks, and going down rabbit holes.</p>
+              <h4>Tech Exploration</h4>
+              <p>I'm constantly watching tutorials, reading about new frameworks, and diving into tech rabbit holes. The field moves so fast, and there's always something exciting to discover.</p>
             </div>
             <div className="interest-item">
               <i className="bx bx-group"></i>
-              <h4>Hanging with other devs</h4>
-              <p>Talking code with people who get excited about the same weird technical stuff I do.</p>
+              <h4>Developer Community</h4>
+              <p>I genuinely enjoy connecting with other developers and discussing the latest tech trends. It's great to share knowledge and learn from people who are just as passionate about code.</p>
             </div>
           </div>
         </section>
 
 
         <section className="contact-cta">
-          <h3>Want to chat?</h3>
-          <p>
-            Always down to talk about code, projects, or whatever. Hit me up if you want to build something cool together 
-            or just want to geek out about the latest JavaScript framework.
-          </p>
+          <h3>Let's connect</h3>
+          <p>Feel free to reach out for collaborations or tech discussions.</p>
           <div className="social-links">
             <a href="https://github.com/boyangeorgiev25" target="_blank" rel="noopener noreferrer"><i className='bx bxl-github'></i></a>
             <a href="https://www.linkedin.com/in/boyan-georgiev-08853329b/" target="_blank" rel="noopener noreferrer"><i className='bx bxl-linkedin'></i></a>
