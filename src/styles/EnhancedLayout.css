@@ -278,11 +278,20 @@ section {
 
 /* Enhanced About Section */
 .about {
-  background: var(--bg-color);
   position: relative;
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(260px, 420px) minmax(320px, 1fr);
+  grid-template-areas: 'media content';
   align-items: center;
-  gap: 6rem;
+  gap: clamp(3rem, 6vw, 7rem);
+  min-height: 100vh;
+  padding: clamp(4rem, 10vh, 12rem) clamp(2.5rem, 7vw, 8rem);
+  background: var(--bg-color);
+  overflow: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .about::before {
@@ -297,11 +306,14 @@ section {
 }
 
 .about-img {
+  grid-area: media;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex: 0 0 400px;
+  justify-self: center;
+  max-width: 420px;
+  width: min(100%, 380px);
 }
 
 .image-wrapper {
@@ -350,9 +362,32 @@ section {
 }
 
 .about-content {
+  grid-area: content;
   position: relative;
   z-index: 2;
-  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2.5rem;
+  max-width: min(62rem, 100%);
+  width: min(100%, 62rem);
+  justify-self: stretch;
+}
+
+.about .heading {
+  font-size: clamp(3.6rem, 4vw, 4.6rem);
+  text-align: left;
+}
+
+.about-content h3 {
+  font-size: clamp(1.9rem, 2.4vw, 2.2rem);
+  line-height: 1.5;
+}
+
+.about-content p {
+  font-size: clamp(1.5rem, 1.8vw, 1.7rem);
+  line-height: 1.7;
 }
 
 .content-header {
@@ -793,7 +828,9 @@ section {
 /* Responsive Improvements */
 @media (max-width: 1200px) {
   .about {
-    gap: 4rem;
+    grid-template-columns: minmax(220px, 340px) minmax(0, 1fr);
+    gap: clamp(3rem, 5vw, 5.5rem);
+    padding: clamp(4rem, 9vh, 10rem) clamp(2rem, 6vw, 6rem);
   }
   
   .detail-item {
@@ -843,14 +880,18 @@ section {
   }
   
   .about {
-    flex-direction: column;
-    gap: 4rem;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'content'
+      'media';
     text-align: center;
+    gap: clamp(3rem, 8vw, 5rem);
+    padding: clamp(4rem, 12vh, 10rem) clamp(2rem, 8vw, 4rem);
   }
   
   .about-img {
-    order: -1;
-    flex: none;
+    justify-self: center;
+    width: min(70vw, 360px);
   }
   
   .content-header h2::after {
@@ -858,6 +899,16 @@ section {
     transform: translateX(-50%);
   }
   
+  .about .heading {
+    text-align: center;
+  }
+
+  .about-content {
+    align-items: center;
+    justify-self: center;
+    text-align: center;
+  }
+
   .cta-container {
     justify-content: center;
   }

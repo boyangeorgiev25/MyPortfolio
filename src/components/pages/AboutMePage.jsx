@@ -55,7 +55,7 @@ function AboutMePage() {
           <div className="hero-image">
             <div className="image-container">
               <img
-                src="/images/AboutMe1.png"
+                src="/public/images/AboutMe1.png"
                 alt="Boyan Georgiev"
                 className="about-me-photo"
               />
@@ -77,15 +77,18 @@ function AboutMePage() {
             <h3>How I got here</h3>
             <div className="story-content">
               <p>
-                I'm currently studying Applied Computer Science at KDG University College in Belgium, 
-                having relocated from Bulgaria to pursue my passion for technology. My journey into 
-                web development began with curiosity about how websites function, which quickly evolved 
-                into a genuine enthusiasm for creating meaningful digital solutions.
+                I'm currently studying Applied Computer Science at KDG
+                University College in Belgium, having relocated from Bulgaria to
+                pursue my passion for technology. My journey into web
+                development began with curiosity about how websites function,
+                which quickly evolved into a genuine enthusiasm for creating
+                meaningful digital solutions.
               </p>
               <p>
-                What drives me most is developing applications that address real-world challenges. 
-                There's immense satisfaction in building something that genuinely improves users' 
-                experiences and makes their daily tasks more efficient.
+                What drives me most is developing applications that address
+                real-world challenges. There's immense satisfaction in building
+                something that genuinely improves users' experiences and makes
+                their daily tasks more efficient.
               </p>
             </div>
           </div>
@@ -97,14 +100,15 @@ function AboutMePage() {
             <h3>How I think about code</h3>
             <div className="philosophy-card">
               <blockquote>
-                "Quality code should be functional, maintainable, and purposeful. 
-                Every line should serve a clear need and be understandable to future 
-                developers, including my future self."
+                "Quality code should be functional, maintainable, and
+                purposeful. Every line should serve a clear need and be
+                understandable to future developers, including my future self."
               </blockquote>
               <p>
-                I focus on writing clean, efficient code that performs well and handles 
-                various use cases gracefully. My approach emphasizes readability and 
-                robust functionality while continuously learning from each project.
+                I focus on writing clean, efficient code that performs well and
+                handles various use cases gracefully. My approach emphasizes
+                readability and robust functionality while continuously learning
+                from each project.
               </p>
             </div>
           </div>
@@ -272,7 +276,6 @@ function AboutMePage() {
             </a>
           </div>
         </div>
-
       </div>
     </div>
   );

@@ -46,13 +46,13 @@ function Header() {
       <nav className={`navbar ${isMenuOpen ? 'active' : ''}`}>
         <a 
           href="#home" 
-          className="active"
           onClick={(e) => handleNavClick(e, 'home')}
         >
           Home
         </a>
         <a 
           href="/about-me"
+          className={location.pathname === '/about-me' ? 'active' : ''}
           onClick={(e) => { e.preventDefault(); navigate('/about-me'); closeMenu(); }}
         >
           About
@@ -65,6 +65,7 @@ function Header() {
         </a>
         <a 
           href="/blog"
+          className={location.pathname.startsWith('/blog') ? 'active' : ''}
           onClick={(e) => { e.preventDefault(); navigate('/blog'); closeMenu(); }}
         >
           Blog

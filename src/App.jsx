@@ -37,25 +37,30 @@ function App() {
   // scroll stuff - took me forever to get this right
   useEffect(() => {
     const handleScroll = () => {
+      const isHomeRoute = window.location.pathname === '/';
       const sections = document.querySelectorAll('section');
       const navLinks = document.querySelectorAll('header nav a');
       
-      sections.forEach(sec => {
-        const top = window.scrollY;
-        const offset = sec.offsetTop - 150;
-        const height = sec.offsetHeight;
-        const id = sec.getAttribute('id');
+      if (isHomeRoute) {
+        sections.forEach(sec => {
+          const top = window.scrollY;
+          const offset = sec.offsetTop - 150;
+          const height = sec.offsetHeight;
+          const id = sec.getAttribute('id');
 
-        if (top >= offset && top < offset + height) {
-          navLinks.forEach(link => {
-            link.classList.remove('active');
-          });
-          const activeLink = document.querySelector(`header nav a[href*=${id}]`);
-          if (activeLink) {
-            activeLink.classList.add('active');
+          if (top >= offset && top < offset + height) {
+            navLinks.forEach(link => {
+              link.classList.remove('active');
+            });
+            if (id) {
+              const activeLink = document.querySelector(`header nav a[href*=${id}]`);
+              if (activeLink) {
+                activeLink.classList.add('active');
+              }
+            }
           }
-        }
-      });
+        });
+      }
 
       // make header stick to top
       const header = document.querySelector('.header');
@@ -65,6 +70,7 @@ function App() {
     };
 
     window.addEventListener('scroll', handleScroll);
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 

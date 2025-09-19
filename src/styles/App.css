@@ -710,15 +710,6 @@ span {
 
 @media (max-width: 991px) {
 
-    .navbar a:nth-child(1) {
-        color: var(--main-color);
-    }
-
-    .navbar a.active::before {
-        background: var(--main-color);
-        opacity: .7;
-    }
-
     .home .home-content {
         max-width: 50rem;
     }
@@ -741,10 +732,6 @@ span {
 }
 
 @media (max-width: 896px) {
-    .navbar a:nth-child(2) {
-        color: var(--main-color);
-    }
-
     .home .profession-container .profession-box {
         right: -50%;
     }
@@ -757,12 +744,6 @@ span {
 @media (max-width: 879px) {
     .portfolio .portfolio-container {
         grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 780px) {
-    .navbar a:nth-child(2) {
-        color: var(--white-color);
     }
 }
 

@@ -20,8 +20,8 @@ function Projects() {
       description:
         "A practical packing list application featuring item management, completion tracking, sorting capabilities, and usage statistics. Built as a learning project to master React fundamentals and state management principles.",
       technologies: "React, JavaScript, CSS, State Management",
-      githubLink: "https://github.com/boyangeorgiev25/far-away",
-      liveDemo: "https://far-away-packing-list.vercel.app",
+      githubLink: "https://github.com/boyangeorgiev25/Travel-list",
+      liveDemo: null,
       link: "/project/far-away",
     },
     {
@@ -42,9 +42,6 @@ function Projects() {
         <h2 className="heading">
           Featured <span>Projects</span>
         </h2>
-        <p className="section-description">
-          Key projects from my development journey
-        </p>
       </div>
 
       <div className="projects-gallery">
@@ -65,13 +62,11 @@ function Projects() {
                   <div className="project-tech">
                     <span className="tech-label">Technologies:</span>
                     <div className="tech-tags">
-                      {project.technologies
-                        .split(", ")
-                        .map((tech, i) => (
-                          <span key={i} className="tech-tag">
-                            {tech}
-                          </span>
-                        ))}
+                      {project.technologies.split(", ").map((tech, i) => (
+                        <span key={i} className="tech-tag">
+                          {tech}
+                        </span>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -120,6 +115,6 @@ function Projects() {
       </div>
     </section>
   );
-};
+}
 
 export default Projects;
