@@ -2,6 +2,13 @@
 
 A modern, fully-featured portfolio website showcasing my journey as a Computer Science student at KdG University and software development intern at Jointly.
 
+🌐 **Live Site**: [bobyg.dev](https://bobyg.dev)
+
+## 📸 Preview
+
+<!-- Add screenshots here -->
+*Screenshots coming soon...*
+
 ## ✨ What's Inside
 
 - **Personal Blog** - Student life stories from Bulgaria to Belgium
@@ -39,36 +46,41 @@ Visit `http://localhost:5173` to see the site in action!
 ## 📱 Features
 
 ### 🏠 Home Page
+
 - Animated profession carousel
 - Featured blog posts
 - Quick navigation to all sections
 
 ### 📝 Blog System
+
 - Personal stories about student life
 - Filter posts by topics (University, Belgium, React, etc.)
 - "NEW" badges for latest posts
 - Responsive blog layout
 
 ### 💼 Projects
+
 - **WorldWise** - Travel tracking app
 - **FarAway** - Packing list manager  
 - **Quarto** - Strategic board game
 - More projects added regularly
 
 ### 👨‍💻 About
+
 - Academic background at KdG University
 - Internship experience at Jointly
 - Technical skills and tools
 - Personal interests (videography, FPV drones)
 
 ### 📞 Contact
+
 - Working contact form via EmailJS
 - Social media links
 - Professional information
 
 ## 🏗️ Project Structure
 
-```
+```text
 src/
 ├── components/
 │   ├── blog/           # Blog posts and blog page
@@ -89,6 +101,17 @@ npm run dev      # Start development server
 npm run build    # Build for production
 npm run preview  # Preview production build
 ```
+
+## 🚀 Deployment
+
+The portfolio is live at **[bobyg.dev](https://bobyg.dev)** - my personal domain where you can see all the features in action.
+
+The site is optimized for production with:
+
+- Fast loading times
+- SEO-friendly structure  
+- Responsive design for all devices
+- Smooth animations and interactions
 
 ## 🎯 About This Portfolio
 
