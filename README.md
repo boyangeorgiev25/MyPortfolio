@@ -6,8 +6,9 @@ A modern, fully-featured portfolio website showcasing my journey as a Computer S
 
 ## 📸 Preview
 
-<!-- Add screenshots here -->
-*Screenshots coming soon...*
+<img width="1680" height="933" alt="Screenshot 2025-09-27 at 5 41 54 PM" src="https://github.com/user-attachments/assets/1a054bba-3a43-4101-b644-d501b8eec17a" />
+<img width="325" height="712" alt="Screenshot 2025-09-27 at 5 43 23 PM" src="https://github.com/user-attachments/assets/9cb0cbf3-4145-4dbf-b299-136ff997d7dd" />
+
 
 ## ✨ What's Inside
 
