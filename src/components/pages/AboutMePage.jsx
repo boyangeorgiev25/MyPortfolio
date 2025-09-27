@@ -118,10 +118,18 @@ function AboutMePage() {
           <h3>Technical Skills & Expertise</h3>
           <div className="skills-grid">
             <div className="skill-category">
+              <h4>Programming Languages</h4>
+              <ul>
+                <li>JavaScript (ES6+)</li>
+                <li>Python</li>
+                <li>C#</li>
+                <li>Java</li>
+                <li>HTML5 & CSS3</li>
+              </ul>
+            </div>
+            <div className="skill-category">
               <h4>Frontend Development</h4>
               <ul>
-                <li>HTML5 & CSS3</li>
-                <li>JavaScript (ES6+)</li>
                 <li>React.js</li>
                 <li>Responsive Design</li>
                 <li>CSS Frameworks</li>
@@ -132,7 +140,7 @@ function AboutMePage() {
               <ul>
                 <li>Node.js</li>
                 <li>Express.js</li>
-                <li>MongoDB</li>
+                <li>WebSocket</li>
                 <li>RESTful APIs</li>
                 <li>Database Design</li>
               </ul>
@@ -141,8 +149,8 @@ function AboutMePage() {
               <h4>Development Tools & Platforms</h4>
               <ul>
                 <li>Git & GitHub</li>
-                <li>WordPress</li>
                 <li>Vite & Build Tools</li>
+                <li>Docker</li>
                 <li>VS Code</li>
                 <li>Command Line</li>
               </ul>
@@ -153,7 +161,6 @@ function AboutMePage() {
                 <li>TypeScript</li>
                 <li>Next.js</li>
                 <li>GraphQL</li>
-                <li>Docker</li>
                 <li>Cloud Platforms</li>
               </ul>
             </div>
