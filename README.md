@@ -15,7 +15,7 @@ A modern, fully-featured portfolio website showcasing my journey as a Computer S
 
 ```bash
 # Clone the repo
-git clone <your-repo-url>
+git clone https://github.com/boyangeorgiev25/MyPortfolio.git
 cd MyPortfolio
 
 # Install dependencies
