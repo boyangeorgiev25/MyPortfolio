@@ -56,6 +56,7 @@ const Blog = () => {
                   <div className="post-meta">
                     <span className="date">{new Date(post.date).toLocaleDateString('en-GB')}</span>
                     <span className="read-time">{post.readTime}</span>
+                    {post.isNew && <span className="new-badge">NEW</span>}
                   </div>
                   <h4>{post.title}</h4>
                   <p>{post.excerpt}</p>

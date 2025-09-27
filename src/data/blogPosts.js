@@ -1,7 +1,65 @@
 export const blogPosts = [
   {
+    id: 5,
+    title: "Everything Just Clicked!",
+    excerpt:
+      "Crushed that retake exam and somehow landed an internship at Jointly one month before my hardest test yet. Life's been wild lately!",
+    content: `
+# Everything Just Clicked: Aced My Exams and Landed My First Internship!
+
+Hey everyone! So much has happened since my last post, I honestly don't even know where to start. But wow, what a crazy few months it's been!
+
+## That Retake Exam? Totally Crushed It!
+
+Remember how stressed I was about that retake exam? Well, turns out all that extra time studying actually paid off BIG time. When I got my results back, I couldn't believe it - I didn't just pass, I absolutely smashed it! 
+
+All those hours I spent going through the material again, plus all the confidence I built up from my React projects over the summer, just came together perfectly. Looking back, failing the first time was probably the best thing that could have happened to me. I actually understand the stuff now instead of just memorizing it.
+
+## Plot Twist: Got Hired at Jointly!
+
+So here's the crazy part. I came back to Belgium thinking I'd just focus on my studies, maybe work on some more coding projects, you know? I wasn't even looking for a job or anything.
+
+But then I heard about this internship at a company called Jointly through some connections, and I thought "why not give it a shot?" I'd never heard of them before, but when I looked into what they do, it seemed really cool.
+
+Here's the insane timing though - I got hired exactly one month before my biggest, scariest exam yet. Like, this was supposed to be one of the hardest tests of my entire degree. I was freaking out thinking "how am I gonna balance a new job AND study for this monster exam??" But somehow it all just... worked out?
+
+## The Interview Was Actually Fun
+
+Okay, so you know how most interviews are super formal and they ask you all these theoretical questions that make you feel like you're back in an exam? This was totally different.
+
+They actually wanted to see my React projects! All that time I spent coding over the summer because I was bored and stressed about my retake? Turns out that was exactly what they were looking for. They cared more about what I could actually build than what I could recite from a textbook.
+
+## Juggling Work and Uni Life
+
+Not gonna lie, balancing the internship with my KdG coursework has been intense. But in a good way? Like, suddenly all the theory I'm learning in class makes sense because I'm actually using it at work. 
+
+My colleagues at Jointly are super smart and patient with all my student questions. It's like having extra tutors who show me how this stuff actually works in the real world. Way better than just reading about it in textbooks!
+
+## Shoutout to My Friends
+
+I have to give a massive shoutout to my Bulgarian friends here. These guys have been absolutely amazing through everything. When I was stressing about the retake, they kept me sane. When I got my exam results, they were the first ones celebrating with me. And when I told them about the Jointly job? Let's just say we may have celebrated a bit too hard that night 😅
+
+Having friends who get what it's like to be a foreign student here, but who also push you to go after opportunities, is honestly priceless.
+
+## Can't Believe This Is My Life Now
+
+Six months ago I was feeling pretty down about that failed exam, wondering if I was cut out for this whole computer science thing. Now I'm working at a tech company, acing my exams, and actually feeling like I know what I'm doing for once!
+
+The weirdest part is how everything connected. The extra study time, the React projects, the timing of the job offer, even that scary exam - it all just clicked together like puzzle pieces.
+
+I guess sometimes you just gotta trust that things work out, even when it doesn't feel like it at the time.
+
+*Thanks for reading my rambling! Still can't believe this is actually happening 🎉*
+    `,
+    date: "2025-09-27",
+    readTime: "4 min read",
+    tags: ["Personal", "Internship", "Success"],
+    featured: false,
+    isNew: true,
+  },
+  {
     id: 4,
-    title: "Learning from Setbacks: My First Year Journey",
+    title: "First Year Ups and Downs",
     excerpt:
       "Navigating academic challenges, building lasting friendships, and discovering React development during my first year at KdG University.",
     content: `
@@ -47,12 +105,12 @@ My first year taught me that setbacks can become stepping stones when approached
     `,
     date: "2025-08-13",
     readTime: "5 min read",
-    tags: ["Personal", "Growth", "University", "React", "Resilience"],
+    tags: ["University", "React", "Exams"],
     featured: false,
   },
   {
     id: 2,
-    title: "Adapting to University Life in Belgium",
+    title: "Life as a Student in Belgium",
     excerpt:
       "Transitioning to computer science studies at KdG University in Antwerp - from academic culture to building community in a new country.",
     content: `
@@ -90,12 +148,12 @@ These initial months at KdG have established a strong foundation for my continue
     `,
     date: "2025-03-23",
     readTime: "5 min read",
-    tags: ["Personal", "University", "KdG", "Student Life"],
+    tags: ["University", "Belgium", "Student Life"],
     featured: true,
   },
   {
     id: 3,
-    title: "From Bulgaria to Belgium: A Student's Journey",
+    title: "Bulgaria to Belgium",
     excerpt:
       "Reflecting on the decision to pursue computer science studies abroad and the unexpected personal growth that followed.",
     content: `
@@ -141,7 +199,7 @@ Sliven provided my foundation and values; Antwerp is shaping my future possibili
     `,
     date: "2024-12-15",
     readTime: "6 min read",
-    tags: ["Personal", "Student Life", "Antwerp", "Bulgaria"],
+    tags: ["Belgium", "Bulgaria", "Student Life"],
     featured: false,
   },
 ];

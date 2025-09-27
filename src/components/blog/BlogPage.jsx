@@ -72,6 +72,7 @@ function BlogPage() {
                     <span className="read-time">{post.readTime}</span>
                   </div>
                   {post.featured && <span className="featured-badge">Featured</span>}
+                  {post.isNew && <span className="new-badge">NEW</span>}
                 </div>
                 
                 <div className="post-content">
