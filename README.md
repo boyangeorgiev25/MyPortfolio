@@ -1,6 +1,6 @@
 # 🌟 Boyan's Portfolio
 
-A modern, fully-featured portfolio website showcasing my journey as a Computer Science student at KdG University and software development intern at Jointly.
+A modern, fully-featured portfolio website showcasing my journey as a Computer Science student at KdG University and software development intern.
 
 🌐 **Live Site**: [bobyg.dev](https://bobyg.dev)
 
@@ -69,7 +69,7 @@ Visit `http://localhost:5173` to see the site in action!
 ### 👨‍💻 About
 
 - Academic background at KdG University
-- Internship experience at Jointly
+- Internship experience
 - Technical skills and tools
 - Personal interests (videography, FPV drones)
 
@@ -116,7 +116,7 @@ The site is optimized for production with:
 
 ## 🎯 About This Portfolio
 
-This portfolio reflects my journey as a Bulgarian student studying Computer Science in Belgium. It showcases both my technical projects and personal experiences, from academic challenges to landing my first internship at Jointly.
+This portfolio reflects my journey as a Bulgarian student studying Computer Science in Belgium. It showcases both my technical projects and personal experiences, from academic challenges to landing my first internship.
 
 The blog section is particularly personal - it chronicles my real experiences with university life, exam stress, building friendships abroad, and the excitement of getting my first tech job.
 
