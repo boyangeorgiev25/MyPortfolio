@@ -119,11 +119,3 @@ The site is optimized for production with:
 This portfolio reflects my journey as a Bulgarian student studying Computer Science in Belgium. It showcases both my technical projects and personal experiences, from academic challenges to landing my first internship.
 
 The blog section is particularly personal - it chronicles my real experiences with university life, exam stress, building friendships abroad, and the excitement of getting my first tech job.
-
-## 📬 Get in Touch
-
-Feel free to explore the site and reach out through the contact form if you'd like to connect!
-
----
-
-*Built with ❤️ by Boyan - Computer Science Student & Intern Developer*
