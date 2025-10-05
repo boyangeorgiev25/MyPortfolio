@@ -11,6 +11,11 @@
   font-size: 4.5rem;
   margin-bottom: 1.5rem;
   position: relative;
+  color: var(--text-color);
+}
+
+.section-header h2 span {
+  color: var(--main-color);
 }
 
 .section-header h2::after {
@@ -23,6 +28,68 @@
   height: 4px;
   background: linear-gradient(90deg, var(--main-color), rgba(117, 78, 249, 0.3));
   border-radius: 2px;
+}
+
+.projects-section-header,
+.goals-section-header {
+  display: none;
+}
+
+@media (max-width: 991px) {
+  .projects-section-header,
+  .goals-section-header {
+    display: flex;
+    flex-direction: column;
+    line-height: 0.1;
+    margin-bottom: 0;
+    padding: 0;
+    position: relative;
+  }
+
+  .projects-section-header h2,
+  .goals-section-header h2 {
+    font-size: 30rem;
+    font-weight: 800;
+    letter-spacing: -2px;
+    text-align: left;
+    margin: 0;
+    line-height: 0.1;
+    color: var(--text-color);
+    opacity: 0.4;
+    position: relative;
+    left: 5%;
+  }
+
+  .projects-section-header h2 span {
+    display: block;
+    text-align: right;
+    font-size: 20rem;
+    font-weight: 800;
+    letter-spacing: -2px;
+    color: var(--text-color);
+    opacity: 0.4;
+    position: absolute;
+    right: 25%;
+    top: 12rem;
+  }
+
+  .goals-section-header h2 span {
+    display: block;
+    text-align: left;
+    font-size: 20rem;
+    font-weight: 800;
+    letter-spacing: -2px;
+    color: var(--text-color);
+    opacity: 0.4;
+    position: relative;
+    left: 20%;
+    margin-top: -3rem;
+  }
+
+  .projects-section-header h2::after,
+  .goals-section-header h2::after {
+    display: none;
+  }
 }
 
 .section-description {
@@ -728,7 +795,7 @@
   letter-spacing: -2px;
   opacity: 0.15;
   text-align: left;
-  left: 30%;
+  left: 10%;
   position: relative;
 }
 
@@ -1059,6 +1126,11 @@
 
 /* Responsive Design */
 @media (max-width: 991px) {
+  .projects-section,
+  .goals-section {
+    padding: 6rem 2rem 4rem;
+  }
+
   .projects-grid {
     grid-template-columns: 1fr;
     gap: 3rem;
@@ -1072,10 +1144,24 @@
     gap: 3rem;
   }
 
-  /* Hide descriptions and tech stack on tablet and below */
-  .project-description,
-  .project-tech {
+  .projects-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 0;
+  }
+
+  .projects-text-content {
+    padding-right: 0;
+    text-align: center;
+  }
+
+  .projects-background-text {
     display: none;
+  }
+
+  .projects-cardswap-wrapper {
+    min-height: 500px;
+    padding: 2rem 0;
   }
 
   .card-content {
@@ -1084,12 +1170,18 @@
 
   .goals-layout {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 2rem;
+    padding: 0;
+  }
+
+  .goals-content {
+    padding: 2rem 0;
   }
 
   .goals-text-content {
     padding-left: 0;
     gap: 3rem;
+    text-align: center;
   }
 
   .goals-section .section-header {
@@ -1131,132 +1223,332 @@
     margin-top: 0;
     margin-left: 1rem;
   }
+
+  .text-my,
+  .text-goals {
+    font-size: 10rem;
+  }
+
+  .goals-background-text {
+    display: none;
+  }
 }
 
 @media (max-width: 768px) {
+  .projects-section,
+  .goals-section {
+    padding: 5rem 1.5rem 3rem;
+  }
+
+  .projects-section-header h2,
+  .goals-section-header h2 {
+    font-size: 22rem;
+    opacity: 0.5;
+  }
+
+  .projects-section-header h2 span {
+    font-size: 15rem;
+    right: 15%;
+    top: 10rem;
+    opacity: 0.5;
+  }
+
+  .goals-section-header h2 span {
+    font-size: 14rem;
+    left: 20%;
+    margin-top: -2.5rem;
+    opacity: 0.5;
+  }
+
   .section-header h2 {
     font-size: 3.5rem;
   }
-  
+
   .section-description {
     font-size: 1.6rem;
   }
-  
+
   .projects-grid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
   }
-  
+
   .gallery-track .project-card {
-    flex: 0 0 350px;
+    flex: 0 0 calc(100vw - 4rem);
   }
-  
+
   .gallery-track {
-    gap: 2.5rem;
+    gap: 2rem;
+    padding: 1rem 2rem;
   }
-  
+
   .goals-gallery .gallery-track .goal-card {
-    flex: 0 0 350px;
+    flex: 0 0 calc(100vw - 4rem);
   }
-  
+
   .goals-gallery .gallery-track {
-    gap: 2.5rem;
+    gap: 2rem;
+    padding: 1rem 2rem;
   }
-  
+
   .project-card,
   .goal-card {
     padding: 2.5rem;
   }
-  
+
+  .project-card-content {
+    padding: 1.5rem 2rem 2rem 2rem;
+  }
+
+  .project-card-title {
+    font-size: 1.8rem;
+    padding-bottom: 1rem;
+  }
+
+  .project-card-description {
+    font-size: 1.3rem;
+    line-height: 1.5;
+  }
+
+  .tech-badge {
+    font-size: 1.1rem;
+    padding: 0.5rem 1rem;
+  }
+
   .project-title,
   .goal-title {
     font-size: 2rem;
   }
-  
+
+  .project-description {
+    font-size: 1.4rem;
+  }
+
+  .goal-description {
+    font-size: 1.4rem;
+  }
+
+  .projects-intro {
+    font-size: 1.6rem;
+  }
+
   .summary-card {
     padding: 3rem 2rem;
   }
-  
+
   .timeline-connector {
     display: none;
   }
-  
+
   .goal-item {
     margin-bottom: 2.5rem;
   }
-  
+
   .project-buttons {
     gap: 1.3rem;
   }
-  
+
   .secondary-buttons {
     justify-content: center;
+    flex-direction: column;
   }
-  
+
   .project-btn {
     padding: 1.1rem 2rem;
     font-size: 1.3rem;
+    width: 100%;
+  }
+
+  .text-featured,
+  .text-projects {
+    font-size: 6rem;
+  }
+
+  .text-my,
+  .text-goals {
+    font-size: 7rem;
+  }
+
+  .projects-background-text {
+    display: none;
+  }
+
+  .goals-background-text {
+    display: none;
+  }
+
+  .goal-scroll-item {
+    transform: scale(0.95) !important;
+    padding: 1.5rem;
+  }
+
+  .goal-icon {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .goal-icon i {
+    font-size: 2.5rem;
+  }
+
+  .project-icon {
+    width: 6rem;
+    height: 6rem;
+  }
+
+  .project-icon i {
+    font-size: 3rem;
+  }
+
+  .projects-cardswap-wrapper {
+    min-height: 450px;
   }
 }
 
 @media (max-width: 450px) {
-  .section-header h2 {
-    font-size: 3rem;
+  .projects-section-header h2,
+  .goals-section-header h2 {
+    font-size: 14rem;
+    opacity: 0.6;
   }
-  
+
+  .projects-section-header h2 span {
+    font-size: 10rem;
+    right: 10%;
+    top: 6rem;
+    opacity: 0.6;
+  }
+
+  .goals-section-header h2 span {
+    font-size: 9rem;
+    left: 20%;
+    margin-top: -1.5rem;
+    opacity: 0.6;
+  }
+
+  .section-header h2 {
+    font-size: 2.5rem;
+  }
+
   .projects-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .gallery-track .project-card {
-    flex: 0 0 300px;
+    flex: 0 0 calc(100vw - 3rem);
   }
-  
+
   .gallery-track {
-    gap: 2rem;
+    gap: 1.5rem;
+    padding: 1rem 1.5rem;
   }
-  
+
   .goals-gallery .gallery-track .goal-card {
-    flex: 0 0 300px;
+    flex: 0 0 calc(100vw - 3rem);
   }
-  
+
   .goals-gallery .gallery-track {
-    gap: 2rem;
+    gap: 1.5rem;
+    padding: 1rem 1.5rem;
   }
-  
+
   .project-card,
   .goal-card {
     padding: 2rem;
   }
-  
+
   .card-header {
     flex-direction: column;
     gap: 1.5rem;
     text-align: center;
   }
-  
+
   .tech-tags {
     justify-content: center;
   }
-  
+
   .goal-header {
     flex-direction: column;
     text-align: center;
     gap: 1.5rem;
   }
-  
+
   .project-buttons {
     gap: 1.2rem;
   }
-  
+
   .secondary-buttons {
     justify-content: center;
-    gap: 0.8rem;
+    gap: 1rem;
+    flex-direction: column;
   }
-  
+
   .project-btn {
     padding: 1rem 1.8rem;
+    font-size: 1.2rem;
+    min-width: auto;
+    width: 100%;
+  }
+
+  .text-featured,
+  .text-projects {
+    font-size: 4rem;
+    right: -30%;
+  }
+
+  .text-my,
+  .text-goals {
+    font-size: 5rem;
+  }
+
+  .projects-intro {
+    font-size: 1.4rem;
+  }
+
+  .project-title {
+    font-size: 1.8rem;
+  }
+
+  .goal-title {
+    font-size: 1.8rem;
+  }
+
+  .project-description,
+  .goal-description {
     font-size: 1.3rem;
-    min-width: 120px;
+  }
+
+  .tech-tag,
+  .tech-badge {
+    font-size: 1.1rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .projects-background-text,
+  .goals-background-text {
+    display: none;
+  }
+
+  .project-icon {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .project-icon i {
+    font-size: 2.5rem;
+  }
+
+  .goal-icon {
+    width: 4.5rem;
+    height: 4.5rem;
+  }
+
+  .goal-icon i {
+    font-size: 2.2rem;
+  }
+
+  .project-number {
+    font-size: 1.4rem;
+    padding: 0.6rem 1.2rem;
   }
 }

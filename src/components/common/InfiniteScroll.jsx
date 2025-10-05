@@ -16,27 +16,32 @@ function InfiniteScroll({
   useEffect(() => {
     if (!autoplay || !scrollRef.current) return;
 
-    let scrollPosition = 0;
     const container = scrollRef.current;
-    const scrollHeight = container.scrollHeight / 2;
 
-    const scroll = () => {
-      if (autoplayDirection === 'down') {
-        scrollPosition += autoplaySpeed;
-        if (scrollPosition >= scrollHeight) {
-          scrollPosition = 0;
+    const startAnimation = () => {
+      let scrollPosition = 0;
+      const contentHeight = container.scrollHeight / 2;
+
+      const scroll = () => {
+        if (autoplayDirection === 'down') {
+          scrollPosition += autoplaySpeed;
+          if (scrollPosition >= contentHeight) {
+            scrollPosition = 0;
+          }
+        } else {
+          scrollPosition -= autoplaySpeed;
+          if (scrollPosition <= 0) {
+            scrollPosition = contentHeight;
+          }
         }
-      } else {
-        scrollPosition -= autoplaySpeed;
-        if (scrollPosition <= 0) {
-          scrollPosition = scrollHeight;
-        }
-      }
-      container.scrollTop = scrollPosition;
+        container.scrollTop = scrollPosition;
+        animationRef.current = requestAnimationFrame(scroll);
+      };
+
       animationRef.current = requestAnimationFrame(scroll);
     };
 
-    animationRef.current = requestAnimationFrame(scroll);
+    setTimeout(startAnimation, 100);
 
     return () => {
       if (animationRef.current) {
@@ -55,18 +60,18 @@ function InfiniteScroll({
     if (pauseOnHover && autoplay && scrollRef.current) {
       let scrollPosition = scrollRef.current.scrollTop;
       const container = scrollRef.current;
-      const scrollHeight = container.scrollHeight / 2;
+      const contentHeight = container.scrollHeight / 2;
 
       const scroll = () => {
         if (autoplayDirection === 'down') {
           scrollPosition += autoplaySpeed;
-          if (scrollPosition >= scrollHeight) {
+          if (scrollPosition >= contentHeight) {
             scrollPosition = 0;
           }
         } else {
           scrollPosition -= autoplaySpeed;
           if (scrollPosition <= 0) {
-            scrollPosition = scrollHeight;
+            scrollPosition = contentHeight;
           }
         }
         container.scrollTop = scrollPosition;

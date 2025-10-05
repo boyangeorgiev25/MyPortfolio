@@ -99,7 +99,7 @@
 .home-content h3 {
   font-size: 3.2rem;
   font-weight: 700;
-  line-height: 0.3;
+  line-height: 1.2;
 }
 
 .name-part {
@@ -120,6 +120,7 @@
 
 .role-container {
   position: relative;
+  margin-top: 0.5rem;
   margin-bottom: 2rem;
   animation: fadeInUp 1s ease-out 1s both;
 }
@@ -938,6 +939,7 @@
   }
 
   .role-container {
+    margin-top: 0 !important;
     margin-bottom: 2rem !important;
   }
 

@@ -111,6 +111,7 @@ section {
 
 .role-container {
   position: relative;
+  margin-top: -1.6rem;
   margin-bottom: 2rem;
   animation: fadeInUp 1s ease-out 1s both;
 }
@@ -119,6 +120,7 @@ section {
   font-size: 3.2rem;
   color: var(--text-color);
   font-weight: 600;
+  line-height: 1.2;
   margin-bottom: 1rem;
 }
 
@@ -927,6 +929,10 @@ section {
 
   .role-text {
     font-size: 2rem;
+  }
+
+  .role-container {
+    margin-top: 0;
   }
   
   .main-desc {
