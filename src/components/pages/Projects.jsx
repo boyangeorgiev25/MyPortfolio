@@ -1,116 +1,91 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import CardSwap, { Card } from '../common/CardSwap';
 
 function Projects() {
-  // projects I've made so far
+  const navigate = useNavigate();
+
   const projects = [
     {
-      icon: "bx-world",
-      title: "🌍 WorldWise - Travel Tracker",
+      icon: 'bx-world',
+      title: '🌍 WorldWise - Travel Tracker',
       description:
-        "A comprehensive travel tracking application that allows users to log visited cities on an interactive map with personalized notes. Developed to strengthen skills in React Context API and complex state management patterns.",
-      technologies: "React 18, React Router DOM, CSS Modules, Context API",
-      githubLink: "https://github.com/boyangeorgiev25/worldwise",
-      liveDemo: "https://world-wise-v8jk.vercel.app",
-      link: "/project/worldwise",
+        'A comprehensive travel tracking application that allows users to log visited cities on an interactive map with personalized notes. Developed to strengthen skills in React Context API and complex state management patterns.',
+      technologies: 'React 18, React Router DOM, CSS Modules, Context API',
+      githubLink: 'https://github.com/boyangeorgiev25/worldwise',
+      liveDemo: 'https://world-wise-v8jk.vercel.app',
+      link: '/project/worldwise',
+      image: '/images/WorldWise1.png'
     },
     {
-      icon: "bx-package",
-      title: "🧳 Far Away – Packing List",
+      icon: 'bx-package',
+      title: '🧳 Far Away – Packing List',
       description:
-        "A practical packing list application featuring item management, completion tracking, sorting capabilities, and usage statistics. Built as a learning project to master React fundamentals and state management principles.",
-      technologies: "React, JavaScript, CSS, State Management",
-      githubLink: "https://github.com/boyangeorgiev25/Travel-list",
+        'A practical packing list application featuring item management, completion tracking, sorting capabilities, and usage statistics. Built as a learning project to master React fundamentals and state management principles.',
+      technologies: 'React, JavaScript, CSS, State Management',
+      githubLink: 'https://github.com/boyangeorgiev25/Travel-list',
       liveDemo: null,
-      link: "/project/far-away",
+      link: '/project/far-away',
+      image: '/images/travel.png'
     },
     {
-      icon: "bx-game",
-      title: "🎮 Quarto Game",
+      icon: 'bx-game',
+      title: '🎮 Quarto Game',
       description:
-        "A Java-based implementation of the Quarto board game featuring local multiplayer functionality and an intelligent AI opponent. First experience developing a complete GUI application, providing valuable insights into object-oriented design patterns.",
-      technologies: "Java 17, JavaFX, AI Logic, Rule-Based Strategy",
-      githubLink: "https://github.com/boyangeorgiev25/quarto-game",
+        'A Java-based implementation of the Quarto board game featuring local multiplayer functionality and an intelligent AI opponent. First experience developing a complete GUI application, providing valuable insights into object-oriented design patterns.',
+      technologies: 'Java 17, JavaFX, AI Logic, Rule-Based Strategy',
+      githubLink: 'https://github.com/boyangeorgiev25/quarto-game',
       liveDemo: null,
-      link: "/project/quarto",
+      link: '/project/quarto',
+      image: '/images/quarto1.png'
     },
   ];
 
   return (
     <section className="services projects-section" id="projects">
-      <div className="section-header">
-        <h2 className="heading">
-          Featured <span>Projects</span>
-        </h2>
+      <div className="section-header projects-section-header">
+        <h2>Featured <span>Projects</span></h2>
       </div>
 
-      <div className="projects-gallery">
-        <div className="gallery-container">
-          <div className="gallery-track">
-            {projects.map((project, index) => (
-              <div key={index} className="project-card">
-                <div className="card-header">
-                  <div className="project-icon">
-                    <i className={`bx ${project.icon}`}></i>
-                  </div>
-                </div>
-
-                <div className="card-content">
-                  <h3 className="project-title">{project.title}</h3>
-                  <p className="project-description">{project.description}</p>
-
-                  <div className="project-tech">
-                    <span className="tech-label">Technologies:</span>
-                    <div className="tech-tags">
-                      {project.technologies.split(", ").map((tech, i) => (
-                        <span key={i} className="tech-tag">
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                <div className="card-footer">
-                  <div className="project-buttons">
-                    <Link to={project.link} className="project-btn primary-btn">
-                      <span>View Details</span>
-                      <i className="bx bx-right-arrow-alt"></i>
-                    </Link>
-                    <div className="secondary-buttons">
-                      <a
-                        href={project.githubLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="project-btn github-btn"
-                      >
-                        <span>GitHub</span>
-                        <i className="bx bxl-github"></i>
-                      </a>
-                      {project.liveDemo && (
-                        <a
-                          href={project.liveDemo}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="project-btn live-demo-btn"
-                        >
-                          <span>Live Demo</span>
-                          <i className="bx bx-globe"></i>
-                        </a>
-                      )}
-                    </div>
-                  </div>
-                  <div className="card-glow"></div>
-                </div>
-              </div>
-            ))}
+      <div className="projects-layout">
+        <div className="projects-text-content">
+          <div className="projects-background-text">
+            <span className="text-featured">Featured</span>
+            <span className="text-projects">Projects</span>
           </div>
         </div>
 
-        <div className="gallery-indicators">
-          {projects.map((_, index) => (
-            <div key={index} className="gallery-dot"></div>
-          ))}
+        <div className="projects-cardswap-wrapper">
+          <CardSwap
+            width={600}
+            height={450}
+            cardDistance={80}
+            verticalDistance={90}
+            delay={4000}
+            pauseOnHover={true}
+            skewAmount={5}
+            easing="elastic"
+          >
+            {projects.map((project, index) => (
+              <Card
+                key={index}
+                customClass="project-swap-card"
+                onClick={() => navigate(project.link)}
+              >
+                <div className="project-card-content">
+                  <h3 className="project-card-title">{project.title}</h3>
+
+                  <p className="project-card-description">{project.description}</p>
+
+                  <div className="project-card-tech">
+                    {project.technologies.split(', ').slice(0, 3).map((tech, i) => (
+                      <span key={i} className="tech-badge">{tech}</span>
+                    ))}
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </CardSwap>
         </div>
       </div>
     </section>

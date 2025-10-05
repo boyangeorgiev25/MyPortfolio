@@ -1,8 +1,8 @@
 import React from 'react';
+import InfiniteScroll from '../common/InfiniteScroll';
 
 function Goals() {
-  // where I want to be eventually
-  let goals = [
+  const goals = [
     {
       icon: 'bx-trophy',
       title: 'Master Full-Stack Development',
@@ -29,50 +29,50 @@ function Goals() {
     }
   ];
 
+  const goalItems = goals.map(goal => ({
+    content: (
+      <div className="goal-scroll-item" style={{ transform: 'scale(0.85)' }}>
+        <div className="goal-icon">
+          <i className={`bx ${goal.icon}`}></i>
+        </div>
+        <div className="goal-content">
+          <h3 className="goal-title">{goal.title}</h3>
+          <span className="goal-timeline">{goal.timeline}</span>
+        </div>
+      </div>
+    )
+  }));
+
   return (
     <section className="services goals-section" id="goals">
-      <div className="section-header">
-        <h2 className="heading">My <span>Goals</span></h2>
-        <p className="section-description">
-          Where I\'m heading as a computer science student
-        </p>
+      <div className="section-header goals-section-header">
+        <h2>My <span>Goals</span></h2>
       </div>
 
-      <div className="goals-gallery">
-        <div className="gallery-container">
-          <div className="gallery-track">
-            {goals.map((goal, i) => (
-              <div key={i} className="goal-card">
-                <div className="card-header">
-                  <div className="goal-icon">
-                    <i className={`bx ${goal.icon}`}></i>
-                  </div>
-                </div>
-                
-                <div className="card-content">
-                  <h3 className="goal-title">{goal.title}</h3>
-                  <span className="goal-timeline">{goal.timeline}</span>
-                </div>
-              </div>
-            ))}
+      <div className="goals-layout">
+        <div className="goals-content">
+          <div style={{ height: '500px', width: '100%', position: 'relative' }}>
+            <InfiniteScroll
+              items={goalItems}
+              isTilted={true}
+              tiltDirection="left"
+              autoplay={true}
+              autoplaySpeed={1}
+              autoplayDirection="down"
+              pauseOnHover={false}
+            />
           </div>
         </div>
-        
-        <div className="gallery-indicators">
-          {goals.map((_, index) => (
-            <div key={index} className="gallery-dot"></div>
-          ))}
-        </div>
-      </div>
-      
-      <div className="goals-summary">
-        <div className="summary-card">
-          <h4>My Learning Path</h4>
-          <p>These goals guide my studies and development as a student, while staying flexible as I discover what aspects of programming I enjoy most.</p>
+
+        <div className="goals-text-content">
+          <div className="goals-background-text">
+            <span className="text-my">My</span>
+            <span className="text-goals">Goals</span>
+          </div>
         </div>
       </div>
     </section>
   );
-};
+}
 
 export default Goals;

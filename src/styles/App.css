@@ -47,24 +47,26 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 2rem 7%;
+    padding: 2rem 0;
     background: transparent;
-    display: flex;
-    align-items: center;
     z-index: 100;
     transition: .5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .header.sticky {
-    background: var(--bg-color);
-    box-shadow: 0 .1rem 1rem var(--shadow-color);
+    background: transparent;
+    box-shadow: none;
 }
 
 .logo {
     font-size: 2.5rem;
     color: var(--main-color);
     font-weight: 600;
-    margin-right: auto;
+    position: absolute;
+    right: 7%;
 }
 
 .navbar a {
@@ -990,4 +992,13 @@ img {
   background-color: #d1ecf1;
   color: #0c5460;
   border: 1px solid #bee5eb;
+}
+
+.variable-proximity-title {
+  font-size: 4.8rem;
+  font-weight: 400;
+  color: var(--text-color);
+  text-align: center;
+  cursor: default;
+  font-variation-settings: 'wght' 400;
 }

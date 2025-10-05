@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
 import { ThemeProvider } from './context/ThemeContext';
 import Header from './components/layout/Header';
 import Portfolio from './components/pages/Portfolio';
@@ -13,8 +12,6 @@ import FarAway from './components/projects/FarAway';
 import Quarto from './components/projects/Quarto';
 import LoadingScreen from './components/common/LoadingScreen';
 import ScrollToTop from './components/common/ScrollToTop';
-
-// css
 import './styles/App.css';
 import './styles/SectionTransitions.css';
 import './styles/EnhancedLayout.css';
@@ -25,22 +22,20 @@ import './styles/Blog.css';
 function App() {
   const [isLoading, setIsLoading] = useState(true);
 
-  // show loading screen for a bit
   useEffect(() => {
-    let timer = setTimeout(() => {
+    const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 1500); // 1.5s
+    }, 1500);
 
     return () => clearTimeout(timer);
   }, []);
 
-  // scroll stuff - took me forever to get this right
   useEffect(() => {
     const handleScroll = () => {
       const isHomeRoute = window.location.pathname === '/';
       const sections = document.querySelectorAll('section');
       const navLinks = document.querySelectorAll('header nav a');
-      
+
       if (isHomeRoute) {
         sections.forEach(sec => {
           const top = window.scrollY;
@@ -62,7 +57,6 @@ function App() {
         });
       }
 
-      // make header stick to top
       const header = document.querySelector('.header');
       if (header) {
         header.classList.toggle('sticky', window.scrollY > 100);

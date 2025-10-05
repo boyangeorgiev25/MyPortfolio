@@ -1,29 +1,39 @@
-import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import AnimatedCounter from "../common/AnimatedCounter";
-import { blogPosts } from "../../data/blogPosts";
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import AnimatedCounter from '../common/AnimatedCounter';
+import TextType from '../common/TextType';
+import ShinyText from '../common/ShinyText';
+import MagicBento from '../common/MagicBento';
+import { blogPosts } from '../../data/blogPosts';
 
 function Home() {
   const navigate = useNavigate();
-  const featuredBlogs = blogPosts.slice(0, 3); // just show first 3 posts
-  // scroll animations - borrowed this code from a tutorial
+  const featuredBlogs = blogPosts.slice(0, 3);
+
+  const blogCards = featuredBlogs.map(post => ({
+    color: 'transparent',
+    title: post.title,
+    description: post.excerpt.substring(0, 100) + '...',
+    label: new Date(post.date).toLocaleDateString('en-GB'),
+    onClick: () => navigate(`/blog/${post.id}`)
+  }));
+
   useEffect(() => {
-    import("scrollreveal").then(({ default: ScrollReveal }) => {
-      let sr = ScrollReveal({
-        distance: "80px",
+    import('scrollreveal').then(({ default: ScrollReveal }) => {
+      const sr = ScrollReveal({
+        distance: '80px',
         duration: 2000,
         delay: 200,
       });
 
-      // animate things coming from different directions
-      sr.reveal(".home-content, .heading", { origin: "top" });
+      sr.reveal('.home-content, .heading', { origin: 'top' });
       sr.reveal(
-        ".home-img img, .services-container, .portfolio-box, .testimonial-wrapper, .contact form",
-        { origin: "bottom" }
+        '.home-img img, .services-container, .portfolio-box, .testimonial-wrapper, .contact form',
+        { origin: 'bottom' }
       );
-      sr.reveal(".home-content h1, .about-img img", { origin: "left" });
-      sr.reveal(".home-content h3, .home-content p, .about-content", {
-        origin: "right",
+      sr.reveal('.home-content h1, .about-img img', { origin: 'left' });
+      sr.reveal('.home-content h3, .home-content p, .about-content', {
+        origin: 'right',
       });
     });
   }, []);
@@ -49,7 +59,15 @@ function Home() {
               <span className="name-part">Georgiev</span>
             </h1>
             <div className="role-container">
-              <h3 className="role-text">a Software Developer</h3>
+              <h3 className="role-text">
+                <TextType
+                  text={["a Software Developer", "a Web Designer", "a Problem Solver"]}
+                  typingSpeed={75}
+                  pauseDuration={1500}
+                  showCursor={true}
+                  cursorCharacter="|"
+                />
+              </h3>
               <div className="role-underline"></div>
             </div>
 
@@ -109,7 +127,7 @@ function Home() {
 
             <div className="cta-buttons">
               <a href="#contact" className="btn btn-primary">
-                Let's chat!
+                <ShinyText text="Let's chat!" speed={3} />
               </a>
             </div>
           </div>
@@ -117,44 +135,21 @@ function Home() {
 
         <div className="home-blog-container">
           <div className="home-blog-header">
-            <h3>What I've been writing about</h3>
+            <h3>Latest Insights & Ideas</h3>
           </div>
-          <div className="home-blog-grid">
-            {featuredBlogs.map((post) => (
-              <div
-                key={post.id}
-                className="home-blog-card"
-                onClick={() => navigate(`/blog/${post.id}`)}
-              >
-                <div className="blog-card-content">
-                  <div className="blog-card-meta">
-                    <span className="blog-date">
-                      {new Date(post.date).toLocaleDateString("en-GB")}
-                    </span>
-                    <span className="blog-read-time">{post.readTime}</span>
-                  </div>
-                  <h4>{post.title}</h4>
-                  <p>{post.excerpt.substring(0, 120)}...</p>
-                  <div className="blog-card-tags">
-                    {post.tags.slice(0, 2).map((tag, index) => (
-                      <span key={index} className="blog-mini-tag">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                {post.featured && <div className="featured-indicator">★</div>}
-              </div>
-            ))}
-          </div>
-          <div className="home-blog-cta">
-            <button
-              className="btn-view-all-blogs"
-              onClick={() => navigate("/blog")}
-            >
-              Read more blogs
-            </button>
-          </div>
+          <MagicBento
+            cards={blogCards}
+            textAutoHide={true}
+            enableStars={true}
+            enableSpotlight={true}
+            enableBorderGlow={true}
+            enableTilt={true}
+            enableMagnetism={true}
+            clickEffect={true}
+            spotlightRadius={350}
+            particleCount={15}
+            glowColor="117, 78, 249"
+          />
         </div>
       </section>
     </>

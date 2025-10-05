@@ -1,0 +1,86 @@
+.infinite-scroll-container {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+}
+
+.infinite-scroll-container.tilted-left {
+  transform: rotate(-5deg);
+}
+
+.infinite-scroll-container.tilted-right {
+  transform: rotate(5deg);
+}
+
+.infinite-scroll-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.infinite-scroll-item {
+  padding: 2.5rem 3rem;
+  background: linear-gradient(135deg, var(--bg-color), var(--second-bg-color));
+  border-radius: 2rem;
+  border: 2px solid rgba(117, 78, 249, 0.3);
+  min-height: 10rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  pointer-events: none;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.goal-scroll-item {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+}
+
+.goal-icon {
+  width: 6rem;
+  height: 6rem;
+  background: linear-gradient(135deg, var(--main-color), rgba(117, 78, 249, 0.8));
+  border-radius: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.goal-icon i {
+  font-size: 3rem;
+  color: white;
+}
+
+.goal-content {
+  flex: 1;
+  text-align: left;
+}
+
+.goal-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin: 0 0 0.5rem 0;
+  line-height: 1.3;
+}
+
+.goal-timeline {
+  font-size: 1.3rem;
+  color: var(--main-color);
+  background: rgba(117, 78, 249, 0.1);
+  padding: 0.4rem 1rem;
+  border-radius: 1rem;
+  font-weight: 600;
+}
+
+.infinite-scroll-item p {
+  font-size: 1.6rem;
+  color: var(--text-color);
+  margin: 0;
+}
