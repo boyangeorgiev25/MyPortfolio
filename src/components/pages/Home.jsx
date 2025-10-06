@@ -10,6 +10,12 @@ function Home() {
   const [history, setHistory] = useState([]);
   const [input, setInput] = useState("");
   const [typingComplete, setTypingComplete] = useState({});
+  const [isMobile, setIsMobile] = useState(() => {
+    if (typeof window === 'undefined') {
+      return false;
+    }
+    return window.innerWidth <= 768;
+  });
   const inputRef = useRef(null);
 
   const commands = {
@@ -133,6 +139,23 @@ share knowledge      docs, demos, and code reviews make the whole team stronger`
   };
 
   useEffect(() => {
+    if (typeof window === 'undefined') {
+      return undefined;
+    }
+
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
     import('scrollreveal').then(({ default: ScrollReveal }) => {
       const sr = ScrollReveal({
         distance: '80px',
@@ -247,65 +270,67 @@ share knowledge      docs, demos, and code reviews make the whole team stronger`
           </div>
         </div>
 
-        <div className="terminal-preview-section">
-          <h3 className="terminal-intro-text">Want to know more about me? <span>Ask here!</span></h3>
-          <div className="terminal-preview-card" onClick={handleTerminalClick}>
-            <div className="terminal-preview-header">
-              <div className="preview-buttons">
-                <span className="preview-button close"></span>
-                <span className="preview-button minimize"></span>
-                <span className="preview-button maximize"></span>
-              </div>
-              <div className="preview-title">boyan@portfolio:~</div>
-            </div>
-            <div className="terminal-preview-body">
-              <div className="terminal-line">
-                <span className="terminal-output">Last login: {new Date().toDateString()} {new Date().toLocaleTimeString()} on ttys000</span>
-              </div>
-              <div className="terminal-line">
-                <span className="terminal-output terminal-hint">Type 'help' to see available commands</span>
-              </div>
-              <div className="terminal-line terminal-spacer"></div>
-
-              {history.map((item, index) => (
-                <div key={item.id || index}>
-                  <div className="terminal-line">
-                    <span className="terminal-prompt">boyan@portfolio ~ %</span>
-                    <span className="terminal-command">{item.command}</span>
-                  </div>
-                  {item.response && (
-                    <div className="terminal-line">
-                      <span className="terminal-output">
-                        <TextType
-                          text={[item.response]}
-                          typingSpeed={15}
-                          showCursor={false}
-                          pauseDuration={999999}
-                          onComplete={() => handleTypingComplete(item.id)}
-                        />
-                      </span>
-                    </div>
-                  )}
+        {!isMobile && (
+          <div className="terminal-preview-section">
+            <h3 className="terminal-intro-text">Want to know more about me? <span>Ask here!</span></h3>
+            <div className="terminal-preview-card" onClick={handleTerminalClick}>
+              <div className="terminal-preview-header">
+                <div className="preview-buttons">
+                  <span className="preview-button close"></span>
+                  <span className="preview-button minimize"></span>
+                  <span className="preview-button maximize"></span>
                 </div>
-              ))}
+                <div className="preview-title">boyan@portfolio:~</div>
+              </div>
+              <div className="terminal-preview-body">
+                <div className="terminal-line">
+                  <span className="terminal-output">Last login: {new Date().toDateString()} {new Date().toLocaleTimeString()} on ttys000</span>
+                </div>
+                <div className="terminal-line">
+                  <span className="terminal-output terminal-hint">Type 'help' to see available commands</span>
+                </div>
+                <div className="terminal-line terminal-spacer"></div>
 
-              {(history.length === 0 || typingComplete[history[history.length - 1]?.id]) && (
-                <form onSubmit={handleSubmit} className="terminal-input-line">
-                  <span className="terminal-prompt">boyan@portfolio ~ %</span>
-                  <input
-                    ref={inputRef}
-                    type="text"
-                    value={input}
-                    onChange={(e) => setInput(e.target.value)}
-                    className="terminal-input"
-                    autoFocus
-                    spellCheck="false"
-                  />
-                </form>
-              )}
+                {history.map((item, index) => (
+                  <div key={item.id || index}>
+                    <div className="terminal-line">
+                      <span className="terminal-prompt">boyan@portfolio ~ %</span>
+                      <span className="terminal-command">{item.command}</span>
+                    </div>
+                    {item.response && (
+                      <div className="terminal-line">
+                        <span className="terminal-output">
+                          <TextType
+                            text={[item.response]}
+                            typingSpeed={15}
+                            showCursor={false}
+                            pauseDuration={999999}
+                            onComplete={() => handleTypingComplete(item.id)}
+                          />
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                ))}
+
+                {(history.length === 0 || typingComplete[history[history.length - 1]?.id]) && (
+                  <form onSubmit={handleSubmit} className="terminal-input-line">
+                    <span className="terminal-prompt">boyan@portfolio ~ %</span>
+                    <input
+                      ref={inputRef}
+                      type="text"
+                      value={input}
+                      onChange={(e) => setInput(e.target.value)}
+                      className="terminal-input"
+                      autoFocus
+                      spellCheck="false"
+                    />
+                  </form>
+                )}
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </section>
     </>
   );
