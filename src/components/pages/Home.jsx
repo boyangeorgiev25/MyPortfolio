@@ -19,86 +19,138 @@ function Home() {
   const inputRef = useRef(null);
 
   const commands = {
-    help: `about       overview of who i am
-journey     timeline of milestones
-skills      detailed technical stack
-experience  recent work and collaborations
-projects    highlighted builds
-blogs       recent writing`,
+    help: `available commands:
+─────────────────────────────────────────────────────
+  about       who i am and what i do
+  skills      technologies i work with
+  experience  work and projects
+  projects    featured builds
+  clear       clear terminal
+─────────────────────────────────────────────────────`,
 
-    about: `boyan georgiev - full-stack developer and student
+    about: `─────────────────────────────────────────────────────
+NAME:     Boyan Georgiev
+ROLE:     Full-Stack Developer & CS Student
+LOCATION: Belgium
+SCHOOL:   KdG University College
+          Applied Computer Science
+─────────────────────────────────────────────────────
+I specialize in building modern web apps
+with React, Node.js, and Three.js.
 
-location    belgium (open to remote and hybrid work)
-education   applied computer science @ kdg university college
-profile     i enjoy turning ideas into performant products and exploring immersive ui and ux
-looking for internships or collaborations where i can refine front-end craft and connect it with solid back-end engineering`,
+Currently working on freelance projects
+and exploring creative web technologies.
 
-    journey: `2021  started building python tooling and automation scripts
-2022  dove into web development with vanilla js, then moved to react and node
-2023  shipped class projects and hackathon prototypes; added java and c# desktop apps
-2024  portfolio revamp with three.js and webgl, freelance landing pages, ongoing bsc studies`,
+Passionate about creating performant,
+user-friendly applications with clean
+code and immersive experiences.`,
 
-    skills: `languages and runtimes
-  javascript / typescript (es2023)
-  python
-  c# (.net)
-  java
-  html5 / css3 / scss
+    skills: `─────────────────────────────────────────────────────
+languages/
+  javascript typescript python java c#
+  html5 css3 scss
 
-front-end
-  react with hooks, vite, beginnings of redux toolkit
-  three.js and react-three-fiber for 3d visuals
-  responsive design systems, tailwind, shadcn/ui
+frontend/
+  react (hooks, context, router)
+  three.js react-three-fiber
+  responsive-design tailwind
+  vite modern-build-tools
 
-back-end and tooling
-  node.js (express, fastify), rest api design
-  mysql, mongodb, prisma
-  docker, github actions, vercel, netlify
-  unit testing with vitest and jest
+backend/
+  node.js express rest-apis
+  mysql mongodb prisma
+  authentication authorization
 
-extras
-  figma and adobe xd collaboration
-  agile teamwork, jira, notion documentation`,
+devops/
+  git github docker
+  vercel netlify
+  vitest jest
 
-    experience: `freelance front-end developer (2023 - present)
-  designed and launched marketing sites and dashboards for student-led ventures
-  shipped a/b tested landing pages that improved sign-up conversions about 25 percent
+design/
+  figma adobe-xd
+  agile jira
+  technical-documentation
+─────────────────────────────────────────────────────`,
 
-university projects @ kdg
-  led a four person team building a campus event platform with react and express
-  created a java desktop inventory manager with a focus on clean architecture and testing
+    experience: `─────────────────────────────────────────────────────
+[jointly] august 2024 - present
+  > data analytics and monitoring
+  > python admin dashboard
+  > real-time visualization
+  > product development collaboration
 
-open-source and community
-  contributed ui tweaks and documentation to student clubs and local hackathons
-  mentored peers on git workflows and deployment best practices`,
+[freelance] 2023 - present
+  > responsive websites for businesses
+  > landing pages (+25% conversions)
+  > interactive dashboards
+  > client collaboration
 
-    projects: `react portfolio 2.0
-  immersive personal site using react, three.js lanyard animation, vite
+[kdg university]
+  > led 4-person team (event platform)
+  > java desktop application
+  > rest apis & database integration
+  > agile development & code reviews
 
-quarto scorekeeper
-  desktop game assistant built with javafx to track gameplay logic and scoring
+[community]
+  > open-source contributions
+  > git workflow mentoring
+  > hackathons and coding events
+─────────────────────────────────────────────────────`,
 
-habit pulse
-  habit tracking web app with react, express, mongodb, and realtime charts
+    projects: `─────────────────────────────────────────────────────
+worldwise/
+  travel logging app with interactive maps
+  react 18, context api, leaflet
+  [live demo available]
 
-codex playground
-  experimental cli-inspired interface to teach git and terminal commands`,
+far-away/
+  smart packing list with sorting
+  react, state management, local storage
+  [practical travel tool]
 
-    blogs: `2024-03  shipped a deep-dive on react performance tuning and code-splitting
-2024-01  wrote about balancing university projects with freelance work
-2023-11  reflected on lessons from building the quarto scorekeeper desktop app
+quarto-game/
+  desktop game with ai opponent
+  java, javafx, game logic
+  [first major java project]
 
-full archive coming soon on my upcoming blog section`,
+jointly-dashboard/
+  python analytics dashboard
+  real-time monitoring & visualization
+  [production monitoring tool]
 
-    'cd blogs': `navigating to blog page...
-launching /blog route`,
+portfolio-v2/
+  this website! 3d animations
+  react, three.js, vite
+  [you are here]
+─────────────────────────────────────────────────────
+run 'cd /projects' to view details`,
 
-    philosophy: `engineering philosophy
+    philosophy: `─────────────────────────────────────────────────────
+## user-first design
+every feature should solve a real problem
+if it doesn't help the user, it doesn't
+belong in the product
 
-ship thoughtfully    focus on features that solve real user pains
-tell the story       clean ui, helpful copy, accessible flows
-never stop learning  every project is a chance to add a new tool to the stack
-share knowledge      docs, demos, and code reviews make the whole team stronger`,
+## code is craft
+write clean, readable code that others
+(and future you) can understand
+good code tells a story
+
+## ship and iterate
+perfect is the enemy of done
+launch, learn, and improve
+real feedback beats endless planning
+
+## never stop learning
+technology evolves constantly
+stay curious, experiment with new tools
+don't be afraid to rebuild
+
+## knowledge sharing
+document your work, help others learn
+contribute to the community
+we all grow faster together
+─────────────────────────────────────────────────────`,
 
     clear: "CLEAR"
   };
@@ -115,7 +167,7 @@ share knowledge      docs, demos, and code reviews make the whole team stronger`
       return;
     }
 
-    const response = commands[trimmedInput] || `command not found: ${trimmedInput}\ntype 'help' for available commands`;
+    const response = commands[trimmedInput] || commands[trimmedInput.charAt(0)] || `command not found: ${trimmedInput}\ntype 'help' for available commands`;
 
     const newId = Date.now();
     setHistory([...history, { command: input, response, id: newId }]);
