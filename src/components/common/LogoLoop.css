@@ -1,0 +1,93 @@
+.logo-loop-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.logo-track {
+  display: flex;
+  width: max-content;
+  animation: scroll var(--animation-duration, 20s) linear infinite;
+  animation-direction: var(--animation-direction, normal);
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.logo-loop-container.pause-on-hover .logo-track:hover {
+  animation-play-state: paused;
+}
+
+.logo-group {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.logo-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+  flex-shrink: 0;
+}
+
+.logo-item.scale-on-hover:hover {
+  transform: scale(1.2);
+}
+
+.logo-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color);
+  transition: color 0.3s ease;
+}
+
+.logo-item:hover .logo-icon {
+  color: var(--main-color, #754ef9);
+}
+
+.logo-item img {
+  display: block;
+  width: auto;
+  object-fit: contain;
+}
+
+.logo-loop-container.fade-out::before,
+.logo-loop-container.fade-out::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.logo-loop-container.fade-out::before {
+  left: 0;
+  background: linear-gradient(to right, var(--fade-color, #ffffff), transparent);
+}
+
+.logo-loop-container.fade-out::after {
+  right: 0;
+  background: linear-gradient(to left, var(--fade-color, #ffffff), transparent);
+}
+
+@media (max-width: 768px) {
+  .logo-track {
+    animation-duration: calc(var(--animation-duration, 20s) * 0.7);
+  }
+}

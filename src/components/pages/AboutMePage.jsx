@@ -1,286 +1,219 @@
-import React from "react";
-import AnimatedCounter from "../common/AnimatedCounter";
+import { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import TextType from "../common/TextType";
 import "./AboutMePage.css";
 
 function AboutMePage() {
+  const [history, setHistory] = useState([]);
+  const [input, setInput] = useState("");
+  const [typingComplete, setTypingComplete] = useState({});
+  const navigate = useNavigate();
+  const inputRef = useRef(null);
+
+  const commands = {
+    help: `about       overview of who i am
+journey     timeline of milestones
+skills      detailed technical stack
+experience  recent work and collaborations
+projects    highlighted builds
+blogs       recent writing`,
+
+    about: `boyan georgiev - full-stack developer and student
+
+location    belgium (open to remote and hybrid work)
+education   applied computer science @ kdg university college
+profile     i enjoy turning ideas into performant products and exploring immersive ui and ux
+looking for internships or collaborations where i can refine front-end craft and connect it with solid back-end engineering`,
+
+    journey: `2021  started building python tooling and automation scripts
+2022  dove into web development with vanilla js, then moved to react and node
+2023  shipped class projects and hackathon prototypes; added java and c# desktop apps
+2024  portfolio revamp with three.js and webgl, freelance landing pages, ongoing bsc studies`,
+
+    skills: `languages and runtimes
+  javascript / typescript (es2023)
+  python
+  c# (.net)
+  java
+  html5 / css3 / scss
+
+front-end
+  react with hooks, vite, beginnings of redux toolkit
+  three.js and react-three-fiber for 3d visuals
+  responsive design systems, tailwind, shadcn/ui
+
+back-end and tooling
+  node.js (express, fastify), rest api design
+  mysql, mongodb, prisma
+  docker, github actions, vercel, netlify
+  unit testing with vitest and jest
+
+extras
+  figma and adobe xd collaboration
+  agile teamwork, jira, notion documentation`,
+
+    experience: `freelance front-end developer (2023 - present)
+  designed and launched marketing sites and dashboards for student-led ventures
+  shipped a/b tested landing pages that improved sign-up conversions about 25 percent
+
+university projects @ kdg
+  led a four person team building a campus event platform with react and express
+  created a java desktop inventory manager with a focus on clean architecture and testing
+
+open-source and community
+  contributed ui tweaks and documentation to student clubs and local hackathons
+  mentored peers on git workflows and deployment best practices`,
+
+    projects: `react portfolio 2.0
+  immersive personal site using react, three.js lanyard animation, vite
+
+quarto scorekeeper
+  desktop game assistant built with javafx to track gameplay logic and scoring
+
+habit pulse
+  habit tracking web app with react, express, mongodb, and realtime charts
+
+codex playground
+  experimental cli-inspired interface to teach git and terminal commands`,
+
+    blogs: `2024-03  shipped a deep-dive on react performance tuning and code-splitting
+2024-01  wrote about balancing university projects with freelance work
+2023-11  reflected on lessons from building the quarto scorekeeper desktop app
+
+full archive coming soon on my upcoming blog section`,
+
+    'cd home': `navigating to home...
+returning to base directory /`,
+
+    'cd projects': `navigating to projects...
+opening projects section on home`,
+
+    'cd blogs': `navigating to blog page...
+launching /blog route`,
+
+    philosophy: `engineering philosophy
+
+ship thoughtfully    focus on features that solve real user pains
+tell the story       clean ui, helpful copy, accessible flows
+never stop learning  every project is a chance to add a new tool to the stack
+share knowledge      docs, demos, and code reviews make the whole team stronger`,
+
+    clear: "CLEAR"
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const trimmedInput = input.trim().toLowerCase();
+
+    if (!trimmedInput) return;
+
+    if (trimmedInput === "clear") {
+      setHistory([]);
+      setInput("");
+      return;
+    }
+
+    const response = commands[trimmedInput] || `command not found: ${trimmedInput}\ntype 'help' for available commands`;
+
+    const newId = Date.now();
+    setHistory([...history, { command: input, response, id: newId }]);
+    setTypingComplete({ ...typingComplete, [newId]: false });
+    setInput("");
+
+    if (trimmedInput === "cd blogs") {
+      navigate("/blog");
+      return;
+    }
+
+    if (trimmedInput === "cd home") {
+      navigate("/");
+      return;
+    }
+
+    if (trimmedInput === "cd projects") {
+      navigate("/");
+      setTimeout(() => {
+        const section = document.getElementById("projects");
+        if (section) {
+          section.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 250);
+      return;
+    }
+  };
+
+  const handleTypingComplete = (id) => {
+    setTypingComplete({ ...typingComplete, [id]: true });
+  };
+
+  const handleTerminalClick = () => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
+
   return (
     <div className="about-me-page">
-      <div className="about-me-hero">
-        <div className="hero-background">
-          <div className="hero-shapes">
-            <div className="shape shape-1"></div>
-            <div className="shape shape-2"></div>
-            <div className="shape shape-3"></div>
+      <div className="about-me-container">
+        <h1 className="about-me-title">
+          <span className="title-bracket">{'<'}</span>
+          About Me
+          <span className="title-bracket">{'/>'}</span>
+        </h1>
+        <div className="terminal-window" onClick={handleTerminalClick}>
+          <div className="terminal-header">
+            <div className="terminal-buttons">
+              <span className="terminal-button close"></span>
+              <span className="terminal-button minimize"></span>
+              <span className="terminal-button maximize"></span>
+            </div>
+            <div className="terminal-title">boyan@portfolio:~</div>
           </div>
-        </div>
-        <div className="hero-content">
-          <div className="hero-text">
-            <h1>
-              About <span>Me</span>
-            </h1>
-            <h2>Boyan Georgiev</h2>
-            <p className="hero-subtitle">
-              Full-Stack Developer & Computer Science Student
-            </p>
-            <div className="hero-stats">
-              <div className="stat-item">
-                <AnimatedCounter
-                  end="2"
-                  suffix="+"
-                  duration={3000}
-                  delay={600}
+          <div className="terminal-body">
+            <div className="terminal-line">
+              <span className="terminal-output">Last login: {new Date().toDateString()} {new Date().toLocaleTimeString()} on ttys000</span>
+            </div>
+            <div className="terminal-line">
+              <span className="terminal-output terminal-hint">Type 'help' to see available commands</span>
+            </div>
+            <div className="terminal-line terminal-spacer"></div>
+
+            {history.map((item, index) => (
+              <div key={item.id || index}>
+                <div className="terminal-line">
+                  <span className="terminal-prompt">boyan@portfolio ~ %</span>
+                  <span className="terminal-command">{item.command}</span>
+                </div>
+                {item.response && (
+                  <div className="terminal-line">
+                    <span className="terminal-output">
+                      <TextType
+                        text={[item.response]}
+                        typingSpeed={15}
+                        showCursor={false}
+                        pauseDuration={999999}
+                        onComplete={() => handleTypingComplete(item.id)}
+                      />
+                    </span>
+                  </div>
+                )}
+              </div>
+            ))}
+
+            {(history.length === 0 || typingComplete[history[history.length - 1]?.id]) && (
+              <form onSubmit={handleSubmit} className="terminal-input-line">
+                <span className="terminal-prompt">boyan@portfolio ~ %</span>
+                <input
+                  ref={inputRef}
+                  type="text"
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  className="terminal-input"
+                  autoFocus
+                  spellCheck="false"
                 />
-                <span className="stat-label">years of experience</span>
-              </div>
-              <div className="stat-item">
-                <AnimatedCounter
-                  end="15"
-                  suffix="+"
-                  duration={3500}
-                  delay={900}
-                />
-                <span className="stat-label">projects completed</span>
-              </div>
-              <div className="stat-item">
-                <AnimatedCounter
-                  end="5"
-                  suffix="+"
-                  duration={4000}
-                  delay={1200}
-                />
-                <span className="stat-label">technologies mastered</span>
-              </div>
-            </div>
-          </div>
-          <div className="hero-image">
-            <div className="image-container">
-              <img
-                src="/images/AboutMe1.png"
-                alt="Boyan Georgiev"
-                className="about-me-photo"
-              />
-              <div className="image-decoration">
-                <div className="decoration-circle"></div>
-                <div className="decoration-dots"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="about-me-content">
-        <div className="content-grid">
-          <div className="story-section">
-            <div className="section-icon">
-              <i className="bx bx-book-heart"></i>
-            </div>
-            <h3>How I got here</h3>
-            <div className="story-content">
-              <p>
-                I'm currently studying Applied Computer Science at KDG
-                University College in Belgium, having relocated from Bulgaria to
-                pursue my passion for technology. My journey into web
-                development began with curiosity about how websites function,
-                which quickly evolved into a genuine enthusiasm for creating
-                meaningful digital solutions.
-              </p>
-              <p>
-                What drives me most is developing applications that address
-                real-world challenges. There's immense satisfaction in building
-                something that genuinely improves users' experiences and makes
-                their daily tasks more efficient.
-              </p>
-            </div>
-          </div>
-
-          <div className="philosophy-section">
-            <div className="section-icon">
-              <i className="bx bx-bulb"></i>
-            </div>
-            <h3>How I think about code</h3>
-            <div className="philosophy-card">
-              <blockquote>
-                "Quality code should be functional, maintainable, and
-                purposeful. Every line should serve a clear need and be
-                understandable to future developers, including my future self."
-              </blockquote>
-              <p>
-                I focus on writing clean, efficient code that performs well and
-                handles various use cases gracefully. My approach emphasizes
-                readability and robust functionality while continuously learning
-                from each project.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <section className="skills-section">
-          <h3>Technical Skills & Expertise</h3>
-          <div className="skills-grid">
-            <div className="skill-category">
-              <h4>Programming Languages</h4>
-              <ul>
-                <li>JavaScript (ES6+)</li>
-                <li>Python</li>
-                <li>C#</li>
-                <li>Java</li>
-                <li>HTML5 & CSS3</li>
-              </ul>
-            </div>
-            <div className="skill-category">
-              <h4>Frontend Development</h4>
-              <ul>
-                <li>React.js</li>
-                <li>Responsive Design</li>
-                <li>CSS Frameworks</li>
-              </ul>
-            </div>
-            <div className="skill-category">
-              <h4>Backend Development</h4>
-              <ul>
-                <li>Node.js</li>
-                <li>Express.js</li>
-                <li>WebSocket</li>
-                <li>RESTful APIs</li>
-                <li>Database Design</li>
-              </ul>
-            </div>
-            <div className="skill-category">
-              <h4>Development Tools & Platforms</h4>
-              <ul>
-                <li>Git & GitHub</li>
-                <li>Vite & Build Tools</li>
-                <li>Docker</li>
-                <li>VS Code</li>
-                <li>Command Line</li>
-              </ul>
-            </div>
-            <div className="skill-category">
-              <h4>Currently Learning</h4>
-              <ul>
-                <li>TypeScript</li>
-                <li>Next.js</li>
-                <li>GraphQL</li>
-                <li>Cloud Platforms</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <section className="education-section">
-          <h3>My journey so far</h3>
-          <div className="timeline">
-            <div className="timeline-item">
-              <div className="timeline-date">2023</div>
-              <div className="timeline-content">
-                <h4>SoftUni C# Programming Course</h4>
-                <p>
-                  Completed comprehensive C# programming course covering
-                  fundamentals, Object-Oriented Programming (OOP), database
-                  management with MySQL, and Entity Framework. This foundation
-                  prepared me for university-level computer science studies.
-                </p>
-              </div>
-            </div>
-            <div className="timeline-item">
-              <div className="timeline-date">2024 - 2027</div>
-              <div className="timeline-content">
-                <h4>
-                  Karel de Grote University College (KDG) - Applied Computer
-                  Science
-                </h4>
-                <p>
-                  Pursuing Applied Computer Science degree, building on C#
-                  foundation with Java, algorithms, and system architecture.
-                  Successfully completed first year and exploring modern web
-                  technologies, leading to internship opportunities.
-                </p>
-              </div>
-            </div>
-            <div className="timeline-item">
-              <div className="timeline-date">2025</div>
-              <div className="timeline-content">
-                <h4>React Native Internship at Jointly</h4>
-                <p>
-                  Successfully completed first year at KDG and secured an
-                  internship position at Jointly, focusing on React Native
-                  mobile application development. Applying academic knowledge to
-                  real-world projects and gaining industry experience.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="interests-section">
-          <h3>When I'm not coding</h3>
-          <div className="interests-grid">
-            <div className="interest-item">
-              <i className="bx bx-camera"></i>
-              <h4>Photography</h4>
-              <p>
-                I love capturing moments and finding interesting angles in
-                everyday scenes. There's something satisfying about framing the
-                perfect shot and seeing the world through a different lens.
-              </p>
-            </div>
-            <div className="interest-item">
-              <i className="bx bx-video"></i>
-              <h4>Video Creation</h4>
-              <p>
-                I enjoy editing videos and experimenting with different effects
-                to tell stories. It's fascinating how you can piece together
-                footage to create something completely new and engaging.
-              </p>
-            </div>
-            <div className="interest-item">
-              <i className="bx bx-book"></i>
-              <h4>Tech Exploration</h4>
-              <p>
-                I'm constantly watching tutorials, reading about new frameworks,
-                and diving into tech rabbit holes. The field moves so fast, and
-                there's always something exciting to discover.
-              </p>
-            </div>
-            <div className="interest-item">
-              <i className="bx bx-group"></i>
-              <h4>Developer Community</h4>
-              <p>
-                I genuinely enjoy connecting with other developers and
-                discussing the latest tech trends. It's great to share knowledge
-                and learn from people who are just as passionate about code.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <div className="contact-cta">
-          <h3>Let's connect</h3>
-          <div className="social-links">
-            <a
-              href="https://github.com/boyangeorgiev25"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <i className="bx bxl-github"></i>
-            </a>
-            <a
-              href="https://www.linkedin.com/in/boyan-georgiev-08853329b/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <i className="bx bxl-linkedin"></i>
-            </a>
-            <a
-              href="https://www.instagram.com/boqn_g/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <i className="bx bxl-instagram-alt"></i>
-            </a>
-            <a href="mailto:boqng25@gmail.com">
-              <i className="bx bx-envelope"></i>
-            </a>
+              </form>
+            )}
           </div>
         </div>
       </div>

@@ -6,12 +6,14 @@ const TextType = ({
   pauseDuration = 1500,
   showCursor = true,
   cursorCharacter = '|',
+  onComplete,
 }) => {
   const [displayText, setDisplayText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
+  const [hasCompleted, setHasCompleted] = useState(false);
 
   useEffect(() => {
     if (text.length === 0) return;
@@ -33,6 +35,10 @@ const TextType = ({
       }, typingSpeed);
       return () => clearTimeout(timeout);
     } else if (!isDeleting && charIndex === currentText.length) {
+      if (!hasCompleted && onComplete) {
+        setHasCompleted(true);
+        onComplete();
+      }
       setIsPaused(true);
     } else if (isDeleting && charIndex > 0) {
       const timeout = setTimeout(() => {

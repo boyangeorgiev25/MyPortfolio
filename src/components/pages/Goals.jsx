@@ -55,9 +55,9 @@ function Goals() {
             <InfiniteScroll
               items={goalItems}
               isTilted={true}
-              tiltDirection="left"
+              tiltDirection="right"
               autoplay={true}
-              autoplaySpeed={1}
+              autoplaySpeed={0.5}
               autoplayDirection="down"
               pauseOnHover={false}
             />

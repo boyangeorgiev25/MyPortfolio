@@ -1,0 +1,239 @@
+.pc-card-wrapper {
+  --card-opacity: 1;
+  --pointer-x: 50%;
+  --pointer-y: 50%;
+  --background-x: 50%;
+  --background-y: 50%;
+  --pointer-from-center: 0;
+  --pointer-from-top: 0;
+  --pointer-from-left: 0;
+  --rotate-x: 0deg;
+  --rotate-y: 0deg;
+
+  width: 100%;
+  height: 100%;
+  perspective: 1000px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pc-card {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 2/3;
+  border-radius: 20px;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+  will-change: transform;
+}
+
+.pc-card-wrapper.active .pc-card {
+  transform: rotateX(var(--rotate-y)) rotateY(var(--rotate-x));
+}
+
+.pc-inside {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--inner-gradient);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.pc-inside::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--behind-gradient);
+  opacity: var(--card-opacity);
+  z-index: 0;
+}
+
+.pc-inside::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--grain);
+  opacity: 0.3;
+  mix-blend-mode: overlay;
+  z-index: 3;
+}
+
+.pc-shine {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at var(--pointer-x) var(--pointer-y),
+    rgba(255, 255, 255, 0.4) 0%,
+    rgba(255, 255, 255, 0.1) 20%,
+    transparent 50%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.pc-card-wrapper.active .pc-shine {
+  opacity: 1;
+}
+
+.pc-glare {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.pc-card-wrapper.active .pc-glare {
+  opacity: calc(var(--pointer-from-center) * 0.5);
+}
+
+.pc-content {
+  position: relative;
+  z-index: 4;
+  padding: 2rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  pointer-events: none;
+}
+
+.pc-avatar-content {
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 2rem;
+}
+
+.pc-content .avatar {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  margin-bottom: 1rem;
+}
+
+.pc-user-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(10px);
+}
+
+.pc-user-details {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.pc-mini-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.pc-mini-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pc-user-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.pc-handle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+}
+
+.pc-status {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.pc-contact-btn {
+  padding: 0.5rem 1.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  pointer-events: auto;
+}
+
+.pc-contact-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: scale(1.05);
+}
+
+.pc-details {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  right: 2rem;
+}
+
+.pc-details h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  margin: 0 0 0.5rem 0;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.pc-details p {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+  .pc-card {
+    max-width: 100%;
+  }
+
+  .pc-content .avatar {
+    width: 150px;
+    height: 150px;
+  }
+
+  .pc-user-info {
+    padding: 1rem;
+  }
+
+  .pc-details {
+    top: 1rem;
+    left: 1rem;
+    right: 1rem;
+  }
+}

@@ -12,12 +12,14 @@
 }
 
 :root {
-    --bg-color: #fdfdfd;
-    --text-color: #333;
+    --bg-color: #ffffff;
+    --text-color: #1a1a2e;
     --main-color: #754ef9;
-    --white-color: #fdfdfd;
-    --shadow-color: rgba(0, 0, 0, .2);
-    --second-bg-color: #f8f8f8;
+    --white-color: #ffffff;
+    --shadow-color: rgba(117, 78, 249, 0.15);
+    --second-bg-color: #f5f7fa;
+    --accent-color: #07c6ff;
+    --border-color: rgba(117, 78, 249, 0.1);
 }
 
 *::selection {
@@ -38,8 +40,23 @@ html {
 }
 
 body {
-    background: var(--bg-color);
+    background: linear-gradient(135deg, #ffffff 0%, #f5f7fa 50%, #ffffff 100%);
     color: var(--text-color);
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(circle at 20% 30%, rgba(117, 78, 249, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(7, 198, 255, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
 }
 
 .header {
@@ -395,19 +412,37 @@ span {
 
 .services-container .services-box {
     flex: 1 1 30rem;
-    background: var(--bg-color);
+    background: var(--white-color);
     padding: 3rem 2rem 4rem;
     border-radius: 2rem;
-    box-shadow: 0 .1rem .5rem var(--shadow-color);
+    box-shadow: 0 0.5rem 2rem rgba(117, 78, 249, 0.08);
     text-align: center;
-    border-top: .6rem solid var(--main-color);
-    border-bottom: .6rem solid var(--main-color);
+    border: 2px solid var(--border-color);
     transition: .5s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.services-container .services-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--main-color), var(--accent-color));
+    transform: scaleX(0);
+    transition: transform 0.5s ease;
+}
+
+.services-container .services-box:hover::before {
+    transform: scaleX(1);
 }
 
 .services-container .services-box:hover {
-    box-shadow: 0 .1rem 2rem var(--shadow-color);
-    transform: scale(1.02);
+    box-shadow: 0 1rem 3rem rgba(117, 78, 249, 0.15);
+    transform: translateY(-5px);
+    border-color: var(--main-color);
 }
 
 .services-box i {
@@ -533,12 +568,23 @@ span {
     display: flex;
     align-items: center;
     flex-direction: column;
-    background: var(--bg-color);
+    background: var(--white-color);
     border-radius: 2rem;
-    box-shadow: 0 .1rem .5rem var(--shadow-color);
+    box-shadow: 0 0.5rem 2rem rgba(117, 78, 249, 0.08);
     padding: 3rem 5rem;
-    border-top: .8rem solid var(--main-color);
-    border-bottom: .8rem solid var(--main-color);
+    border: 2px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.testimonial-content .testimonial-slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--main-color), var(--accent-color));
 }
 
 .testimonial-slide img {
@@ -609,10 +655,19 @@ span {
     padding: 1.5rem;
     font-size: 1.6rem;
     color: var(--text-color);
-    background: var(--bg-color);
+    background: var(--second-bg-color);
     border-radius: .8rem;
     margin: .7rem 0;
-    box-shadow: 0 .1rem .5rem var(--shadow-color);
+    box-shadow: 0 0.3rem 1rem rgba(117, 78, 249, 0.08);
+    border: 2px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.contact form .input-box input:focus,
+.contact form textarea:focus {
+    border-color: var(--main-color);
+    box-shadow: 0 0.5rem 1.5rem rgba(117, 78, 249, 0.15);
+    outline: none;
 }
 
 .contact form .input-box input {

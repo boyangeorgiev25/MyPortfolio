@@ -6,10 +6,10 @@ import './Header.css';
 
 const NAV_ITEMS = [
   { key: 'home', icon: 'bx-home', label: 'Home', type: 'scroll', target: 'home' },
-  { key: 'about', icon: 'bx-user', label: 'About', type: 'route', target: '/about-me' },
-  { key: 'projects', icon: 'bx-briefcase', label: 'Projects', type: 'scroll', target: 'projects' },
+  { key: 'about', icon: 'bx-user', label: 'About', type: 'route', target: '/about-me', mobileOnly: true },
+  { key: 'projects', icon: 'bx-briefcase', label: 'Projects', type: 'scroll', target: 'projects', desktopOnly: true },
   { key: 'blog', icon: 'bx-news', label: 'Blog', type: 'route', target: '/blog', matchPrefix: true },
-  { key: 'contact', icon: 'bx-envelope', label: 'Contact', type: 'scroll', target: 'contact' }
+  { key: 'contact', icon: 'bx-envelope', label: 'Contact', type: 'scroll', target: 'contact', desktopOnly: true }
 ];
 
 function Header() {
@@ -86,7 +86,7 @@ function Header() {
       {isMobile ? (
         <div className="mobile-nav-wrapper">
           <nav className="mobile-nav">
-            {NAV_ITEMS.map((item) => {
+            {NAV_ITEMS.filter(item => !item.desktopOnly).map((item) => {
               const href = item.type === 'route' ? item.target : `#${item.target}`;
               const isActive = item.type === 'route'
                 ? (item.matchPrefix ? location.pathname.startsWith(item.target) : location.pathname === item.target)
@@ -119,18 +119,18 @@ function Header() {
         <GlassSurface
           width="auto"
           height="auto"
-          borderRadius={50}
-          displace={12}
-          distortionScale={-120}
+          borderRadius={30}
+          displace={8}
+          distortionScale={-100}
           redOffset={0}
-          greenOffset={8}
-          blueOffset={15}
+          greenOffset={6}
+          blueOffset={12}
           brightness={60}
           opacity={0.95}
           className="header-glass-navbar"
         >
           <nav className="navbar text-navbar">
-            {NAV_ITEMS.map((item) => {
+            {NAV_ITEMS.filter(item => !item.mobileOnly).map((item) => {
               const href = item.type === 'scroll' ? `#${item.target}` : item.target;
               const activeClass = isRouteActive(item) ? 'active' : '';
 

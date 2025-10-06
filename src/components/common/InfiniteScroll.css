@@ -2,13 +2,12 @@
   height: 100%;
   width: 100%;
   overflow: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
   position: relative;
   mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
   scrollbar-width: none;
   -ms-overflow-style: none;
-  pointer-events: none;
 }
 
 .infinite-scroll-container::-webkit-scrollbar {
@@ -39,7 +38,6 @@
   display: flex;
   align-items: center;
   gap: 2rem;
-  pointer-events: none;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 

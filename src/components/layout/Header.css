@@ -13,13 +13,13 @@
 
 .header-glass-navbar {
     position: absolute !important;
-    top: 3rem !important;
+    top: 1.5rem !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
     display: inline-flex !important;
     align-items: center !important;
-    gap: 2rem !important;
-    padding: 1.2rem 2rem !important;
+    gap: 1.2rem !important;
+    padding: 0.6rem 1.2rem !important;
     backdrop-filter: blur(20px) !important;
     -webkit-backdrop-filter: blur(20px) !important;
 }
@@ -51,14 +51,14 @@
 .text-navbar {
     display: flex;
     align-items: center;
-    gap: 2.4rem;
+    gap: 1.4rem;
 }
 
 .text-navbar a {
     position: relative;
-    font-size: 1.7rem;
+    font-size: 1.4rem;
     color: var(--text-color);
-    font-weight: 500;
+    font-weight: 600;
     transition: color 0.3s ease;
 }
 
@@ -116,16 +116,16 @@
     background: none !important;
     background-color: transparent !important;
     box-shadow: none !important;
-    appearance: none;
     -webkit-appearance: none;
-    font-size: 2.4rem;
+    appearance: none;
+    font-size: 1.8rem;
     color: var(--text-color);
     cursor: pointer;
     transition: transform 0.3s ease, color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .mode-toggle i {
-    font-size: 2.4rem;
+    font-size: 1.8rem;
     line-height: 1;
     color: inherit;
     background: none;
@@ -140,8 +140,7 @@
 }
 
 .mode-toggle:focus {
-    outline: 2px solid var(--main-color);
-    outline-offset: 2px;
+    outline: none;
 }
 
 .header:not(.sticky) .mode-toggle {
@@ -160,7 +159,7 @@
 }
 
 #darkMode-icon {
-    font-size: 2.4rem;
+    font-size: 1.8rem;
 }
 
 #menu-icon {
@@ -197,7 +196,7 @@
     align-items: center;
     justify-content: space-around;
     gap: 0.4rem;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(0, 0, 0, 0.75);
     backdrop-filter: blur(30px) saturate(180%);
     -webkit-backdrop-filter: blur(30px) saturate(180%);
     border-radius: 3rem;
@@ -207,6 +206,37 @@
                 inset 0 0 0 1px rgba(255, 255, 255, 0.08);
     position: relative;
     overflow: hidden;
+}
+
+:root:not(.dark-mode) .mobile-nav {
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0.8rem 3.2rem rgba(0, 0, 0, 0.15),
+                0 0 0 1px rgba(0, 0, 0, 0.1),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+}
+
+.dark-mode .mobile-nav-item {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.dark-mode .mobile-nav-item:hover,
+.dark-mode .mobile-nav-item:active {
+    color: rgba(255, 255, 255, 0.95) !important;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .mobile-nav-item.active {
+    color: var(--main-color) !important;
+}
+
+:root:not(.dark-mode) .mobile-nav-item {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+:root:not(.dark-mode) .mobile-nav-item:hover,
+:root:not(.dark-mode) .mobile-nav-item:active {
+    color: rgba(0, 0, 0, 0.95);
+    background: rgba(0, 0, 0, 0.08);
 }
 
 .mobile-nav::before {
@@ -240,7 +270,6 @@
     border-radius: 2rem;
     background: none;
     border: none;
-    color: rgba(255, 255, 255, 0.7);
     text-decoration: none;
     font-size: 1.1rem;
     font-weight: 500;
@@ -258,12 +287,6 @@
     white-space: nowrap;
 }
 
-.mobile-nav-item:hover,
-.mobile-nav-item:active {
-    color: rgba(255, 255, 255, 0.95);
-    background: rgba(255, 255, 255, 0.1);
-}
-
 .mobile-nav-item:hover i {
     transform: translateY(-2px);
 }
@@ -271,10 +294,6 @@
 .mobile-nav-item.active {
     color: var(--main-color);
     background: rgba(117, 78, 249, 0.15);
-}
-
-.theme-toggle-mobile {
-    color: rgba(255, 255, 255, 0.8);
 }
 
 @media (max-width: 768px) {

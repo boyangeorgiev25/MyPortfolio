@@ -3,23 +3,36 @@
   display: inline-block;
   background: linear-gradient(
     90deg,
-    rgba(255, 255, 255, 0.3) 0%,
-    rgba(255, 255, 255, 0.8) 25%,
+    rgba(255, 255, 255, 0.7) 0%,
+    rgba(255, 255, 255, 1) 25%,
     rgba(255, 255, 255, 1) 50%,
-    rgba(255, 255, 255, 0.8) 75%,
-    rgba(255, 255, 255, 0.3) 100%
+    rgba(255, 255, 255, 1) 75%,
+    rgba(255, 255, 255, 0.7) 100%
   );
   background-size: 200% 100%;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: shiny-animation var(--animation-speed, 3s) linear infinite;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
 .shiny-text.disabled {
   animation: none;
   background: none;
   -webkit-text-fill-color: inherit;
+}
+
+.btn-primary .shiny-text {
+  color: white !important;
+}
+
+@supports not (background-clip: text) {
+  .shiny-text {
+    -webkit-text-fill-color: white;
+    color: white;
+  }
 }
 
 @keyframes shiny-animation {
