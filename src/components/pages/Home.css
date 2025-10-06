@@ -120,7 +120,7 @@
 
 .role-container {
   position: relative;
-  margin-top: 0.5rem;
+  margin-top: -1rem;
   margin-bottom: 2rem;
   animation: fadeInUp 1s ease-out 1s both;
 }
@@ -422,9 +422,18 @@
 .home-blog-card p {
   font-size: 1.4rem;
   color: var(--text-color);
-  opacity: 0.8;
+  opacity: 0.9;
   line-height: 1.5;
   margin-bottom: 1.5rem;
+}
+
+:root:not(.dark-mode) .home-blog-card h4 {
+  color: #1a1a1a;
+}
+
+:root:not(.dark-mode) .home-blog-card p {
+  color: #333;
+  opacity: 1;
 }
 
 .blog-card-tags {
@@ -1126,5 +1135,303 @@
   .btn-primary:active,
   .btn-secondary:active {
     transform: scale(0.95);
+  }
+}
+.home-tech-stack {
+  margin: 8rem 0 6rem;
+  padding: 4rem 0;
+}
+
+.tech-stack-title {
+  font-size: 3rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 4rem;
+  color: var(--text-color);
+  position: relative;
+}
+
+.tech-stack-title::after {
+  content: '';
+  position: absolute;
+  bottom: -1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--main-color), var(--accent-color, #07c6ff));
+  border-radius: 2px;
+}
+
+.logo-loop-wrapper {
+  height: 120px;
+  position: relative;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 15px;
+  padding: 2rem 0;
+}
+
+.dark-mode .logo-loop-wrapper {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.terminal-preview-section {
+  width: 100%;
+  max-width: 600px;
+  margin: 4rem 0 0 auto;
+  margin-right: 10%;
+  padding: 0 2rem;
+  animation: fadeInUp 1s ease-out 0.5s both;
+}
+
+.terminal-intro-text {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'Courier New', monospace;
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 2rem;
+  text-align: center;
+  animation: fadeIn 1s ease-out 0.7s both;
+}
+
+.terminal-intro-text span {
+  color: #754ef9;
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 2rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.terminal-preview-card {
+  background: rgba(0, 0, 0, 0.9);
+  border-radius: 15px;
+  overflow: hidden;
+  border: 1px solid rgba(117, 78, 249, 0.3);
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3),
+              0 0 40px rgba(117, 78, 249, 0.2);
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.terminal-preview-header {
+  background: #2d2d2d;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+.preview-buttons {
+  display: flex;
+  gap: 7px;
+}
+
+.preview-button {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.preview-button.close {
+  background: #ff5f57;
+  border: 1px solid #e0443e;
+}
+
+.preview-button.minimize {
+  background: #febc2e;
+  border: 1px solid #e09e1e;
+}
+
+.preview-button.maximize {
+  background: #28c840;
+  border: 1px solid #1aad34;
+}
+
+.preview-title {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'Courier New', monospace;
+  font-size: 13px;
+  color: #8a8a8a;
+  flex: 1;
+  text-align: center;
+  font-weight: 500;
+}
+
+.terminal-preview-body {
+  padding: 12px;
+  font-family: 'SF Mono', 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #ffffff !important;
+  min-height: 400px;
+  max-height: 500px;
+  overflow-y: auto;
+  background: #000000;
+  cursor: text;
+}
+
+.terminal-preview-body::-webkit-scrollbar {
+  width: 10px;
+}
+
+.terminal-preview-body::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+.terminal-preview-body::-webkit-scrollbar-thumb {
+  background: #404040;
+  border-radius: 5px;
+  border: 2px solid #000000;
+}
+
+.terminal-preview-body::-webkit-scrollbar-thumb:hover {
+  background: #505050;
+}
+
+.terminal-line {
+  margin-bottom: 2px;
+  display: flex;
+  gap: 8px;
+  word-break: break-word;
+  align-items: baseline;
+}
+
+.terminal-prompt {
+  color: #754ef9 !important;
+  font-weight: 600;
+  user-select: none;
+}
+
+.terminal-command {
+  color: #ffffff !important;
+  flex: 1;
+  font-weight: 500;
+}
+
+.terminal-output {
+  color: #ffffff !important;
+  white-space: pre-wrap;
+  padding-left: 0;
+  opacity: 1;
+  font-size: 14px;
+  flex: 1;
+}
+
+.terminal-output * {
+  color: #ffffff !important;
+}
+
+.terminal-output span {
+  color: #ffffff !important;
+}
+
+.terminal-hint {
+  color: #754ef9 !important;
+  font-style: italic;
+}
+
+.terminal-spacer {
+  height: 1rem;
+}
+
+.terminal-input-line {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  margin-top: 2px;
+}
+
+.terminal-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff !important;
+  font-family: 'SF Mono', 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'Courier New', monospace;
+  font-size: 14px;
+  font-weight: 500;
+  caret-color: #ffffff;
+  caret-shape: block;
+}
+
+@supports not (caret-shape: block) {
+  .terminal-input {
+    text-shadow: 2px 0 0 #ffffff;
+  }
+}
+
+.terminal-input::selection {
+  background: rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+}
+
+
+.dark-mode .terminal-preview-card {
+  background: rgba(0, 0, 0, 0.95);
+}
+
+@media (max-width: 991px) {
+  .terminal-preview-section {
+    margin: 4rem auto 0;
+    margin-right: auto;
+    max-width: 100%;
+    padding: 0 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .terminal-preview-section {
+    margin: 3rem auto 0;
+    padding: 0 1.5rem;
+  }
+
+  .terminal-preview-card {
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25),
+                0 0 24px rgba(117, 78, 249, 0.15);
+  }
+
+  .terminal-preview-body {
+    min-height: 260px;
+    max-height: 340px;
+    font-size: 13px;
+  }
+
+  .terminal-prompt,
+  .terminal-command,
+  .terminal-output,
+  .terminal-input {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 450px) {
+  .terminal-preview-section {
+    padding: 0 1rem;
+  }
+
+  .terminal-preview-body {
+    min-height: 220px;
+    max-height: 300px;
   }
 }
