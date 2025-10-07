@@ -434,7 +434,6 @@
 }
 
 .terminal-output {
-  color: #ffffff !important;
   white-space: pre-wrap;
   padding-left: 0;
   opacity: 1;
@@ -442,17 +441,33 @@
   flex: 1;
 }
 
-.terminal-output * {
-  color: #ffffff !important;
-}
-
-.terminal-output span {
-  color: #ffffff !important;
-}
-
 .terminal-hint {
   color: #754ef9 !important;
   font-style: italic;
+}
+
+:root:not(.dark-mode) .terminal-output {
+  color: #000000 !important;
+}
+
+:root:not(.dark-mode) .terminal-output * {
+  color: #000000 !important;
+}
+
+:root:not(.dark-mode) .terminal-output span {
+  color: #000000 !important;
+}
+
+.dark-mode .terminal-output {
+  color: #ffffff !important;
+}
+
+.dark-mode .terminal-output * {
+  color: #ffffff !important;
+}
+
+.dark-mode .terminal-output span {
+  color: #ffffff !important;
 }
 
 .terminal-spacer {

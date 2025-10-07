@@ -18,6 +18,7 @@ import './styles/EnhancedLayout.css';
 import './styles/ProjectsGoalsEnhanced.css';
 import './styles/MobileOptimized.css';
 import './styles/Blog.css';
+import './styles/Showcase.css';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
