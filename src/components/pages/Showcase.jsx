@@ -1,64 +1,93 @@
-import React, { useEffect, useRef } from 'react';
-import InfiniteMenu from '../common/InfiniteMenu';
+import React, { useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { blogPosts } from '../../data/blogPosts';
 
-const GRADIENTS = [
-  ['#6f3dfc', '#a178ff'],
-  ['#7d4dff', '#c4a7ff'],
-  ['#5f2dea', '#8f6cff'],
-  ['#8a4cff', '#d5b8ff']
-];
-
 function Showcase() {
-  const sectionRef = useRef(null);
-  const menuRef = useRef(null);
-  const hasRevealedRef = useRef(false);
+  const navigate = useNavigate();
 
-  const showcaseItems = blogPosts.map((post, index) => ({
-    gradient: GRADIENTS[index % GRADIENTS.length],
-    link: `/blog/${post.id}`,
-    title: post.title,
-    description: post.excerpt,
-    tags: post.tags || [],
-    date: new Date(post.date).toLocaleDateString('en-GB', {
+  const postsToShow = useMemo(() => {
+    if (!blogPosts.length) {
+      return [];
+    }
+
+    const featured = blogPosts.find(post => post.featured) || blogPosts[0];
+    const remaining = blogPosts
+      .filter(post => post.id !== featured.id)
+      .slice(0, 2);
+
+    return [featured, ...remaining];
+  }, []);
+
+  const formatDate = (dateString) =>
+    new Date(dateString).toLocaleDateString('en-GB', {
       day: 'numeric',
       month: 'short',
       year: 'numeric'
-    })
-  }));
+    });
 
-  useEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return;
+  const handleNavigateToPost = (postId) => {
+    navigate(`/blog/${postId}`);
+  };
 
-    const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            section.classList.add('showcase-visible');
-            if (!hasRevealedRef.current) {
-              hasRevealedRef.current = true;
-              menuRef.current?.playReveal({ start: 1.65, end: 1, duration: 1800 });
-            }
-          }
-        });
-      },
-      { threshold: 0.35 }
-    );
+  const handleNavigateToBlog = () => {
+    navigate('/blog');
+  };
 
-    observer.observe(section);
-    return () => observer.disconnect();
-  }, []);
+  const handleKeyPress = (event, postId) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      handleNavigateToPost(postId);
+    }
+  };
+
+  if (!postsToShow.length) {
+    return null;
+  }
 
   return (
-    <section ref={sectionRef} className="showcase-section" id="showcase">
-      <div className="showcase-header">
-        <div className="showcase-main-title">
-          <span className="showcase-main-title-my">My</span>
-          <span className="showcase-main-title-blogs">Blogs</span>
+    <section className="showcase-section" id="showcase">
+      <div className="showcase-container">
+        <div className="showcase-top">
+          <div className="showcase-header">
+            <span className="showcase-eyebrow">From the blog</span>
+            <h2 className="showcase-title">Latest lessons & ideas</h2>
+            <p className="showcase-subtitle">
+              Quick takes on product craftsmanship, developer workflows, and experiments shaping client work.
+            </p>
+          </div>
+          <button type="button" className="showcase-button" onClick={handleNavigateToBlog}>
+            Browse the full blog
+          </button>
+        </div>
+
+        <div className="showcase-cards">
+          {postsToShow.map((post, index) => (
+            <article
+              key={post.id}
+              className={`showcase-card${index === 0 ? ' showcase-card-featured' : ''}`}
+              onClick={() => handleNavigateToPost(post.id)}
+              onKeyDown={(event) => handleKeyPress(event, post.id)}
+              role="button"
+              tabIndex={0}
+            >
+              <div className="showcase-card-meta">
+                <span>{formatDate(post.date)}</span>
+                <span>{post.readTime}</span>
+              </div>
+              <h3>{post.title}</h3>
+              <p>{post.excerpt}</p>
+              <div className="showcase-card-tags">
+                {post.tags.slice(0, index === 0 ? 3 : 2).map((tag, tagIndex) => (
+                  <span key={tagIndex} className="showcase-tag">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <span className="showcase-card-link">{index === 0 ? 'Read article' : 'Open post'}</span>
+            </article>
+          ))}
         </div>
       </div>
-      <InfiniteMenu ref={menuRef} items={showcaseItems} />
     </section>
   );
 }
