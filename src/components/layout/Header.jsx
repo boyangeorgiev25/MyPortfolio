@@ -74,7 +74,7 @@ function Header() {
     }
 
     if (item.matchPrefix) {
-      return location.pathname.startsWith(item.target);
+      return location.pathname !== item.target && location.pathname.startsWith(`${item.target}/`);
     }
 
     return location.pathname === item.target;
@@ -98,7 +98,9 @@ function Header() {
               {NAV_ITEMS.filter(item => !item.desktopOnly).map((item) => {
                 const href = item.type === 'route' ? item.target : `#${item.target}`;
                 const isActive = item.type === 'route'
-                  ? (item.matchPrefix ? location.pathname.startsWith(item.target) : location.pathname === item.target)
+                  ? (item.matchPrefix
+                      ? (location.pathname !== item.target && location.pathname.startsWith(`${item.target}/`))
+                      : location.pathname === item.target)
                   : (location.pathname === '/' && item.target === 'home');
 
                 return (

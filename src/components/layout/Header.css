@@ -226,18 +226,22 @@
     background: transparent;
 }
 
-.dark-mode .mobile-nav-item.active {
-    color: var(--main-color) !important;
-}
-
 :root:not(.dark-mode) .mobile-nav-item {
-    color: rgba(0, 0, 0, 0.7);
+    color: #111;
 }
 
 :root:not(.dark-mode) .mobile-nav-item:hover,
 :root:not(.dark-mode) .mobile-nav-item:active {
-    color: rgba(0, 0, 0, 0.95);
+    color: #111;
     background: transparent;
+}
+
+.dark-mode .mobile-nav-item.active {
+    color: #ffffff !important;
+}
+
+:root:not(.dark-mode) .mobile-nav-item.active {
+    color: #111 !important;
 }
 
 .mobile-nav::before {
@@ -376,13 +380,34 @@
 }
 
 .mobile-nav-item.active {
-    color: #ffffff;
     background: var(--main-color);
     box-shadow: 0 12px 24px rgba(117, 78, 249, 0.35);
 }
 
 .mobile-nav-item.active i {
+    color: inherit;
+}
+
+:root:not(.dark-mode) .mobile-nav-item i {
+    color: #111;
+}
+
+:root:not(.dark-mode) .mobile-nav-item:hover i,
+:root:not(.dark-mode) .mobile-nav-item:active i {
+    color: #111;
+}
+
+:root:not(.dark-mode) .mobile-nav-item.active i {
+    color: #111 !important;
+}
+
+.dark-mode .mobile-nav-item.active i,
+.dark-mode .mobile-nav-item.active span {
     color: #ffffff;
+}
+
+:root:not(.dark-mode) .mobile-nav-item.active span {
+    color: #111 !important;
 }
 
 @media (max-width: 768px) {
