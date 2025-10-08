@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import InfiniteScroll from '../common/InfiniteScroll';
 
 function Goals() {
+  const sectionRef = useRef(null);
+
   const goals = [
     {
       icon: 'bx-trophy',
@@ -43,8 +45,30 @@ function Goals() {
     )
   }));
 
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            section.classList.add('goals-visible');
+            observer.unobserve(section);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="services goals-section" id="goals">
+    <section ref={sectionRef} className="services goals-section" id="goals">
       <div className="section-header goals-section-header">
         <h2>My <span>Goals</span></h2>
       </div>

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { mat4, quat, vec2, vec3 } from 'gl-matrix';
 import './InfiniteMenu.css';
@@ -602,6 +602,11 @@ class InfiniteGridMenu {
   nearestVertexIndex = null;
   smoothRotationVelocity = 0;
   scaleFactor = 1.0;
+  revealAnimating = false;
+  revealStartTimestamp = 0;
+  revealDuration = 1400;
+  revealStartValue = 1.0;
+  revealEndValue = 1.0;
   movementActive = false;
 
   constructor(canvas, items, onActiveItemChange, onMovementChange, onInit = null) {
@@ -945,6 +950,17 @@ class InfiniteGridMenu {
     gl.bufferSubData(gl.ARRAY_BUFFER, 0, this.discInstances.matricesArray);
     gl.bindBuffer(gl.ARRAY_BUFFER, null);
 
+    if (this.revealAnimating) {
+      const now = performance.now();
+      const progress = Math.min((now - this.revealStartTimestamp) / this.revealDuration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      this.scaleFactor = this.revealStartValue + (this.revealEndValue - this.revealStartValue) * eased;
+      if (progress >= 1) {
+        this.revealAnimating = false;
+        this.scaleFactor = this.revealEndValue;
+      }
+    }
+
     this.smoothRotationVelocity = this.control.rotationVelocity;
   }
 
@@ -1066,6 +1082,15 @@ class InfiniteGridMenu {
     const nearestVertexPos = this.instancePositions[index];
     return vec3.transformQuat(vec3.create(), nearestVertexPos, this.control.orientation);
   }
+
+  playRevealAnimation(startValue = 1.45, endValue = 1.0, duration = 1400) {
+    this.revealStartValue = startValue;
+    this.revealEndValue = endValue;
+    this.revealDuration = duration;
+    this.scaleFactor = startValue;
+    this.revealAnimating = true;
+    this.revealStartTimestamp = performance.now();
+  }
 }
 
 const defaultItems = [
@@ -1078,11 +1103,13 @@ const defaultItems = [
   }
 ];
 
-export default function InfiniteMenu({ items = [] }) {
+const InfiniteMenu = forwardRef(function InfiniteMenu({ items = [] }, ref) {
   const canvasRef = useRef(null);
   const navigate = useNavigate();
   const [activeItem, setActiveItem] = useState(null);
   const [isMoving, setIsMoving] = useState(false);
+  const sketchRef = useRef(null);
+  const pendingRevealRef = useRef(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -1095,9 +1122,16 @@ export default function InfiniteMenu({ items = [] }) {
     };
 
     if (canvas) {
-      sketch = new InfiniteGridMenu(canvas, items.length ? items : defaultItems, handleActiveItem, setIsMoving, sk =>
-        sk.run()
-      );
+      sketch = new InfiniteGridMenu(canvas, items.length ? items : defaultItems, handleActiveItem, setIsMoving, sk => {
+        sketchRef.current = sk;
+        if (pendingRevealRef.current) {
+          const { start, end, duration } = pendingRevealRef.current;
+          sk.playRevealAnimation(start, end, duration);
+          pendingRevealRef.current = null;
+        }
+        sk.run();
+      });
+      sketchRef.current = sketch;
     }
 
     const handleResize = () => {
@@ -1111,8 +1145,21 @@ export default function InfiniteMenu({ items = [] }) {
 
     return () => {
       window.removeEventListener('resize', handleResize);
+      sketchRef.current = null;
+      pendingRevealRef.current = null;
     };
   }, [items]);
+
+  useImperativeHandle(ref, () => ({
+    playReveal: (options = {}) => {
+      const { start = 1.45, end = 1.0, duration = 1400 } = options;
+      if (sketchRef.current) {
+        sketchRef.current.playRevealAnimation(start, end, duration);
+      } else {
+        pendingRevealRef.current = { start, end, duration };
+      }
+    }
+  }));
 
   const handleButtonClick = () => {
     if (!activeItem?.link) return;
@@ -1136,4 +1183,6 @@ export default function InfiniteMenu({ items = [] }) {
       )}
     </div>
   );
-}
+});
+
+export default InfiniteMenu;

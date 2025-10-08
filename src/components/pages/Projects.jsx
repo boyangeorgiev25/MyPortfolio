@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CardSwap, { Card } from '../common/CardSwap';
 
 function Projects() {
+  const sectionRef = useRef(null);
   const navigate = useNavigate();
 
   const projects = [
@@ -41,8 +42,30 @@ function Projects() {
     },
   ];
 
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            section.classList.add('projects-visible');
+            observer.unobserve(section);
+          }
+        });
+      },
+      { threshold: 0.25 }
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="services projects-section" id="projects">
+    <section ref={sectionRef} className="services projects-section" id="projects">
       <div className="section-header projects-section-header">
         <h2>Featured <span>Projects</span></h2>
       </div>
