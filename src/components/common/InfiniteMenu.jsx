@@ -3,6 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import { mat4, quat, vec2, vec3 } from 'gl-matrix';
 import './InfiniteMenu.css';
 
+const DEFAULT_GRADIENTS = [
+  ['#6f3dfc', '#a178ff'],
+  ['#7d4dff', '#c4a7ff'],
+  ['#5f2dea', '#8f6cff'],
+  ['#8a4cff', '#d5b8ff']
+];
+
 const discVertShaderSource = `#version 300 es
 
 uniform mat4 uWorldMatrix;
@@ -704,27 +711,188 @@ class InfiniteGridMenu {
     canvas.width = this.atlasSize * cellSize;
     canvas.height = this.atlasSize * cellSize;
 
-    Promise.all(
-      this.items.map(
-        item =>
-          new Promise(resolve => {
-            const img = new Image();
-            img.crossOrigin = 'anonymous';
-            img.onload = () => resolve(img);
-            img.src = item.image;
-          })
-      )
-    ).then(images => {
-      images.forEach((img, i) => {
-        const x = (i % this.atlasSize) * cellSize;
-        const y = Math.floor(i / this.atlasSize) * cellSize;
-        ctx.drawImage(img, x, y, cellSize, cellSize);
-      });
-
-      gl.bindTexture(gl.TEXTURE_2D, this.tex);
-      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, canvas);
-      gl.generateMipmap(gl.TEXTURE_2D);
+    (this.items.length ? this.items : defaultItems).forEach((item, index) => {
+      const column = index % this.atlasSize;
+      const row = Math.floor(index / this.atlasSize);
+      const x = column * cellSize;
+      const y = row * cellSize;
+      this.#drawItemTexture(ctx, item, x, y, cellSize, index);
     });
+
+    gl.bindTexture(gl.TEXTURE_2D, this.tex);
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, canvas);
+    gl.generateMipmap(gl.TEXTURE_2D);
+  }
+
+  #drawItemTexture(ctx, item, x, y, size, index) {
+    const colors =
+      Array.isArray(item.gradient) && item.gradient.length
+        ? item.gradient
+        : DEFAULT_GRADIENTS[index % DEFAULT_GRADIENTS.length];
+
+    const gradient = ctx.createLinearGradient(x, y, x + size, y + size);
+    if (colors.length === 1) {
+      gradient.addColorStop(0, colors[0]);
+      gradient.addColorStop(1, colors[0]);
+    } else {
+      const maxIdx = colors.length - 1;
+      colors.forEach((color, idx) => gradient.addColorStop(idx / maxIdx, color));
+    }
+
+    ctx.fillStyle = gradient;
+    ctx.fillRect(x, y, size, size);
+
+    ctx.fillStyle = 'rgba(12, 8, 32, 0.35)';
+    ctx.fillRect(x, y, size, size);
+
+    if (item.title) {
+      this.#drawTextBlock(ctx, item, x, y, size);
+    }
+  }
+
+  #drawTextBlock(ctx, item, x, y, size) {
+    ctx.save();
+    const padding = size * 0.12;
+    const maxWidth = size - padding * 2;
+    const centerX = x + size / 2;
+    const hasDate = Boolean(item.date && item.date.trim());
+    const dateFontSize = Math.max(13, Math.floor(size * 0.05));
+    const dateLineHeight = dateFontSize * 1.2;
+
+    const titleLines = this.#fitText(ctx, item.title, maxWidth, {
+      weight: 700,
+      initialSize: Math.floor(size * 0.088),
+      minSize: Math.max(14, Math.floor(size * 0.04)),
+      maxLines: 2
+    });
+
+    const tagsText = Array.isArray(item.tags) && item.tags.length ? item.tags.join(' • ') : '';
+
+    let descLines = [];
+    if (item.description) {
+      descLines = this.#fitText(ctx, item.description, maxWidth, {
+        weight: 400,
+        initialSize: Math.floor(size * 0.065),
+        minSize: Math.max(12, Math.floor(size * 0.038)),
+        maxLines: 3
+      });
+    }
+
+    const titleLineHeight = titleLines.fontSize * 1.15;
+    const titleBlockHeight = titleLines.lines.length * titleLineHeight;
+    let topCursor = y + padding - size * 0.01;
+
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+
+    if (hasDate) {
+      ctx.font = `600 ${dateFontSize}px "Inter", "Segoe UI", sans-serif`;
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.75)';
+      ctx.fillText(item.date, centerX, topCursor + dateFontSize / 2);
+      topCursor += dateLineHeight + size * 0.02;
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
+    }
+
+    ctx.font = `${titleLines.fontWeight} ${titleLines.fontSize}px "Inter", "Segoe UI", sans-serif`;
+    let currentY = topCursor + titleBlockHeight / 2 - size * 0.015;
+
+    titleLines.lines.forEach(line => {
+      ctx.fillText(line, centerX, currentY);
+      currentY += titleLineHeight;
+    });
+
+    if (tagsText) {
+      const tagFontSize = Math.max(11, Math.floor(size * 0.042));
+      topCursor = currentY + size * 0.03;
+      ctx.font = `600 ${tagFontSize}px "Inter", "Segoe UI", sans-serif`;
+      const tagMetrics = ctx.measureText(tagsText);
+      const tagPaddingX = size * 0.08;
+      const tagHeight = tagFontSize * 1.4;
+
+      ctx.fillStyle = 'rgba(12, 10, 24, 0.35)';
+      const tagX = centerX - tagMetrics.width / 2 - tagPaddingX / 2;
+      const tagY = topCursor - tagHeight / 2;
+      ctx.fillRect(tagX, tagY, tagMetrics.width + tagPaddingX, tagHeight);
+
+      ctx.strokeStyle = 'rgba(117, 78, 249, 0.45)';
+      ctx.lineWidth = Math.max(1, size * 0.006);
+      ctx.strokeRect(tagX, tagY, tagMetrics.width + tagPaddingX, tagHeight);
+
+      ctx.fillStyle = 'rgba(200, 190, 255, 0.92)';
+      ctx.fillText(tagsText, centerX, topCursor);
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.78)';
+      topCursor += tagHeight + size * 0.05;
+    }
+
+    if (descLines.lines.length) {
+      const descStart = Math.max(y + size * 0.58, topCursor + size * 0.05);
+      currentY = descStart;
+      const descLineHeight = descLines.fontSize * 1.1;
+      ctx.font = `${descLines.fontWeight} ${descLines.fontSize}px "Inter", "Segoe UI", sans-serif`;
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.78)';
+
+      descLines.lines.forEach(line => {
+        ctx.fillText(line, centerX, currentY);
+        currentY += descLineHeight;
+      });
+    }
+    ctx.restore();
+  }
+
+  #fitText(ctx, text, maxWidth, { weight, initialSize, minSize, maxLines }) {
+    let fontSize = initialSize;
+    let lines = [];
+
+    while (fontSize >= minSize) {
+      ctx.font = `${weight} ${fontSize}px "Inter", "Segoe UI", sans-serif`;
+      lines = this.#wrapText(ctx, text, maxWidth);
+      if (lines.length <= maxLines) {
+        break;
+      }
+      fontSize -= 2;
+    }
+
+    if (lines.length > maxLines) {
+      const trimmedLines = lines.slice(0, maxLines);
+      const lastLine = trimmedLines[trimmedLines.length - 1];
+      const ellipsisWidth = ctx.measureText('…').width;
+      let truncated = lastLine;
+      while (ctx.measureText(truncated).width + ellipsisWidth > maxWidth && truncated.length > 0) {
+        truncated = truncated.slice(0, -1);
+      }
+      trimmedLines[trimmedLines.length - 1] = `${truncated}…`;
+      lines = trimmedLines;
+    }
+
+    return {
+      lines,
+      fontSize,
+      fontWeight: weight
+    };
+  }
+
+  #wrapText(ctx, text, maxWidth) {
+    const words = text.split(/\s+/);
+    const lines = [];
+    let currentLine = '';
+
+    words.forEach(word => {
+      const testLine = currentLine ? `${currentLine} ${word}` : word;
+      const metrics = ctx.measureText(testLine);
+      if (metrics.width > maxWidth && currentLine) {
+        lines.push(currentLine);
+        currentLine = word;
+      } else {
+        currentLine = testLine;
+      }
+    });
+
+    if (currentLine) {
+      lines.push(currentLine);
+    }
+
+    return lines;
   }
 
   #initDiscInstances(count) {
@@ -902,10 +1070,11 @@ class InfiniteGridMenu {
 
 const defaultItems = [
   {
-    image: 'https://picsum.photos/900/900?grayscale',
-    link: 'https://google.com/',
+    link: '',
     title: '',
-    description: ''
+    description: '',
+    gradient: DEFAULT_GRADIENTS[0],
+    date: ''
   }
 ];
 
@@ -920,8 +1089,9 @@ export default function InfiniteMenu({ items = [] }) {
     let sketch;
 
     const handleActiveItem = index => {
-      const itemIndex = index % items.length;
-      setActiveItem(items[itemIndex]);
+      const data = items.length ? items : defaultItems;
+      const itemIndex = index % data.length;
+      setActiveItem(data[itemIndex]);
     };
 
     if (canvas) {
@@ -959,8 +1129,6 @@ export default function InfiniteMenu({ items = [] }) {
 
       {activeItem && (
         <>
-          <h2 className={`face-title ${isMoving ? 'inactive' : 'active'}`}>{activeItem.title}</h2>
-
           <div onClick={handleButtonClick} className={`action-button ${isMoving ? 'inactive' : 'active'}`}>
             <p className="action-button-icon">&#x2197;</p>
           </div>

@@ -1,23 +1,26 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import InfiniteMenu from '../common/InfiniteMenu';
 import { blogPosts } from '../../data/blogPosts';
 
+const GRADIENTS = [
+  ['#6f3dfc', '#a178ff'],
+  ['#7d4dff', '#c4a7ff'],
+  ['#5f2dea', '#8f6cff'],
+  ['#8a4cff', '#d5b8ff']
+];
+
 function Showcase() {
-  const navigate = useNavigate();
-
-  const blogImages = {
-    5: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&h=1200&fit=crop&q=95',
-    4: 'https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?w=900&h=900&fit=crop&q=80',
-    2: 'https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?w=900&h=900&fit=crop&q=80',
-    3: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=900&h=900&fit=crop&q=80'
-  };
-
-  const showcaseItems = blogPosts.map(post => ({
-    image: blogImages[post.id] || 'https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=900&h=900&fit=crop',
+  const showcaseItems = blogPosts.map((post, index) => ({
+    gradient: GRADIENTS[index % GRADIENTS.length],
     link: `/blog/${post.id}`,
     title: post.title,
-    description: post.excerpt
+    description: post.excerpt,
+    tags: post.tags || [],
+    date: new Date(post.date).toLocaleDateString('en-GB', {
+      day: 'numeric',
+      month: 'short',
+      year: 'numeric'
+    })
   }));
 
   return (

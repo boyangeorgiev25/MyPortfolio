@@ -6,38 +6,6 @@
   background-color: transparent !important;
 }
 
-.face-title {
-  position: absolute;
-  bottom: 65%;
-  left: 12%;
-  transform: translateX(0);
-  font-size: 3rem;
-  font-weight: 700;
-  color: var(--text-color);
-  text-align: left;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  pointer-events: none;
-  z-index: 10;
-  max-width: 400px;
-}
-
-.face-description {
-  position: absolute;
-  bottom: 50%;
-  left: 12%;
-  transform: translateX(0);
-  max-width: 600px;
-  font-size: 1.4rem;
-  color: var(--text-color);
-  text-align: left;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  pointer-events: none;
-  z-index: 10;
-  padding: 0;
-  line-height: 1.6;
-  opacity: 0.8;
-}
-
 .action-button {
   position: absolute;
   bottom: 15%;
@@ -46,47 +14,25 @@
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: var(--main-color);
+  background: rgba(10, 10, 18, 0.92);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all 0.3s ease;
   z-index: 10;
-  box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
 }
 
 .action-button:hover {
   transform: translateX(-50%) scale(1.1);
-  box-shadow: 0 6px 20px rgba(0, 255, 255, 0.5);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.5), 0 0 18px rgba(117, 78, 249, 0.55);
 }
 
 .action-button-icon {
   font-size: 2rem;
-  color: var(--bg-color);
+  color: var(--main-color);
   margin: 0;
-}
-
-.face-title.inactive {
-  opacity: 0;
-  transform: translateX(-20px);
-  pointer-events: none;
-}
-
-.face-title.active {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.face-description.inactive {
-  opacity: 0;
-  transform: translateX(20px);
-  pointer-events: none;
-}
-
-.face-description.active {
-  opacity: 1;
-  transform: translateX(0);
 }
 
 .action-button.inactive {
@@ -101,21 +47,6 @@
 }
 
 @media (max-width: 768px) {
-  .face-title {
-    font-size: 2rem;
-    bottom: 65%;
-    left: 5%;
-    max-width: 80%;
-  }
-
-  .face-description {
-    font-size: 1.1rem;
-    bottom: 50%;
-    left: 5%;
-    max-width: 90%;
-    text-align: left;
-  }
-
   .action-button {
     width: 50px;
     height: 50px;
