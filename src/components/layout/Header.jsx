@@ -6,7 +6,6 @@ import './Header.css';
 
 const NAV_ITEMS = [
   { key: 'home', icon: 'bx-home', label: 'Home', type: 'scroll', target: 'home' },
-  { key: 'about', icon: 'bx-user', label: 'About', type: 'route', target: '/about-me', mobileOnly: true },
   { key: 'projects', icon: 'bx-briefcase', label: 'Projects', type: 'scroll', target: 'projects', desktopOnly: true },
   { key: 'blog', icon: 'bx-news', label: 'Blog', type: 'route', target: '/blog', matchPrefix: true },
   { key: 'contact', icon: 'bx-envelope', label: 'Contact', type: 'scroll', target: 'contact', desktopOnly: true }
@@ -84,37 +83,39 @@ function Header() {
   return (
     <header className="header">
       {isMobile ? (
-        <div className="mobile-nav-wrapper">
-          <nav className="mobile-nav">
-            {NAV_ITEMS.filter(item => !item.desktopOnly).map((item) => {
-              const href = item.type === 'route' ? item.target : `#${item.target}`;
-              const isActive = item.type === 'route'
-                ? (item.matchPrefix ? location.pathname.startsWith(item.target) : location.pathname === item.target)
-                : false;
+        <>
+          <button
+            type="button"
+            className="mobile-theme-toggle"
+            onClick={toggleTheme}
+            aria-label={isDarkMode ? 'Switch to light theme' : 'Switch to dark theme'}
+          >
+            <i className={`bx ${isDarkMode ? 'bx-sun' : 'bx-moon'}`}></i>
+            <span>{isDarkMode ? 'Light' : 'Dark'}</span>
+          </button>
+          <div className="mobile-nav-wrapper">
+            <nav className="mobile-nav">
+              {NAV_ITEMS.filter(item => !item.desktopOnly).map((item) => {
+                const href = item.type === 'route' ? item.target : `#${item.target}`;
+                const isActive = item.type === 'route'
+                  ? (item.matchPrefix ? location.pathname.startsWith(item.target) : location.pathname === item.target)
+                  : (location.pathname === '/' && item.target === 'home');
 
-              return (
-                <a
-                  key={item.key}
-                  href={href}
-                  className={`mobile-nav-item ${isActive ? 'active' : ''}`}
-                  onClick={(event) => handleNavClick(event, item)}
-                >
-                  <i className={`bx ${item.icon}`}></i>
-                  <span>{item.label}</span>
-                </a>
-              );
-            })}
-            <button
-              type="button"
-              className="mobile-nav-item theme-toggle-mobile"
-              onClick={toggleTheme}
-              aria-label={isDarkMode ? 'Switch to light theme' : 'Switch to dark theme'}
-            >
-              <i className={`bx ${isDarkMode ? 'bx-sun' : 'bx-moon'}`}></i>
-              <span>{isDarkMode ? 'Light' : 'Dark'}</span>
-            </button>
-          </nav>
-        </div>
+                return (
+                  <a
+                    key={item.key}
+                    href={href}
+                    className={`mobile-nav-item ${isActive ? 'active' : ''}`}
+                    onClick={(event) => handleNavClick(event, item)}
+                  >
+                    <i className={`bx ${item.icon}`}></i>
+                    <span>{item.label}</span>
+                  </a>
+                );
+              })}
+            </nav>
+          </div>
+        </>
       ) : (
         <GlassSurface
           width="auto"

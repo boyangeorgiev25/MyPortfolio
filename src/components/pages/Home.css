@@ -92,8 +92,10 @@
   font-size: 7rem;
   font-weight: 800;
   line-height: 1.1;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
   animation: fadeInUp 1s ease-out 0.4s both;
+  position: relative;
+  z-index: 10;
 }
 
 .home-content h3 {
@@ -108,6 +110,8 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  position: relative;
+  z-index: 10;
 }
 
 .name-part:first-child {
@@ -123,6 +127,7 @@
   margin-top: -1rem;
   margin-bottom: 2rem;
   animation: fadeInUp 1s ease-out 1s both;
+  z-index: 1;
 }
 
 .role-text {
@@ -130,6 +135,8 @@
   color: var(--text-color);
   font-weight: 600;
   margin-bottom: 1rem;
+  position: relative;
+  z-index: 0;
 }
 
 .role-underline {
@@ -817,25 +824,13 @@
 }
 
 @media (max-width: 768px) {
-  .home-blog-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  .home-blog-header h3 {
-    font-size: 2rem;
-  }
-
-  .home-blog-card {
-    padding: 1.5rem;
-  }
-
-  .home-blog-card h4 {
-    font-size: 1.5rem;
-  }
-
-  .home-blog-card p {
-    font-size: 1.2rem;
+  .home-blog-container,
+  .home-blog-section,
+  .home-blog-header,
+  .home-blog-grid,
+  .home-blog-card,
+  .home-blog-cta {
+    display: none !important;
   }
 
   .home {
@@ -948,7 +943,7 @@
   }
 
   .role-container {
-    margin-top: 0 !important;
+    margin-top: -2rem !important;
     margin-bottom: 2rem !important;
   }
 

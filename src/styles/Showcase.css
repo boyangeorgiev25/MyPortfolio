@@ -81,16 +81,7 @@
 
 @media (max-width: 768px) {
   .showcase-section {
-    height: 100vh;
-  }
-
-  .showcase-main-title-my,
-  .showcase-main-title-blogs {
-    font-size: 6rem;
-  }
-
-  .showcase-instruction {
-    font-size: 1.2rem;
+    display: none !important;
   }
 }
 

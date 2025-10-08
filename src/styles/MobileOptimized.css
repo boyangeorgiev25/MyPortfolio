@@ -488,6 +488,7 @@
     width: 100%;
     padding: 1.8rem 3rem !important;
     font-size: 1.8rem !important;
+    border-radius: 999px !important;
   }
 
   /* Footer mobile */

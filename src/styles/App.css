@@ -37,12 +37,22 @@
 html {
     font-size: 62.5%;
     overflow-x: hidden;
+    background: #ffffff;
+}
+
+html.dark-mode {
+    background: #0b061f;
 }
 
 body {
     background: linear-gradient(135deg, #ffffff 0%, #f5f7fa 50%, #ffffff 100%);
     color: var(--text-color);
     position: relative;
+    min-height: 100vh;
+}
+
+body.dark-mode {
+    background: linear-gradient(135deg, #0b061f 0%, #1a1a2e 50%, #0b061f 100%);
 }
 
 body::before {
@@ -681,6 +691,8 @@ span {
 .contact form .btn {
     margin-top: 2rem;
     cursor: pointer;
+    border-radius: 999px;
+    padding: 1.4rem 3.6rem;
 }
 
 .footer {

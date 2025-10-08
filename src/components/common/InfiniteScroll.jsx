@@ -50,31 +50,34 @@ export default function InfiniteScroll({
       gsap.set(child, { y });
     });
 
-    const observer = Observer.create({
-      target: container,
-      type: 'wheel,touch,pointer',
-      preventDefault: true,
-      onPress: ({ target }) => {
-        target.style.cursor = 'grabbing';
-      },
-      onRelease: ({ target }) => {
-        target.style.cursor = 'grab';
-      },
-      onChange: ({ deltaY, isDragging, event }) => {
-        const d = event.type === 'wheel' ? -deltaY : deltaY;
-        const distance = isDragging ? d * 5 : d * 10;
-        divItems.forEach(child => {
-          gsap.to(child, {
-            duration: 0.5,
-            ease: 'expo.out',
-            y: `+=${distance}`,
-            modifiers: {
-              y: gsap.utils.unitize(wrapFn)
-            }
+    let observer;
+    if (!autoplay) {
+      observer = Observer.create({
+        target: container,
+        type: 'touch,pointer',
+        preventDefault: false,
+        onPress: ({ target }) => {
+          target.style.cursor = 'grabbing';
+        },
+        onRelease: ({ target }) => {
+          target.style.cursor = 'grab';
+        },
+        onChange: ({ deltaY, isDragging, event }) => {
+          const d = event.type === 'wheel' ? -deltaY : deltaY;
+          const distance = isDragging ? d * 5 : d * 10;
+          divItems.forEach(child => {
+            gsap.to(child, {
+              duration: 0.5,
+              ease: 'expo.out',
+              y: `+=${distance}`,
+              modifiers: {
+                y: gsap.utils.unitize(wrapFn)
+              }
+            });
           });
-        });
-      }
-    });
+        }
+      });
+    }
 
     let rafId;
     if (autoplay) {
@@ -103,21 +106,21 @@ export default function InfiniteScroll({
         container.addEventListener('mouseleave', startTicker);
 
         return () => {
-          observer.kill();
+          if (observer) observer.kill();
           stopTicker();
           container.removeEventListener('mouseenter', stopTicker);
           container.removeEventListener('mouseleave', startTicker);
         };
       } else {
         return () => {
-          observer.kill();
+          if (observer) observer.kill();
           rafId && cancelAnimationFrame(rafId);
         };
       }
     }
 
     return () => {
-      observer.kill();
+      if (observer) observer.kill();
       if (rafId) cancelAnimationFrame(rafId);
     };
   }, [items, autoplay, autoplaySpeed, autoplayDirection, pauseOnHover, isTilted, tiltDirection, negativeMargin]);
@@ -141,12 +144,13 @@ export default function InfiniteScroll({
         `}
       </style>
 
-      <div className="infinite-scroll-wrapper" ref={wrapperRef}>
+      <div className="infinite-scroll-wrapper" ref={wrapperRef} style={{ pointerEvents: autoplay ? 'none' : 'auto' }}>
         <div
           className="infinite-scroll-container"
           ref={containerRef}
           style={{
-            transform: getTiltTransform()
+            transform: getTiltTransform(),
+            pointerEvents: autoplay ? 'none' : 'auto'
           }}
         >
           {items.map((item, i) => (

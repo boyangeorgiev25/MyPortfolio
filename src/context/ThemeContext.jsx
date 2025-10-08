@@ -44,12 +44,14 @@ export const ThemeProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    // Apply the theme to the body
+    // Apply the theme to the body and html
     if (isDarkMode) {
       document.body.classList.add('dark-mode');
+      document.documentElement.classList.add('dark-mode');
       console.log('Applied dark mode to body');
     } else {
       document.body.classList.remove('dark-mode');
+      document.documentElement.classList.remove('dark-mode');
       console.log('Applied light mode to body');
     }
   }, [isDarkMode]);
