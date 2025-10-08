@@ -12,8 +12,8 @@ function Portfolio() {
     <>
       <Home />
       <Projects />
-      <Showcase />
       <Goals />
+      <Showcase />
       <Contact />
       {/* <Footer /> */}
     </>

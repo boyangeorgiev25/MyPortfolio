@@ -107,6 +107,19 @@
   position: relative;
 }
 
+.projects-section .section-header {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: transform 0.85s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.85s ease;
+  will-change: transform, opacity;
+}
+
+.projects-section.projects-visible .section-header {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 1.2s;
+}
+
 .projects-section.projects-visible .projects-layout {
   opacity: 1;
   transform: translateY(0);
@@ -162,7 +175,7 @@
   line-height: 0.9;
   opacity: 0;
   filter: blur(12px);
-  transition: opacity 0.85s ease 0.2s, filter 0.9s ease 0.2s;
+  transition: opacity 0.9s ease 1.15s, filter 0.95s ease 1.15s;
 }
 
 .text-featured {
@@ -777,6 +790,18 @@
   position: relative;
 }
 
+.goals-section .section-header {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: transform 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.1s, opacity 1s ease 0.1s;
+  will-change: transform, opacity;
+}
+
+.goals-section.goals-visible .section-header {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .goals-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -923,13 +948,50 @@
 }
 
 @media (max-width: 768px) {
-  .goals-layout,
-  .goals-content,
-  .goals-text-content,
+  .goals-layout {
+    grid-template-columns: 1fr;
+    gap: 2.4rem;
+    padding: 1rem 0;
+    opacity: 0;
+    transform: translateY(70px);
+    transition: transform 1.25s cubic-bezier(0.22, 1, 0.36, 1), opacity 1.1s ease;
+  }
+
+  .goals-content {
+    padding: 0;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.2s, opacity 1.1s ease 0.2s;
+  }
+
+  .goals-text-content {
+    padding-left: 0;
+    gap: 2.8rem;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(55px);
+    transition: transform 1.35s cubic-bezier(0.22, 1, 0.36, 1) 0.35s, opacity 1.2s ease 0.35s;
+  }
+
   .goals-background-text {
-    opacity: 1 !important;
-    transform: none !important;
-    filter: none !important;
+    display: none;
+  }
+
+  .goals-section .section-header {
+    opacity: 0;
+    transform: translateY(55px);
+    transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.1s, opacity 1.25s ease 0.1s;
+  }
+
+  .goals-section.goals-visible .section-header {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .goals-section.goals-visible .goals-content,
+  .goals-section.goals-visible .goals-text-content {
+    transform: translateY(0);
   }
 }
 

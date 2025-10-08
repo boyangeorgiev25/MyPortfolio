@@ -19,7 +19,7 @@ const Blog = () => {
     <section className="blog" id="blog">
       <div className="blog-content">
         <h2 className="heading">Latest <span>Blog Posts</span></h2>
-        
+
         {featuredPost && (
           <div className="featured-post">
             <h3>Featured Article</h3>
@@ -36,7 +36,7 @@ const Blog = () => {
                     <span key={index} className="tag">{tag}</span>
                   ))}
                 </div>
-                <button 
+                <button
                   className="btn-read-more"
                   onClick={() => handleReadMore(featuredPost.id)}
                 >
@@ -65,7 +65,7 @@ const Blog = () => {
                       <span key={index} className="tag">{tag}</span>
                     ))}
                   </div>
-                  <button 
+                  <button
                     className="btn-read-more"
                     onClick={() => handleReadMore(post.id)}
                   >

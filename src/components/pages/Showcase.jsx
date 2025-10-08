@@ -1,9 +1,11 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { blogPosts } from '../../data/blogPosts';
 
 function Showcase() {
   const navigate = useNavigate();
+  const cardsRef = useRef([]);
+  const [isMobile, setIsMobile] = useState(false);
 
   const postsToShow = useMemo(() => {
     if (!blogPosts.length) {
@@ -33,6 +35,53 @@ function Showcase() {
     navigate('/blog');
   };
 
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return undefined;
+    }
+
+    const mediaQuery = window.matchMedia('(max-width: 640px)');
+    const handleChange = event => {
+      setIsMobile(event.matches);
+    };
+
+    setIsMobile(mediaQuery.matches);
+
+    if (typeof mediaQuery.addEventListener === 'function') {
+      mediaQuery.addEventListener('change', handleChange);
+      return () => mediaQuery.removeEventListener('change', handleChange);
+    }
+
+    mediaQuery.addListener(handleChange);
+    return () => mediaQuery.removeListener(handleChange);
+  }, []);
+
+  const postsToRender = useMemo(() => (isMobile ? postsToShow.slice(0, 2) : postsToShow), [isMobile, postsToShow]);
+
+  useEffect(() => {
+    cardsRef.current = cardsRef.current.slice(0, postsToRender.length);
+    const cards = cardsRef.current.filter(Boolean);
+    if (!cards.length) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('showcase-card--visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.25 }
+    );
+
+    cards.forEach(card => observer.observe(card));
+
+    return () => observer.disconnect();
+  }, [postsToRender]);
+
   const handleKeyPress = (event, postId) => {
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
@@ -40,7 +89,7 @@ function Showcase() {
     }
   };
 
-  if (!postsToShow.length) {
+  if (!postsToRender.length) {
     return null;
   }
 
@@ -55,16 +104,22 @@ function Showcase() {
               Quick takes on product craftsmanship, developer workflows, and experiments shaping client work.
             </p>
           </div>
-          <button type="button" className="showcase-button" onClick={handleNavigateToBlog}>
-            Browse the full blog
-          </button>
+          {!isMobile && (
+            <button type="button" className="showcase-button" onClick={handleNavigateToBlog}>
+              Browse the full blog
+            </button>
+          )}
         </div>
 
         <div className="showcase-cards">
-          {postsToShow.map((post, index) => (
+          {postsToRender.map((post, index) => (
             <article
               key={post.id}
               className={`showcase-card${index === 0 ? ' showcase-card-featured' : ''}`}
+              ref={element => {
+                cardsRef.current[index] = element;
+              }}
+              style={{ '--reveal-delay': `${index * 0.18}s` }}
               onClick={() => handleNavigateToPost(post.id)}
               onKeyDown={(event) => handleKeyPress(event, post.id)}
               role="button"
@@ -83,10 +138,15 @@ function Showcase() {
                   </span>
                 ))}
               </div>
-              <span className="showcase-card-link">{index === 0 ? 'Read article' : 'Open post'}</span>
+              <span className="showcase-card-link">Read article</span>
             </article>
           ))}
         </div>
+        {isMobile && (
+          <button type="button" className="showcase-button showcase-button--mobile" onClick={handleNavigateToBlog}>
+            Browse the full blog
+          </button>
+        )}
       </div>
     </section>
   );
