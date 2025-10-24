@@ -1,19 +1,58 @@
-import React from "react";
 import "../../styles/components/project-page.css";
 
-// Built this travel tracker after getting tired of losing track of places I've been
 function WorldWise() {
+  const features = [
+    {
+      icon: "🔐",
+      title: "User Authentication",
+      description: "Secure login system with personalized travel lists for each user"
+    },
+    {
+      icon: "🗺️",
+      title: "Interactive Map",
+      description: "Click cities on the map and add your travel notes and memories"
+    },
+    {
+      icon: "📝",
+      title: "Travel Journal",
+      description: "Document your trips with dates, notes, and custom details"
+    },
+    {
+      icon: "💾",
+      title: "Local Storage",
+      description: "Your travel data is saved locally and persists between sessions"
+    }
+  ];
+
+  const techStack = [
+    "React 18",
+    "React Router",
+    "Context API",
+    "CSS Modules",
+    "Leaflet Maps"
+  ];
+
   return (
     <div className="project-page">
+      <div className="project-gradient-orbs">
+        <div className="project-orb project-orb-1"></div>
+        <div className="project-orb project-orb-2"></div>
+        <div className="project-orb project-orb-3"></div>
+      </div>
+
+      <div className="project-floating-icons">
+        <div className="project-float-icon project-float-1"><i className='bx bx-map'></i></div>
+        <div className="project-float-icon project-float-2"><i className='bx bx-world'></i></div>
+        <div className="project-float-icon project-float-3"><i className='bx bx-trip'></i></div>
+        <div className="project-float-icon project-float-4"><i className='bx bx-current-location'></i></div>
+      </div>
+
       <div className="project-hero">
         <div className="container">
           <div className="project-header">
-            <h1 className="project-title">
-              🌍 WorldWise - Personal Travel Tracker
-            </h1>
+            <h1 className="project-title">🌍 WorldWise</h1>
             <p className="project-subtitle">
-              Keep track of all the places you've been. I made this because I 
-              kept forgetting which cities I'd already visited on my trips.
+              Track your travels on an interactive map with personalized notes and memories
             </p>
             <div className="project-links">
               <a
@@ -25,7 +64,7 @@ function WorldWise() {
                 <i className="bx bxl-github"></i> View Code
               </a>
               <a
-                href="https://worldwise-travel-tracker.vercel.app"
+                href="https://world-wise-v8jk.vercel.app"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-secondary"
@@ -39,117 +78,72 @@ function WorldWise() {
 
       <div className="container">
         <div className="project-content">
-          <section className="project-section" id="features">
-            <h2>✨ What it does</h2>
-            <div className="features-grid">
-              <div className="feature-card">
-                <div className="feature-icon">🔐</div>
-                <h3>Login system</h3>
-                <p>
-                  You need to log in to use it - each person gets their own 
-                  travel list so your data stays private
-                </p>
-              </div>
-              <div className="feature-card">
-                <div className="feature-icon">🗺️</div>
-                <h3>Your travel diary</h3>
-                <p>
-                  Click on cities you've been to and add your own notes about 
-                  what you did there
-                </p>
-              </div>
-              <div className="feature-card">
-                <div className="feature-icon">🎨</div>
-                <h3>Clean interface</h3>
-                <p>
-                  I tried to keep it simple and not overwhelming - just the 
-                  features you actually need
-                </p>
-              </div>
-              <div className="feature-card">
-                <div className="feature-icon">💾</div>
-                <h3>Saves your stuff</h3>
-                <p>
-                  Everything gets saved locally so you don't lose your data 
-                  when you close the browser
-                </p>
-              </div>
-            </div>
-          </section>
+          <div className="project-overview">
+            <h2>About the Project</h2>
+            <p>
+              WorldWise is a travel tracking application that helps you remember and document all the places you've visited.
+              Simply click on any city on the interactive map to add it to your personal travel journal.
+            </p>
+            <p>
+              Built with React and the Context API, this project strengthened my understanding of complex state management
+              patterns and user authentication flows.
+            </p>
+          </div>
 
-          <section className="project-section" id="screenshots">
-            <h2>📸 How it looks</h2>
+          <div className="project-features">
+            <h2>Features</h2>
+            <div className="features-list">
+              {features.map((feature, index) => (
+                <div key={index} className="feature-item">
+                  <div className="feature-item-icon">{feature.icon}</div>
+                  <div className="feature-item-content">
+                    <h3>{feature.title}</h3>
+                    <p>{feature.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="project-tech">
+            <h2>Technologies</h2>
+            <div className="tech-tags">
+              {techStack.map((tech, index) => (
+                <span key={index} className="tech-tag">{tech}</span>
+              ))}
+            </div>
+          </div>
+
+          <div className="project-screenshots">
+            <h2>Screenshots</h2>
             <div className="screenshots-grid">
               <div className="screenshot-item">
-                <img
-                  src="/images/WorldWise1.png"
-                  alt="WorldWise Login Screen"
-                />
+                <img src="/images/WorldWise1.png" alt="WorldWise Main Map View" />
                 <div className="screenshot-caption">
-                  <p>The main map view</p>
-                  <span>Where you track your travels</span>
+                  <p>Main Map View</p>
+                  <span>Track your travels interactively</span>
                 </div>
               </div>
               <div className="screenshot-item">
-                <img
-                  src="/images/WorldWise2.png"
-                  alt="WorldWise Interactive Map"
-                />
+                <img src="/images/WorldWise2.png" alt="WorldWise Homepage" />
                 <div className="screenshot-caption">
                   <p>Homepage</p>
-                  <span>Simple and clean</span>
+                  <span>Clean and intuitive interface</span>
                 </div>
               </div>
               <div className="screenshot-item">
-                <img
-                  src="/images/WorldWise3.png"
-                  alt="WorldWise Travel Journal"
-                />
+                <img src="/images/WorldWise3.png" alt="WorldWise Login" />
                 <div className="screenshot-caption">
-                  <p>Login page</p>
-                  <span>Quick and easy access</span>
+                  <p>Login Page</p>
+                  <span>Secure user authentication</span>
                 </div>
               </div>
             </div>
-          </section>
-
-          <section className="project-section" id="highlights">
-            <h2>🚀 Technical stuff I learned</h2>
-            <div className="highlights">
-              <div className="highlight-item">
-                <h4>Managing complex state</h4>
-                <p>
-                  Used React Context and useReducer to handle all the app data - 
-                  took me a while to get it right
-                </p>
-              </div>
-              <div className="highlight-item">
-                <h4>User profiles</h4>
-                <p>
-                  Each user gets their own space with custom avatars - made sure 
-                  people can't see each other's travel data
-                </p>
-              </div>
-              <div className="highlight-item">
-                <h4>Interactive maps</h4>
-                <p>
-                  The map lets you click anywhere to add cities - figuring out 
-                  the coordinates was trickier than expected
-                </p>
-              </div>
-              <div className="highlight-item">
-                <h4>Deployment setup</h4>
-                <p>
-                  Set up Docker containers so it runs the same everywhere - 
-                  learned about multi-stage builds too
-                </p>
-              </div>
-            </div>
-          </section>
+          </div>
         </div>
       </div>
     </div>
   );
-};
+}
 
 export default WorldWise;

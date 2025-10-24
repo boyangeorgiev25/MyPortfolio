@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from '../context/ThemeContext';
 import Header from '../components/layout/Header';
@@ -20,47 +20,60 @@ import '../styles/layouts/mobile.css';
 import '../styles/components/blog.css';
 import '../styles/components/showcase.css';
 
+const LOADING_DURATION = 1500;
+const SCROLL_OFFSET = 150;
+const STICKY_HEADER_THRESHOLD = 100;
+
 function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 1500);
+    }, LOADING_DURATION);
 
     return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      const isHomeRoute = window.location.pathname === '/';
-      const sections = document.querySelectorAll('section');
-      const navLinks = document.querySelectorAll('header nav a');
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const isHomeRoute = window.location.pathname === '/';
+          const sections = document.querySelectorAll('section');
+          const navLinks = document.querySelectorAll('header nav a');
 
-      if (isHomeRoute) {
-        sections.forEach(sec => {
-          const top = window.scrollY;
-          const offset = sec.offsetTop - 150;
-          const height = sec.offsetHeight;
-          const id = sec.getAttribute('id');
+          if (isHomeRoute) {
+            sections.forEach(sec => {
+              const top = window.scrollY;
+              const offset = sec.offsetTop - SCROLL_OFFSET;
+              const height = sec.offsetHeight;
+              const id = sec.getAttribute('id');
 
-          if (top >= offset && top < offset + height) {
-            navLinks.forEach(link => {
-              link.classList.remove('active');
-            });
-            if (id) {
-              const activeLink = document.querySelector(`header nav a[href*=${id}]`);
-              if (activeLink) {
-                activeLink.classList.add('active');
+              if (top >= offset && top < offset + height) {
+                navLinks.forEach(link => {
+                  link.classList.remove('active');
+                });
+                if (id) {
+                  const activeLink = document.querySelector(`header nav a[href*=${id}]`);
+                  if (activeLink) {
+                    activeLink.classList.add('active');
+                  }
+                }
               }
-            }
+            });
           }
-        });
-      }
 
-      const header = document.querySelector('.header');
-      if (header) {
-        header.classList.toggle('sticky', window.scrollY > 100);
+          const header = document.querySelector('.header');
+          if (header) {
+            header.classList.toggle('sticky', window.scrollY > STICKY_HEADER_THRESHOLD);
+          }
+
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 

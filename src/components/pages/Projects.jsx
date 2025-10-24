@@ -5,11 +5,12 @@ import CardSwap, { Card } from '../common/CardSwap';
 function Projects() {
   const sectionRef = useRef(null);
   const navigate = useNavigate();
+  const swapRef = useRef(null);
 
   const projects = [
     {
       icon: 'bx-world',
-      title: '🌍 WorldWise - Travel Tracker',
+      title: 'WorldWise - Travel Tracker',
       description:
         'A comprehensive travel tracking application that allows users to log visited cities on an interactive map with personalized notes. Developed to strengthen skills in React Context API and complex state management patterns.',
       technologies: 'React 18, React Router DOM, CSS Modules, Context API',
@@ -20,7 +21,7 @@ function Projects() {
     },
     {
       icon: 'bx-package',
-      title: '🧳 Far Away – Packing List',
+      title: 'Far Away – Packing List',
       description:
         'A practical packing list application featuring item management, completion tracking, sorting capabilities, and usage statistics. Built as a learning project to master React fundamentals and state management principles.',
       technologies: 'React, JavaScript, CSS, State Management',
@@ -31,7 +32,7 @@ function Projects() {
     },
     {
       icon: 'bx-game',
-      title: '🎮 Quarto Game',
+      title: 'Quarto Game',
       description:
         'A Java-based implementation of the Quarto board game featuring local multiplayer functionality and an intelligent AI opponent. First experience developing a complete GUI application, providing valuable insights into object-oriented design patterns.',
       technologies: 'Java 17, JavaFX, AI Logic, Rule-Based Strategy',
@@ -41,6 +42,13 @@ function Projects() {
       image: '/images/quarto1.png'
     },
   ];
+
+  const handleNext = () => {
+    if (swapRef.current) {
+      swapRef.current();
+      setCurrentIndex((prev) => (prev + 1) % projects.length);
+    }
+  };
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -79,6 +87,10 @@ function Projects() {
         </div>
 
         <div className="projects-cardswap-wrapper">
+          <button className="project-nav-btn" onClick={handleNext}>
+            <i className='bx bx-refresh'></i>
+          </button>
+
           <CardSwap
             width={600}
             height={450}
@@ -88,6 +100,8 @@ function Projects() {
             pauseOnHover={true}
             skewAmount={5}
             easing="elastic"
+            manualOnly={true}
+            onSwapRef={swapRef}
           >
             {projects.map((project, index) => (
               <Card

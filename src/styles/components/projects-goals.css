@@ -162,6 +162,7 @@
 
 .projects-text-content {
   padding-right: 4rem;
+  position: relative;
 }
 
 .projects-background-text {
@@ -228,6 +229,52 @@
   transform: translateY(40px) scale(0.96);
   transition: transform 0.9s cubic-bezier(0.23, 1, 0.32, 1) 0.25s, opacity 0.9s ease 0.25s;
   will-change: transform, opacity;
+}
+
+.project-nav-btn {
+  width: 6rem;
+  height: 6rem;
+  background: linear-gradient(135deg, var(--main-color), rgba(117, 78, 249, 0.8));
+  border: none;
+  border-radius: 50%;
+  color: white;
+  font-size: 3rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(117, 78, 249, 0.4);
+  position: absolute;
+  right: 5rem;
+  bottom: -2rem;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.project-nav-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.project-nav-btn:hover::before {
+  opacity: 1;
+}
+
+.project-nav-btn:hover {
+  transform: translateX(5px) scale(1.1);
+  box-shadow: 0 12px 30px rgba(117, 78, 249, 0.6);
+}
+
+.project-nav-btn:active {
+  transform: translateX(2px) scale(1.05);
 }
 
 .project-swap-card {

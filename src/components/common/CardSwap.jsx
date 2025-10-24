@@ -36,6 +36,8 @@ const CardSwap = ({
   onCardClick,
   skewAmount = 6,
   easing = 'elastic',
+  manualOnly = false,
+  onSwapRef,
   children
 }) => {
   const config =
@@ -76,6 +78,7 @@ const CardSwap = ({
 
     const swap = () => {
       if (order.current.length < 2) return;
+      if (tlRef.current && tlRef.current.isActive()) return;
 
       const [front, ...rest] = order.current;
       const elFront = refs[front].current;
@@ -132,30 +135,35 @@ const CardSwap = ({
       });
     };
 
-    swap();
-    intervalRef.current = window.setInterval(swap, delay);
-
-    if (pauseOnHover) {
-      const node = container.current;
-      const pause = () => {
-        tlRef.current?.pause();
-        clearInterval(intervalRef.current);
-      };
-      const resume = () => {
-        tlRef.current?.play();
-        intervalRef.current = window.setInterval(swap, delay);
-      };
-      node.addEventListener('mouseenter', pause);
-      node.addEventListener('mouseleave', resume);
-      return () => {
-        node.removeEventListener('mouseenter', pause);
-        node.removeEventListener('mouseleave', resume);
-        clearInterval(intervalRef.current);
-      };
+    if (onSwapRef) {
+      onSwapRef.current = swap;
     }
-    return () => clearInterval(intervalRef.current);
+
+    if (!manualOnly) {
+      intervalRef.current = window.setInterval(swap, delay);
+
+      if (pauseOnHover) {
+        const node = container.current;
+        const pause = () => {
+          tlRef.current?.pause();
+          clearInterval(intervalRef.current);
+        };
+        const resume = () => {
+          tlRef.current?.play();
+          intervalRef.current = window.setInterval(swap, delay);
+        };
+        node.addEventListener('mouseenter', pause);
+        node.addEventListener('mouseleave', resume);
+        return () => {
+          node.removeEventListener('mouseenter', pause);
+          node.removeEventListener('mouseleave', resume);
+          clearInterval(intervalRef.current);
+        };
+      }
+      return () => clearInterval(intervalRef.current);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cardDistance, verticalDistance, delay, pauseOnHover, skewAmount, easing]);
+  }, [cardDistance, verticalDistance, delay, pauseOnHover, skewAmount, easing, manualOnly]);
 
   const rendered = childArr.map((child, i) =>
     isValidElement(child)
