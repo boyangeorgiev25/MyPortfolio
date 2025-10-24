@@ -1,5 +1,5 @@
 import React from 'react';
-import './ShinyText.css';
+import '../../styles/components/shiny-text.css';
 
 const ShinyText = ({
   text,

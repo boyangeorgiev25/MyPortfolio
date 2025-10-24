@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import TextType from "../common/TextType";
-import "./AboutMePage.css";
+import "../../styles/components/about-me.css";
 
 function AboutMePage() {
   const [history, setHistory] = useState([]);

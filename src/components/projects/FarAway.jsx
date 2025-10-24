@@ -1,5 +1,5 @@
 import React from 'react';
-import './ProjectPage.css';
+import '../../styles/components/project-page.css';
 
 // Simple packing list app - my first real React project
 function FarAway() {

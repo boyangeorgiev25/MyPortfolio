@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useTheme } from '../../context/ThemeContext';
 import GlassSurface from '../common/GlassSurface';
-import './Header.css';
+import '../../styles/components/header.css';
 
 const NAV_ITEMS = [
   { key: 'home', icon: 'bx-home', label: 'Home', type: 'scroll', target: 'home' },

@@ -1,5 +1,5 @@
 import React from "react";
-import "./ProjectPage.css";
+import "../../styles/components/project-page.css";
 
 // Built this travel tracker after getting tired of losing track of places I've been
 function WorldWise() {

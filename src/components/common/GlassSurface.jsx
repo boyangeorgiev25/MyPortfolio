@@ -1,5 +1,5 @@
 import React from 'react';
-import './GlassSurface.css';
+import '../../styles/components/glass-surface.css';
 
 const GlassSurface = ({
   children,

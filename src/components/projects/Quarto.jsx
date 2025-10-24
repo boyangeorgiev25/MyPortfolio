@@ -1,5 +1,5 @@
 import React from "react";
-import "./ProjectPage.css";
+import "../../styles/components/project-page.css";
 
 // Board game I built in Java - first time making something with a GUI
 function Quarto() {

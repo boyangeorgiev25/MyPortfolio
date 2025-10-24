@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import AnimatedCounter from '../common/AnimatedCounter';
 import TextType from '../common/TextType';
 import ShinyText from '../common/ShinyText';
-import './Home.css';
+import '../../styles/components/home.css';
 
 function Home() {
   const navigate = useNavigate();

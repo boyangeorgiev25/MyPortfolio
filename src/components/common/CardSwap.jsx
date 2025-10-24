@@ -1,6 +1,6 @@
 import React, { Children, cloneElement, forwardRef, isValidElement, useEffect, useMemo, useRef } from 'react';
 import gsap from 'gsap';
-import './CardSwap.css';
+import '../../styles/components/card-swap.css';
 
 export const Card = forwardRef(({ customClass, ...rest }, ref) => (
   <div ref={ref} {...rest} className={`card ${customClass ?? ''} ${rest.className ?? ''}`.trim()} />

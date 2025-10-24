@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import AnimatedCounter from '../common/AnimatedCounter';
-import './PageNotFound.css';
+import '../../styles/components/page-not-found.css';
 
 const PageNotFound = () => {
   return (
